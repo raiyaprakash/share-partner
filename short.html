@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>URL Shortener</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f3f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    width: 90%;
+    max-width: 400px;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  input, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+  input {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  button {
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #0056b3;
+  }
+  .result {
+    margin-top: 15px;
+    padding: 10px;
+    background: #e9f7ef;
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+    word-break: break-all;
+  }
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>🔗 URL Shortener</h2>
+
+  <label>Enter your URL:</label>
+  <input type="text" id="urlInput" placeholder="https://example.com" />
+
+  <label>Your User ID:</label>
+  <input type="text" id="userIdInput" placeholder="Enter your User ID" />
+
+  <button id="shortenBtn">Shorten URL</button>
+
+  <div id="result" class="result" style="display:none;"></div>
+  <div id="error" class="error"></div>
+</div>
+
+<script>
+document.getElementById("shortenBtn").addEventListener("click", async () => {
+  const url = document.getElementById("urlInput").value.trim();
+  const userId = document.getElementById("userIdInput").value.trim();
+  const resultDiv = document.getElementById("result");
+  const errorDiv = document.getElementById("error");
+
+  resultDiv.style.display = "none";
+  errorDiv.textContent = "";
+
+  if (!url || !userId) {
+    errorDiv.textContent = "⚠️ Please enter both URL and User ID.";
+    return;
+  }
+
+  try {
+    const res = await fetch('/api-shorten, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url, userId })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      errorDiv.textContent = data.error || "Something went wrong.";
+      return;
+    }
+
+    resultDiv.innerHTML = `✅ Short URL: <a href="${data.shortUrl}" target="_blank">${data.shortUrl}</a>`;
+    resultDiv.style.display = "block";
+  } catch (err) {
+    errorDiv.textContent = "❌ Network error. Please check your Worker URL.";
+  }
+});
+</script>
+</body>
+</html>
