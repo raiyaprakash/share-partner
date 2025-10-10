@@ -9,11 +9,6 @@ export async function onRequestGet(context) {
     const record = await env.URLS.get(shortKey); 
     if (!record) return new Response("Short URL not found", { status: 404 });
 
-    // Make sure the KV value is a string, then parse JSON
-    if (typeof record !== "string") {
-      return new Response("KV record is not valid JSON", { status: 500 });
-    }
-
     let data;
     try {
       data = JSON.parse(record);
