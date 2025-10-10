@@ -1,23 +1,31 @@
 export async function onRequestPost(context) {
   const { env, request } = context;
 
+  // Ensure it's a POST request
+  if (request.method !== "POST") {
+    return jsonResponse({ error: "Only POST method allowed" }, 405);
+  }
+
+  let data;
   try {
-    const data = await request.json();
-    const originalUrl = data.url;
-    const userId = data.userId;
+    // Try parsing JSON safely
+    data = await request.json();
+  } catch (err) {
+    return jsonResponse({ error: "Invalid JSON format" }, 400);
+  }
 
-    // Validate required fields
-    if (!userId) {
-      return jsonResponse({ error: "userId is required" }, 400);
-    }
-    if (!originalUrl) {
-      return jsonResponse({ error: "url is required" }, 400);
-    }
+  const originalUrl = data?.url;
+  const userId = data?.userId;
 
-    // Generate a short key
-    const shortKey = Math.random().toString(36).substring(2, 8);
+  // Validate fields
+  if (!userId) return jsonResponse({ error: "userId is required" }, 400);
+  if (!originalUrl) return jsonResponse({ error: "url is required" }, 400);
 
-    // Save in KV
+  // Generate a short key
+  const shortKey = Math.random().toString(36).substring(2, 8);
+
+  // Save in Cloudflare KV
+  try {
     await env.URLS.put(
       shortKey,
       JSON.stringify({
@@ -26,14 +34,14 @@ export async function onRequestPost(context) {
         createdAt: new Date().toISOString(),
       })
     );
-
-    // Build final short URL
-    const shortUrl = `https://a.sharelinks.in/share/${shortKey}`;
-
-    return jsonResponse({ shortUrl, userId });
   } catch (err) {
-    return jsonResponse({ error: "Invalid request" }, 400);
+    return jsonResponse({ error: "Failed to save to KV" }, 500);
   }
+
+  // Build final short URL
+  const shortUrl = `https://a.sharelinks.in/share/${shortKey}`;
+
+  return jsonResponse({ shortUrl, userId });
 }
 
 // Helper for JSON responses
