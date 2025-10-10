@@ -1,53 +1,29 @@
-export async function onRequestPost(context) {
-  const { env, request } = context;
-
-  // Ensure it's a POST request
-  if (request.method !== "POST") {
-    return jsonResponse({ error: "Only POST method allowed" }, 405);
-  }
-
+export async function onRequestPost({ request, env }) {
   let data;
   try {
-    // Try parsing JSON safely
     data = await request.json();
-  } catch (err) {
-    return jsonResponse({ error: "Invalid JSON format" }, 400);
+  } catch {
+    return new Response(JSON.stringify({ error: "Invalid JSON" }), { status: 400, headers: { "Content-Type": "application/json" } });
   }
 
-  const originalUrl = data?.url;
-  const userId = data?.userId;
+  const originalUrl = data.url;
+  const userId = data.userId;
 
-  // Validate fields
-  if (!userId) return jsonResponse({ error: "userId is required" }, 400);
-  if (!originalUrl) return jsonResponse({ error: "url is required" }, 400);
+  if (!originalUrl) return new Response(JSON.stringify({ error: "url is required" }), { status: 400, headers: { "Content-Type": "application/json" } });
+  if (!userId) return new Response(JSON.stringify({ error: "userId is required" }), { status: 400, headers: { "Content-Type": "application/json" } });
 
-  // Generate a short key
+  // Generate 6-char short key
   const shortKey = Math.random().toString(36).substring(2, 8);
 
-  // Save in Cloudflare KV
-  try {
-    await env.URLS.put(
-      shortKey,
-      JSON.stringify({
-        originalUrl,
-        userId,
-        createdAt: new Date().toISOString(),
-      })
-    );
-  } catch (err) {
-    return jsonResponse({ error: "Failed to save to KV" }, 500);
-  }
+  // Store in KV (as JSON string)
+  await env.URLS.put(shortKey, JSON.stringify({
+    originalUrl,
+    userId,
+    createdAt: new Date().toISOString()
+  }));
 
-  // Build final short URL
-  const shortUrl = `https://a.sharelinks.in/share/${shortKey}`;
-
-  return jsonResponse({ shortUrl, userId });
-}
-
-// Helper for JSON responses
-function jsonResponse(data, status = 200) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: { "Content-Type": "application/json" },
-  });
+  return new Response(JSON.stringify({
+    shortUrl: `${request.url.replace(/\/api-shorten$/, "")}/share/${shortKey}`,
+    userId
+  }), { status: 200, headers: { "Content-Type": "application/json" } });
 }
