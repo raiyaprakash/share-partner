@@ -100,12 +100,9 @@ export async function onRequest(context) {
     return new Response("", { headers: response_header });
   }
 
-  // --- Serve homepage if root path ---
-  if (!path) {
     const html = await fetch(`https://xytom.github.io/Url-Shorten-Worker/${config.theme}/index.html`);
     return new Response(await html.text(), { headers: { "content-type": "text/html;charset=UTF-8" } });
-  }
-
+/*
   // --- Redirect if key exists ---
   const value = await LINKS.get(path);
   if (value) {
@@ -113,5 +110,5 @@ export async function onRequest(context) {
   }
 
   // --- 404 ---
-  return new Response(html404, { headers: { "content-type": "text/html;charset=UTF-8" }, status: 404 });
+  return new Response(html404, { headers: { "content-type": "text/html;charset=UTF-8" }, status: 404 });*/
 }
