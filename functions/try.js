@@ -2,7 +2,7 @@ export const config = {
   theme: "", // Homepage theme, leave empty for default
   cors: "on",
   unique_link: true,
-  custom_link: false
+  custom_link: true
 }
 
 const html404 = `<!DOCTYPE html>
