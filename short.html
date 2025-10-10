@@ -92,7 +92,7 @@ document.getElementById("shortenBtn").addEventListener("click", async () => {
   }
 
   try {
-    const res = await fetch('/api-shorten, {
+    const res = await fetch('/api-shorten', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url, userId })
