@@ -2,20 +2,23 @@ export async function onRequestGet({ params, env }) {
   const shortKey = params.shortKey;
   if (!shortKey) return new Response("Short key missing", { status: 400 });
 
-  // Always get KV as text
-  const record = await env.URLS.get(shortKey, "text");
-  if (!record) return new Response("Short URL not found", { status: 404 });
+  let record;
+  try {
+    record = await env.URLS.get(shortKey, "text"); // always text
+    if (!record) return new Response("Short URL not found", { status: 404 });
+  } catch (err) {
+    return new Response("Error reading KV: " + err.message, { status: 500 });
+  }
 
   let data;
   try {
-    data = JSON.parse(record);
-  } catch {
-    return new Response("KV record is not valid JSON", { status: 500 });
+    data = JSON.parse(record); // record must be JSON string
+  } catch (err) {
+    return new Response("KV record is not valid JSON: " + err.message, { status: 500 });
   }
 
   const response = Response.redirect(data.originalUrl, 302);
 
-  // Set 5-min cookies
   const expires = new Date(Date.now() + 5 * 60 * 1000).toUTCString();
   response.headers.append(
     "Set-Cookie",
