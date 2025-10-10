@@ -20,7 +20,7 @@ export async function onRequestGet({ params, env }) {
   try {
     data = JSON.parse(record);
   } catch (err) {
-    return new Response("❌ KV record is not valid JSON: " + err.message, { status: 500 });
+    return new Response("❌ KV record is not valid JSON: "+ shortKey+ err.message, { status: 500 });
   }
 
   // Redirect to original URL
