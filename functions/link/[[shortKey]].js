@@ -20,10 +20,10 @@ export async function onRequest(context) {
 
   // If we have a path/shortKey, try to fetch from KV
   if (path) {
-    const value = await LINKS.get(path);
+    const value33 = await LINKS.get(path);
 
-    if (value) {
-      return Response.redirect(value, 302);
+    if (value33) {
+      return new Response(value33);
     } else {
       return new Response("⚠️ Not Found", { status: 404 });
     }
