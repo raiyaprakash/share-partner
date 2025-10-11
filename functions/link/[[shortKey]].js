@@ -9,10 +9,10 @@ export async function onRequestGet({ params, env }) {
 
   try {
     // --- Try fetching from KV ---
-    const value = await LINKS.get(shortKey);
+    const value2 = await LINKS.get(shortKey);
 
-    if (value) {
-return new Response(shortKey+" "+value, { status: 404 });
+    if (value2) {
+return new Response(shortKey+" "+value2);
     }
 
     // --- Not found in KV ---
