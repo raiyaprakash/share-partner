@@ -1,24 +1,25 @@
 export async function onRequestGet({ params, env }) {
-  const LINKS = env.LINKS; // ✅ Get KV binding
+  const LINKS = env.LINKS;
   const shortKey = params.shortKey;
 
-  // Handle missing shortKey
   if (!shortKey) {
     return new Response("⚠️ Short key is missing. Please use a valid link.", { status: 400 });
   }
 
   try {
-    // --- Try fetching from KV ---
-    const value2 = await env.LINKS.get(shortKey);
+    // Fetch value from KV as plain string
+    const value = await LINKS.get(shortKey);
 
-    if (value2) {
-return new Response(shortKey+" ty "+value2);
+    if (!value) {
+      return new Response("❌ Short link not found.", { status: 404 });
     }
 
-    // --- Not found in KV ---
-    return new Response("❌ Short link not found.", { status: 404 });
+    // Make sure it's a string (just in case)
+    const url = String(value);
+
+    // Redirect
+    return Response.redirect(url, 302);
   } catch (err) {
-    // --- Handle unexpected errors ---
     return new Response(`Server Error: ${err.message}`, { status: 500 });
   }
 }
