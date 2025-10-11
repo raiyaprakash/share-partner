@@ -12,7 +12,7 @@ export async function onRequestGet({ params, env }) {
     const value = await LINKS.get(shortKey);
 
     if (value) {
-return new Response(shortKey+" "value, { status: 404 });
+return new Response(shortKey+" "+value, { status: 404 });
     }
 
     // --- Not found in KV ---
