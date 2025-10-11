@@ -1,5 +1,5 @@
 export async function onRequestGet({ params, env }) {
-  const LINKS = env.LINKS; // Your KV binding
+  const LINKS = env.LINKS; // KV binding
   const shortKey = params.shortKey;
 
   // Check if shortKey is provided
@@ -7,12 +7,14 @@ export async function onRequestGet({ params, env }) {
     return new Response("⚠️ Short key is missing. Please use a valid link.", { status: 400 });
   }
 
-  // --- Redirect if key exists ---
+  // --- Get the value from KV ---
   const value = await LINKS.get(shortKey);
+
   if (value) {
+    // Redirect to the stored URL
     return new Response("Not Found"+value);;
   }
 
-  // --- 404 ---
+  // --- 404 Not Found ---
   return new Response("Not Found", { status: 404 });
 }
