@@ -12,8 +12,7 @@ export async function onRequestGet({ params, env }) {
     const value = await LINKS.get(shortKey);
 
     if (value) {
-      // Redirect to original URL
-      return Response.redirect(value, 302);
+return new Response(value, { status: 404 });
     }
 
     // --- Not found in KV ---
