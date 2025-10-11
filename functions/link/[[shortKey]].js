@@ -1,4 +1,3 @@
-
 export async function onRequest(context) {
   // Contents of context object
   const {
@@ -7,46 +6,29 @@ export async function onRequest(context) {
     params, // if filename includes [id] or [[path]]
     waitUntil, // same as ctx.waitUntil in existing Worker API
     next, // used for middleware or to fetch assets
-    data, // arbitrary space for passing data between middlewares
+    , // arbitrary space for passing data between middlewares
   } = context;
-  const LINKS = env.LINKS;
-  const value33 = await LINKS.get("64QWB6");
+  const LINKS = env.LINKS; // KV binding
+  const url = new URL(request.url);
+  const path = params.path || params.shortKey; // Handle [[path]] or [[shortKey]] dynamic routes
 
-  return new Response(value33);
-}
-
-
-/*
-
-export async function onRequestGet({ params, env }) {
-  try {
-    const LINKS = env.LINKS;
-    const shortKey = params.shortKey;
-
-    if (!shortKey) {
-      return new Response("⚠️ Short key missing.", { status: 400 });
-    }
-
-    const value = await LINKS.get(shortKey);
-
-    if (!value) {
-      return new Response("❌ Link not found.", { status: 404 });
-    }
-
-    // Handle if value accidentally stored as JSON
-    let target = value;
-    try {
-      const parsed = JSON.parse(value);
-      if (parsed.url) target = parsed.url;
-    } catch (_) {}
-
-    // Ensure valid URL
-    if (!/^https?:\/\//.test(target)) {
-      return new Response("⚠️ Invalid URL format.", { status: 400 });
-    }
-
-    return Response.redirect(target, 302);
-  } catch (err) {
-    return new Response(`⚠️ Server Error: ${err.message}`, { status: 500 });
+  // Handle trailing '*' — remove it and redirect
+  if (url.pathname.endsWith('*')) {
+    url.pathname = url.pathname.slice(0, -1);
+    return Response.redirect(url.toString(), 302);
   }
-}*/
+
+  // If we have a path/shortKey, try to fetch from KV
+  if (path) {
+    const value = await LINKS.get(path);
+
+    if (value) {
+      return Response.redirect(value, 302);
+    } else {
+      return new Response("⚠️ Not Found", { status: 404 });
+    }
+  }
+
+  // Default redirect (homepage or fallback)
+  return Response.redirect("https://sharelinks.in/", 302);
+}
