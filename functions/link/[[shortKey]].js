@@ -10,7 +10,7 @@ export async function onRequest(context) {
   } = context;
   const LINKS = env.LINKS; // KV binding
   const url = new URL(request.url);
-  const path = params.shortKey; // Handle [[path]] or [[shortKey]] dynamic routes
+  const path = context.params.shortKey; // Handle [[path]] or [[shortKey]] dynamic routes
 
   // Handle trailing '*' — remove it and redirect
   if (url.pathname.endsWith('*')) {
