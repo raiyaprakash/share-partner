@@ -11,7 +11,7 @@ export default {
       return Response.redirect(url.toString(), 302);
     }
     if (pathParts) {
-      const value = await LINKS.get(path);
+      const value = await LINKS.get(pathParts);
   if(value) {
 return Response.redirect(value, 302);
   } else {
