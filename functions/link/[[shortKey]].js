@@ -8,7 +8,7 @@ export async function onRequestGet({ params, env }) {
   }
 
   // --- Redirect if key exists ---
-  const value = await LINKS.get(path);
+  const value = await LINKS.get(shortKey);
   if (value) {
     return new Response("Not Found"+value);;
   }
