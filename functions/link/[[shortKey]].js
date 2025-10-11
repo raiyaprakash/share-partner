@@ -12,7 +12,8 @@ export async function onRequestGet({ params, env }) {
 
   if (value) {
     // Redirect to the stored URL
-    return new Response("Not Found"+value);;
+    const data = JSON.parse(value); // Parse JSON
+    return new Response("Not Found"+data);;
   }
 
   // --- 404 Not Found ---
