@@ -63,7 +63,9 @@ export const onRequest = async ({ request, env }) => {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${partner.name} - Partner Dashboard</title>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding:20px; background:#eef2f7; color:#333; }
+  @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+    body { font-family: "Mukta", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding:20px; background:#eef2f7; color:#333; max-width: 600px;
+    margin: 0 auto; }
     h2 { color:#007BFF; }
     .stats { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:20px; }
     .card { background:white; padding:15px 20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1 1 180px; }
