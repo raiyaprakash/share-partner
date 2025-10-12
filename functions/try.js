@@ -160,6 +160,9 @@ footer {
   <a href="/contact">📞 Contact</a>
   <a href="/privacy">🔒 Privacy</a>
   <a href="/notice">📢 Notice</a>
+  <a href="/contact">📞 Contact</a>
+  <a href="/privacy">🔒 Privacy</a>
+  <a href="/notice">📢 Notice</a>
 </nav>
 
 <div class="container">
