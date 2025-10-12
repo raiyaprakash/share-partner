@@ -1,22 +1,29 @@
+function getCookie(request, name) {
+  const cookieHeader = request.headers.get("Cookie");
+  if (!cookieHeader) return null;
+
+  const cookies = cookieHeader.split(";").map(c => c.trim());
+  for (const cookie of cookies) {
+    const [key, value] = cookie.split("=");
+    if (key === name) return decodeURIComponent(value);
+  }
+  return null;
+}
+
 export const onRequest = async ({ request, env }) => {
   const db = env.DB;
   const url = new URL(request.url);
-  const ref = url.searchParams.get("ref");
-  const password = url.searchParams.get("password");
+  const ref = getCookie(request, "referid");
   const rpm = 0.35; // default RPM if not in DB
 
-  if (!ref || !password)
-    return new Response("Missing credentials", { status: 400 });
+  // 🔹 Redirect if not logged in
+  if (!ref) {
+    return new Response(null, {
+      status: 302,
+      headers: { Location: "/login" },
+    });
+  }
 
-  // Verify partner
-  const partner = await db
-    .prepare("SELECT * FROM partners WHERE partner_id=? AND password=?")
-    .bind(ref, password)
-    .first();
-
-  if (!partner)
-    return new Response("<h3>Unauthorized</h3>", { status: 401 });
-  
   const withdrawals = await db
     .prepare(
       `SELECT amount, created_at
@@ -34,7 +41,7 @@ export const onRequest = async ({ request, env }) => {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${partner.name} - Partner Dashboard</title>
+  <title>Payment History</title>
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
     body { font-family: "Mukta", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding:20px; background:#eef2f7; color:#333; max-width: 600px;
