@@ -158,7 +158,7 @@ header a {
 
 <nav>
   <a href="/analytics">📊 Analytics</a>
-  <a href="/payments">💵 Payments</a>
+  <a href="/payment-history">💵 Payments</a>
   <a href="/contact">📞 Contact</a>
   <a href="/privacy">🔒 Privacy</a>
   <a href="/notice">📢 Notice</a>
