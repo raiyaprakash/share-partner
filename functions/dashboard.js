@@ -143,7 +143,10 @@ footer {
   color:#555;
 }
     h2 { color:#007BFF; }
-
+header a {
+    text-decoration: none;
+    color: #fff;
+}
 </style>
 </head>
 <body>
