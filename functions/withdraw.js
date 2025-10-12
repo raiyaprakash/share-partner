@@ -1,8 +1,28 @@
+function getCookie(request, name) {
+  const cookieHeader = request.headers.get("Cookie");
+  if (!cookieHeader) return null;
+
+  const cookies = cookieHeader.split(";").map(c => c.trim());
+  for (const cookie of cookies) {
+    const [key, value] = cookie.split("=");
+    if (key === name) return decodeURIComponent(value);
+  }
+  return null;
+}
+
 export const onRequest = async ({ request, env }) => {
   const url = new URL(request.url);
   const db = env.DB;
-  const ref = url.searchParams.get("ref");
+  const ref = getCookie(request, "referid");
   const amount = parseFloat(url.searchParams.get("amount"));
+
+  // 🔹 Redirect if not logged in
+  if (!ref) {
+    return new Response(null, {
+      status: 302,
+      headers: { Location: "/login" },
+    });
+  }
 
   if (!ref || !amount) return new Response(JSON.stringify({ status: "error", msg: "Missing params" }), { headers: { "Content-Type": "application/json" } });
   if (amount < 2) return new Response(JSON.stringify({ status: "error", msg: "Minimum $2 required" }), { headers: { "Content-Type": "application/json" } });
