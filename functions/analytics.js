@@ -1,14 +1,11 @@
 export const onRequest = async ({ request, env }) => {
-  const url = new URL(request.url);
-  const ref = url.searchParams.get("ref");
-  const postUrl = url.searchParams.get("url");
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
   const ua = request.headers.get("User-Agent") || "";
 
   // CORS headers
   const corsHeaders = {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*", // allow all origins
+    "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type"
   };
@@ -17,6 +14,18 @@ export const onRequest = async ({ request, env }) => {
   if (request.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
+
+  if (request.method !== "POST") {
+    return new Response(
+      JSON.stringify({ status: "error", msg: "Method not allowed" }),
+      { headers: corsHeaders }
+    );
+  }
+
+  // Parse JSON POST body
+  const body = await request.json();
+  const ref = body.ref;
+  const postUrl = body.url;
 
   if (!ref || !postUrl) {
     return new Response(
