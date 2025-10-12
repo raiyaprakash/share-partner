@@ -189,7 +189,7 @@ header a {
         btn.onclick=async()=>{
           btn.disabled=true;btn.innerText="Sending...";
           try{
-            const res=await fetch("/withdraw");
+            const res=await fetch("/withdraw?amount=${currentBalance}");
             const data=await res.json();
             const msg=document.getElementById("withdrawMsg");
             if(data.status==="ok"){
