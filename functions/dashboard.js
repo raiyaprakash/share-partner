@@ -14,7 +14,7 @@ export const onRequest = async ({ request, env }) => {
   const db = env.DB;
   const ref = getCookie(request, "referid");
 
-  // 🔹 If not logged in → redirect to login page
+  // 🔹 Redirect if not logged in
   if (!ref) {
     return new Response(null, {
       status: 302,
@@ -22,14 +22,13 @@ export const onRequest = async ({ request, env }) => {
     });
   }
 
-  // 🔹 Get partner info
+  // 🔹 Partner Lookup
   const partner = await db
     .prepare("SELECT * FROM partners WHERE partner_id=?")
     .bind(ref)
     .first();
 
   if (!partner) {
-    // Partner not found → clear cookie and redirect to login
     return new Response("Invalid partner", {
       status: 302,
       headers: {
@@ -41,7 +40,7 @@ export const onRequest = async ({ request, env }) => {
 
   const rpm = partner.rpm || 0.35;
 
-  // 🔹 Fetch Stats
+  // 🔹 Stats
   const stats = await db
     .prepare(
       `SELECT
@@ -55,7 +54,6 @@ export const onRequest = async ({ request, env }) => {
     .bind(ref)
     .first();
 
-  // 🔹 Earnings Calculation
   const calc = (views) => ((views / 1000) * rpm).toFixed(3);
   const totalEarned = (stats.all_time / 1000) * rpm;
 
@@ -67,45 +65,104 @@ export const onRequest = async ({ request, env }) => {
   const totalWithdrawn = withdrawalData.withdrawn || 0;
   const currentBalance = (totalEarned - totalWithdrawn).toFixed(3);
 
-  // 🔹 Render Dashboard
+  // 🔹 Render Dashboard HTML
   return new Response(
     `
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${partner.name} - Partner Dashboard</title>
-  <style>
-  @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;500;700&display=swap');
-  body {
-    font-family: "Mukta", sans-serif;
-    background:#eef2f7;
-    color:#333;
-    margin:0 auto;
-    padding:20px;
-    max-width:600px;
-  }
-  h2 { color:#007BFF; }
-  .stats { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:20px; }
-  .card {
-    background:white; padding:15px 20px; border-radius:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1 1 180px;
-  }
-  .alert {
-    background-color:#fff3cd; color:#856404;
-    border:1px solid #ffeeba; padding:12px 18px;
-    border-radius:8px; margin-bottom:20px;
-  }
-  button {
-    padding:10px 18px; background:#28a745;
-    color:white; border:none; border-radius:4px;
-    cursor:pointer;
-  }
-  button:hover { background:#218838; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>${partner.name} - Partner Dashboard</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;500;700&display=swap');
+body {
+  font-family: "Mukta", sans-serif;
+  background:#eef2f7;
+  color:#333;
+  margin:0 auto;
+  padding:0;
+  max-width:850px;
+}
+header {
+  background:#007BFF;
+  color:white;
+  padding:15px 20px;
+  border-bottom:4px solid #0056b3;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+header h1 { font-size:20px; margin:0; }
+nav {
+  background:white;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  padding:10px;
+  gap:8px;
+  border-bottom:1px solid #ddd;
+}
+nav a {
+  color:#007BFF;
+  text-decoration:none;
+  font-weight:500;
+  padding:6px 10px;
+  border-radius:4px;
+  transition:all 0.2s;
+}
+nav a:hover {
+  background:#007BFF;
+  color:white;
+}
+.container { padding:20px; }
+h2 { color:#007BFF; margin-top:0; }
+.stats { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:20px; }
+.card {
+  background:white; padding:15px 20px; border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1 1 180px;
+}
+.alert {
+  background-color:#fff3cd; color:#856404;
+  border:1px solid #ffeeba; padding:12px 18px;
+  border-radius:8px; margin-bottom:20px;
+}
+button {
+  padding:10px 18px; background:#28a745;
+  color:white; border:none; border-radius:4px;
+  cursor:pointer;
+}
+button:hover { background:#218838; }
+footer {
+  background:#f8f9fa;
+  text-align:center;
+  font-size:14px;
+  padding:10px;
+  margin-top:30px;
+  border-top:1px solid #ddd;
+  color:#555;
+}
+    h2 { color:#007BFF; }
+
+</style>
 </head>
 <body>
+
+<header>
+  <h1>Partner Dashboard</h1>
+  <span> <a href="/logout">Logout</a></span>
+</header>
+
+<nav>
+  <a href="/analytics">📊 Analytics</a>
+  <a href="/payments">💵 Payments</a>
+  <a href="/contact">📞 Contact</a>
+  <a href="/privacy">🔒 Privacy</a>
+  <a href="/notice">📢 Notice</a>
+  <a href="/logout">🚪 Logout</a>
+</nav>
+
+<div class="container">
   <h2>👋 Welcome - ${partner.name}</h2>
   <div class="alert">⚠️ Dashboard resets daily at <strong>05:30 AM IST</strong>.</div>
 
@@ -147,9 +204,15 @@ export const onRequest = async ({ request, env }) => {
       </script>`
       : `<div class="alert" style="color:red;">Minimum $2 required for withdrawal</div>`
   }
+</div>
+
+<footer>
+  © ${new Date().getFullYear()} ShareLinks Partner Network. All rights reserved.
+</footer>
 
 </body>
-</html>`,
+</html>
+`,
     { headers: { "Content-Type": "text/html; charset=UTF-8" } }
   );
 };
