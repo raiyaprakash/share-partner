@@ -82,7 +82,7 @@ body {
   color:#333;
   margin:0 auto;
   padding:0;
-  max-width:700px;
+  max-width:850px;
 }
 header {
   background:#007BFF;
@@ -93,16 +93,14 @@ header {
   justify-content:space-between;
   align-items:center;
 }
-header h1 {
-  font-size:20px;
-  margin:0;
-}
+header h1 { font-size:20px; margin:0; }
 nav {
   background:white;
   display:flex;
   flex-wrap:wrap;
-  justify-content:space-around;
-  padding:10px 0;
+  justify-content:center;
+  padding:10px;
+  gap:8px;
   border-bottom:1px solid #ddd;
 }
 nav a {
@@ -111,14 +109,13 @@ nav a {
   font-weight:500;
   padding:6px 10px;
   border-radius:4px;
+  transition:all 0.2s;
 }
 nav a:hover {
   background:#007BFF;
   color:white;
 }
-.container {
-  padding:20px;
-}
+.container { padding:20px; }
 h2 { color:#007BFF; margin-top:0; }
 .stats { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:20px; }
 .card {
@@ -155,14 +152,18 @@ footer {
 </header>
 
 <nav>
+  <a href="/dashboard">🏠 Home</a>
   <a href="/analytics">📊 Analytics</a>
+  <a href="/posts">📰 My Posts</a>
+  <a href="/links">🔗 Shared Links</a>
   <a href="/payments">💵 Payments</a>
+  <a href="/withdrawals">🏧 Withdrawals</a>
+  <a href="/referrals">👥 Referrals</a>
   <a href="/contact">📞 Contact</a>
   <a href="/privacy">🔒 Privacy</a>
   <a href="/notice">📢 Notice</a>
-  <a href="/contact">📞 Contact</a>
-  <a href="/privacy">🔒 Privacy</a>
-  <a href="/notice">📢 Notice</a>
+  <a href="/faq">❓ FAQ</a>
+  <a href="/logout">🚪 Logout</a>
 </nav>
 
 <div class="container">
