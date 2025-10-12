@@ -142,6 +142,8 @@ footer {
   border-top:1px solid #ddd;
   color:#555;
 }
+    h2 { color:#007BFF; }
+
 </style>
 </head>
 <body>
@@ -152,21 +154,16 @@ footer {
 </header>
 
 <nav>
-  <a href="/dashboard">🏠 Home</a>
   <a href="/analytics">📊 Analytics</a>
-  <a href="/posts">📰 My Posts</a>
-  <a href="/links">🔗 Shared Links</a>
   <a href="/payments">💵 Payments</a>
-  <a href="/withdrawals">🏧 Withdrawals</a>
-  <a href="/referrals">👥 Referrals</a>
   <a href="/contact">📞 Contact</a>
   <a href="/privacy">🔒 Privacy</a>
   <a href="/notice">📢 Notice</a>
-  <a href="/faq">❓ FAQ</a>
   <a href="/logout">🚪 Logout</a>
 </nav>
 
 <div class="container">
+  <h2>👋 Welcome - ${partner.name}</h2>
   <div class="alert">⚠️ Dashboard resets daily at <strong>05:30 AM IST</strong>.</div>
 
   <div class="stats">
@@ -210,7 +207,7 @@ footer {
 </div>
 
 <footer>
-  © ${new Date().getFullYear()} AutoPush Partner Network. All rights reserved.
+  © ${new Date().getFullYear()} ShareLinks Partner Network. All rights reserved.
 </footer>
 
 </body>
