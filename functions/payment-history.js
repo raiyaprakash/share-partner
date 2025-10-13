@@ -46,7 +46,29 @@ export const onRequest = async ({ request, env }) => {
   @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
     body { font-family: "Mukta", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding:20px; background:#eef2f7; color:#333; max-width: 600px;
     margin: 0 auto; }
-    h2 { color:#007BFF; }
+    
+    h2 {
+      font-weight: 700;
+      font-size: 24px;
+      color: #007bff;
+      text-align: center;
+      margin-bottom: 25px;
+      position: relative;
+      letter-spacing: 0.5px;
+      padding-bottom: 10px;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #007bff, #00c6ff);
+      border-radius: 3px;
+    }
     .stats { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:20px; }
     .card { background:white; padding:15px 20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1 1 180px; }
     table { border-collapse:collapse; width:100%; background:white; margin-top:15px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
