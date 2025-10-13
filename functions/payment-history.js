@@ -52,8 +52,16 @@ export const onRequest = async ({ request, env }) => {
     table { border-collapse:collapse; width:100%; background:white; margin-top:15px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
     th, td { border:1px solid #ccc; padding:10px; text-align:left; }
     th { background:#007BFF; color:white; }
-    button { padding:10px 18px; background:#28a745; color:white; border:none; border-radius:4px; cursor:pointer; }
+    button { padding:10px 18px; background:#28a745; color:white; border:none; border-radius:4px; cursor:pointer;
+      margin-top: 15px;
+      font-weight: 600; }
     button:hover { background:#218838; }
+        .back-btn {
+      background: #218838;
+    }
+    .back-btn:hover {
+      background: #5a6268;
+    }
     .responsive { overflow:auto; }
     .alert {
       background-color:#fff3cd; color:#856404; border:1px solid #ffeeba;
@@ -78,6 +86,7 @@ export const onRequest = async ({ request, env }) => {
       .join("")}
     </table>
   </div>
+    <button class="back-btn" onclick="history.back()">⬅ Back to Previous Page</button>
 </body>
 </html>
     `,
