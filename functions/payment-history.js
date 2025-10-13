@@ -33,6 +33,9 @@ export const onRequest = async ({ request, env }) => {
     )
     .bind(ref)
     .all();
+
+  const hasWithdrawals = withdrawals.results.length > 0;
+
   // --- HTML Dashboard
   return new Response(
     `
@@ -69,6 +72,7 @@ export const onRequest = async ({ request, env }) => {
       background: linear-gradient(90deg, #007bff, #00c6ff);
       border-radius: 3px;
     }
+
     .stats { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:20px; }
     .card { background:white; padding:15px 20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1 1 180px; }
     table { border-collapse:collapse; width:100%; background:white; margin-top:15px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
@@ -78,37 +82,44 @@ export const onRequest = async ({ request, env }) => {
       margin-top: 15px;
       font-weight: 600; }
     button:hover { background:#218838; }
-        .back-btn {
-      background: #218838;
-    }
-    .back-btn:hover {
-      background: #5a6268;
-    }
+    .back-btn { background: #218838; }
+    .back-btn:hover { background: #5a6268; }
     .responsive { overflow:auto; }
     .alert {
       background-color:#fff3cd; color:#856404; border:1px solid #ffeeba;
       padding:12px 18px; border-radius:8px; margin-bottom:20px;
       font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.1);
+      text-align:center;
     }
     .alert strong { color:#704214; }
   </style>
 </head>
 <body>
   <h2>💰 Withdrawal History</h2>
-  <div class="responsive">
-    <table><tr><th>Amount Paid</th><th>Date</th></tr>
-    ${withdrawals.results
-      .map(
-        (w) => `
-        <tr>
-          <td>$${w.amount.toFixed(2)}</td>
-          <td>${new Date(new Date(w.created_at).getTime() + 5.5*60*60*1000).toLocaleString('en-IN')}</td>
-        </tr>`
-      )
-      .join("")}
-    </table>
-  </div>
-    <button class="back-btn" onclick="history.back()">⬅ Back to Previous Page</button>
+
+  ${
+    hasWithdrawals
+      ? `
+      <div class="responsive">
+        <table>
+          <tr><th>Amount Paid</th><th>Date</th></tr>
+          ${withdrawals.results
+            .map(
+              (w) => `
+              <tr>
+                <td>$${w.amount.toFixed(2)}</td>
+                <td>${new Date(
+                  new Date(w.created_at).getTime() + 5.5 * 60 * 60 * 1000
+                ).toLocaleString("en-IN")}</td>
+              </tr>`
+            )
+            .join("")}
+        </table>
+      </div>`
+      : `<div class="alert"><strong>No withdrawal history found.</strong><br>Your payment records will appear here once you make a withdrawal.</div>`
+  }
+
+  <button class="back-btn" onclick="history.back()">⬅ Back to Previous Page</button>
 </body>
 </html>
     `,
