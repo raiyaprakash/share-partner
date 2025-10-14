@@ -162,13 +162,13 @@ header a {
 </header>
 
 <nav>
-  <a href="/generate-referral">🔗 Generate Referral Link</a>
-  <a href="/payment-history">💵 Payments</a>
+  <a href="/generate">🔗 Generate</a>
   <a href="/payment-settings">🏦 Payment Settings</a>
+  <a href="/payment-history">💵 Withdrawal</a>
   <a href="/contact">📞 Contact</a>
   <a href="/privacy">🔒 Privacy</a>
+  <a href="/terms">📄 Terms</a>
   <a href="/notice">📢 Notice</a>
-  <a href="/logout">🚪 Logout</a>
 </nav>
 
 
