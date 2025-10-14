@@ -103,9 +103,9 @@ button input[type="radio"] {
     <button type="button" onclick="paste()">📋 Paste</button>
     <button type="button" onclick="gernatescript()">✏️ Generate</button>
     <button type="button" onclick="gernatescriptcopy()">📄 Copy</button>
-    <label for="unbold"><button><input type="radio" id="unbold" name="select"/> Un Bold</button></label>
-    <label for="boldchange"><button><input type="radio" id="boldchange" name="select" checked/> Bold</button></label>
-    <label for="boldtelegram"><button><input type="radio" id="boldtelegram" name="select"/> T-Bold</button></label>
+    <label for="select"><button><input type="radio" id="unbold" name="select"/> Un Bold</button></label>
+    <label for="select"><button><input type="radio" id="boldchange" name="select" checked/> Bold</button></label>
+    <label for="select"><button><input type="radio" id="boldtelegram" name="select"/> T-Bold</button></label>
     <button type="button" onclick="generate_bold_clear()">🗑 Clear</button>
 </div>
 
@@ -124,11 +124,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script>
 function gernatescript() {
+    const referId = localStorage.getItem("refer_id") || "2";
     const lines = document.getElementById("smessage").value.split("\n");
+
+    // Add all domains you want to support
+    const domains = ["aksolution.in", "fastrojgar.com", "fastrojgar.in", "sarkarigroup.com", "sarkarigroup.in", "sarkarimaster.com"];
+
     const result = lines.map(line => {
-        let text = line.replace("telegran.me", "telegram.me").replace(/\*/g, '').trim();
+        let text = line.replace(/\*/g, '').trim();
+
+        // Process only if URL contains one of your domains
+        if (domains.some(domain => text.includes(domain))) {
+            // Remove existing ?m=1, #ref-..., or any query/hash
+            text = text.replace(/(\.html)[?#].*/, "$1"); // Clean .html URLs
+            text = text.replace(/(\.html)$/, "$1"); // Keep pure .html
+            text = text.replace(/[?#].*$/, ""); // Clean homepage or directory URLs
+
+            // Append new ?m=1#ref-ID
+            if (text.endsWith("/")) {
+                text = text.slice(0, -1); // Remove trailing slash for consistency
+            }
+            text += "/?m=1#ref-" + referId;
+        }
+
+        // Apply formatting
         if (document.getElementById("boldchange").checked) {
-            if (text.includes("http22://") || text.includes("https22://")) return text;
             return '*' + text + '*';
         } else if (document.getElementById("boldtelegram").checked) {
             return '**' + text + '**';
@@ -136,11 +156,8 @@ function gernatescript() {
             return text;
         }
     });
-    if (document.getElementById("boldtelegram").checked) {
-        document.getElementById("smessage").value = result.join("\n").replace(/\*\*\*\*/g, '');
-    } else {
-        document.getElementById("smessage").value = result.join("\n").replace(/\*\*/g, '');
-    }
+
+    document.getElementById("smessage").value = result.join("\n");
 }
 
 function paste() {
