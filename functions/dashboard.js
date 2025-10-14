@@ -168,7 +168,7 @@ header a {
   <a href="/contact">📞 Contact</a>
   <a href="/privacy">🔒 Privacy</a>
   <a href="/terms">📄 Terms</a>
-  <a href="/notice">📢 Notice</a>
+  <!--a href="/notice">📢 Notice</a-->
 </nav>
 
 
