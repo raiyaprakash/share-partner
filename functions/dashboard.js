@@ -216,6 +216,9 @@ header a {
       : `<div class="alert" style="color:red;">Minimum $2 required for withdrawal</div>`
   }
 </div>
+<script>
+localStorage.setItem('refer_id', '${ref}');
+</script>
 
 <footer>
   © ${new Date().getFullYear()} ShareLinks Partner Network. All rights reserved.
