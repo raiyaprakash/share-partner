@@ -78,6 +78,7 @@ export const onRequest = async ({ request, env }) => {
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Payment Settings</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;500;700&display=swap');
 body { font-family: 'Mukta', sans-serif; background:#eef2f7; color:#333; margin:0 auto; padding:0; max-width:850px; }
 header { background:#007BFF; color:white; padding:15px 20px; border-bottom:4px solid #0056b3; display:flex; justify-content:space-between; align-items:center; }
 header h1 { font-size:20px; margin:0; }
@@ -87,6 +88,11 @@ input, select { width:100%; padding:8px; margin-top:4px; border:1px solid #ccc; 
 button { margin-top:20px; padding:10px 18px; background:#28a745; color:white; border:none; border-radius:4px; cursor:pointer; }
 button:hover { background:#218838; }
 footer { background:#f8f9fa; text-align:center; font-size:14px; padding:10px; margin-top:30px; border-top:1px solid #ddd; color:#555; }
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 </style>
 </head>
 <body>
