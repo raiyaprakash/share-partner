@@ -37,7 +37,7 @@ export const onRequest = async ({ request, env }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         chat_id: TELEGRAM_CHAT_ID,
-        text: `💰 Withdrawal Request\nPartner ID: ${ref}\nAmount: $${amount}\n✅ Note: Amount will be transferred to account within 24h.`
+        text: `💰 Withdrawal Request\nPartner ID: ${ref}\nAmount: $${amount}`
       })
     });
     const data = await response.json();
