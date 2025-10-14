@@ -103,9 +103,9 @@ button input[type="radio"] {
     <button type="button" onclick="paste()">📋 Paste</button>
     <button type="button" onclick="gernatescript()">✏️ Generate</button>
     <button type="button" onclick="gernatescriptcopy()">📄 Copy</button>
-    <button><label><input type="radio" id="unbold" name="encode"/> Un Bold</label></button>
-    <button><label><input type="radio" id="boldchange" name="encode" checked/> Bold</label></button>
-    <button><label><input type="radio" id="boldtelegram" name="encode"/> T-Bold</label></button>
+    <label for="unbold"><button><input type="radio" id="unbold" name="unbold"/> Un Bold</button></label>
+    <label for="boldchange"><button><input type="radio" id="boldchange" name="boldchange" checked/> Bold</button></label>
+    <label for="boldtelegram"><button><input type="radio" id="boldtelegram" name="boldtelegram"/> T-Bold</button></label>
     <button type="button" onclick="generate_bold_clear()">🗑 Clear</button>
 </div>
 
