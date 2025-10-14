@@ -74,6 +74,7 @@ const stats = await db
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>${partner.name} - Partner Dashboard</title>
+<link href='/favicon.ico' rel='icon' type='image/x-icon'/>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;500;700&display=swap');
 body {
