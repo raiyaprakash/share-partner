@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us</title>
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+    body { 
+      font-family: "Mukta", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      padding:20px; background:#eef2f7; color:#333; max-width: 600px; margin: 0 auto; 
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 24px;
+      color: #007bff;
+      text-align: center;
+      margin-bottom: 25px;
+      position: relative;
+      letter-spacing: 0.5px;
+      padding-bottom: 10px;
+    }
+
+    h1::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #007bff, #00c6ff);
+      border-radius: 3px;
+    }
+
+    p, li { line-height: 1.6; }
+
+    .contact-card {
+      background:white; 
+      padding:20px; 
+      border-radius:8px; 
+      box-shadow:0 2px 6px rgba(0,0,0,0.1); 
+      margin-bottom:20px;
+    }
+
+    a { color: #007bff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    button { 
+      padding:10px 18px; background:#28a745; color:white; border:none; border-radius:4px; cursor:pointer;
+      margin: 15px 0;
+      font-weight: 600; 
+    }
+    button:hover { background:#218838; }
+    .back-btn { background: #218838; }
+    .back-btn:hover { background: #5a6268; }
+  </style>
+</head>
+<body>
+
+  <h1>Contact Us</h1>
+  <button class="back-btn" onclick="history.back()">⬅ Back to Previous Page</button>
+
+  <div class="contact-card">
+    <h2>Office Address</h2>
+    <p>Village Nagla Durji, Hathras, UTTAR PRADESH, 204101</p>
+  </div>
+
+  <div class="contact-card">
+    <h2>Phone</h2>
+    <p>📞 <a href="tel:+917017161590">+91 70171 61590</a></p>
+  </div>
+
+  <div class="contact-card">
+    <h2>Email</h2>
+    <p>✉️ <a href="mailto:prakashraiya25@autopush.in">prakashraiya25@autopush.in</a></p>
+  </div>
+
+  <div class="contact-card">
+    <h2>Contact Person</h2>
+    <p>Prakash Raiya</p>
+  </div>
+
+</body>
+</html>
