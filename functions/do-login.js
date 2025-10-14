@@ -15,19 +15,17 @@ export const onRequestPost = async ({ request, env }) => {
     .first();
 
   if (partner) {
-    const cookieOptions =
-      "Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=86400";
+    const cookieOptions = "Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=86400";
+
+    const headers = new Headers();
+    headers.append("Set-Cookie", `referid=${partner.partner_id}; ${cookieOptions}`);
+    headers.append("Set-Cookie", `partner_name=${encodeURIComponent(partner.name)}; ${cookieOptions}`);
+    headers.append("Set-Cookie", `partner_pass=${encodeURIComponent(partner.password)}; ${cookieOptions}`);
+    headers.append("Location", "/dashboard");
 
     return new Response(null, {
       status: 302,
-      headers: {
-        "Set-Cookie": [
-          `referid=${partner.partner_id}; ${cookieOptions}`,
-          `partner_name=${encodeURIComponent(partner.name)}; ${cookieOptions}`,
-          `partner_pass=${encodeURIComponent(password)}; ${cookieOptions}`,
-        ],
-        "Location": "/dashboard",
-      },
+      headers,
     });
   } else {
     return new Response("Invalid login", { status: 401 });
