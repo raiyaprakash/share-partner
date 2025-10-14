@@ -209,7 +209,7 @@ header a {
 </div>
 
 <footer>
-  © ${new Date().getFullYear()} ShareLinks Partner Network. All rights reserved.
+  © ${new Date().getFullYear()} ShareLinks Partner Network. All rights reserved.2
 </footer>
 
 </body>
