@@ -7,49 +7,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
-<style>
-/* Reset & base */
-* {
-    box-sizing: border-box;
-}
+/* Body styling */
 body {
-    background: #121212;
-    color: #fff;
-    font-family: 'Mukta', sans-serif;
+    background: #1e1e1e;
     margin: 0;
+    font-family: 'Mukta', sans-serif;
+    color: #fff;
     padding: 20px;
     text-align: center;
 }
 
-/* Heading */
-h2 {
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #FFD700;
-    text-shadow: 0 0 5px rgba(255,215,0,0.5);
-}
-
 /* Textarea */
 textarea {
-    width: 100%;
+    width: 90%;
     max-width: 800px;
     height: 300px;
     padding: 15px;
-    border-radius: 12px;
-    border: 2px solid #444;
-    background: #1f1f1f;
+    border-radius: 8px;
+    border: 2px solid #555;
+    background: #2c2c2c;
     color: #fff;
     resize: vertical;
-    margin-bottom: 20px;
-    font-size: 15px;
-    line-height: 1.6;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-textarea:focus {
-    border-color: #FFD700;
-    box-shadow: 0 0 10px rgba(255,215,0,0.3);
-    outline: none;
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 /* Buttons container */
@@ -78,7 +59,6 @@ button:hover, .radio-button:hover {
 .radio-button input[type="radio"] {
     margin-left: 5px;
 }
-
 /* Notification popup */
 .cnoti {
     display: flex;
@@ -93,14 +73,19 @@ button:hover, .radio-button:hover {
 .cnoti span {
     display: block;
     padding: 12px 20px;
-    border-radius: 8px;
+    border-radius: 6px;
     background-color: #222;
     color: #fff;
     opacity: 0;
     line-height: 1.4;
     animation: slidein 2s ease forwards;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    font-weight: 500;
+}
+
+@-webkit-keyframes slidein {
+    0% {opacity:0; bottom: -50px;}
+    20%,50%,80% {opacity:1; bottom: 20px;}
+    100% {opacity:0; bottom: -50px;}
 }
 
 @keyframes slidein {
@@ -108,13 +93,17 @@ button:hover, .radio-button:hover {
     20%,50%,80% {opacity:1; bottom: 20px;}
     100% {opacity:0; bottom: -50px;}
 }
-
-/* Responsive buttons */
-@media (max-width: 600px) {
-    button, .radio-button {
-        width: 100%;
-        justify-content: center;
-    }
+*{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+h2 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #FFD700;
+    text-shadow: 0 0 5px rgba(255,215,0,0.5);
+}
+textarea:focus {
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255,215,0,0.3);
+    outline: none;
 }
 </style>
 </head>
