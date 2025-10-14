@@ -12,8 +12,15 @@ function getCookie(request, name) {
 export const onRequest = async ({ request, env }) => {
   const db = env.DB;
   const ref = getCookie(request, "referid");
+  const password = getCookie(request, "partner_pass");
 
-  if (!ref) {
+  // Verify partner
+  const partner = await db
+    .prepare("SELECT * FROM partners WHERE partner_id=? AND password=?")
+    .bind(ref, password)
+    .first();
+
+  if (!partner) {
     return new Response(null, {
       status: 302,
       headers: { Location: "/login" },
