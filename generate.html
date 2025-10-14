@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Generate Refer Link</title>
+    <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+/* Body styling */
+body {
+    background: #1e1e1e;
+    margin: 0;
+    font-family: 'Mukta', sans-serif;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Textarea */
+textarea {
+    width: 90%;
+    max-width: 800px;
+    height: 300px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #555;
+    background: #2c2c2c;
+    color: #fff;
+    resize: vertical;
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Buttons */
+button {
+    background: #3a3a3a;
+    color: #fff;
+    border: 2px solid transparent;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #555;
+    border-color: #ff0;
+}
+
+button input[type="radio"] {
+    margin-left: 5px;
+}
+
+/* Notification popup */
+.cnoti {
+    display: flex;
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.cnoti span {
+    display: block;
+    padding: 12px 20px;
+    border-radius: 6px;
+    background-color: #222;
+    color: #fff;
+    opacity: 0;
+    line-height: 1.4;
+    animation: slidein 2s ease forwards;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+@-webkit-keyframes slidein {
+    0% {opacity:0; bottom: -50px;}
+    20%,50%,80% {opacity:1; bottom: 20px;}
+    100% {opacity:0; bottom: -50px;}
+}
+
+@keyframes slidein {
+    0% {opacity:0; bottom: -50px;}
+    20%,50%,80% {opacity:1; bottom: 20px;}
+    100% {opacity:0; bottom: -50px;}
+}
+
+</style>
+</head>
+<body>
+
+<h2>Generate & Earn Money</h2>
+
+<textarea id="smessage" name="text" spellcheck="false" placeholder="Enter text lines here..." required></textarea>
+
+<div>
+    <button type="button" onclick="paste()">📋 Paste</button>
+    <button type="button" onclick="gernatescript()">✏️ Generate</button>
+    <button type="button" onclick="gernatescriptcopy()">📄 Copy</button>
+    <button><label><input type="radio" id="unbold" name="encode"/> Un Bold</label></button>
+    <button><label><input type="radio" id="boldchange" name="encode" checked/> Bold</label></button>
+    <button><label><input type="radio" id="boldtelegram" name="encode"/> T-Bold</label></button>
+    <button type="button" onclick="generate_bold_clear()">🗑 Clear</button>
+</div>
+
+<div class="cnoti" id="snotif"></div>
+
+<script>
+function gernatescript() {
+    const lines = document.getElementById("smessage").value.split("\n");
+    const result = lines.map(line => {
+        let text = line.replace("telegran.me", "telegram.me").replace(/\*/g, '').trim();
+        if (document.getElementById("boldchange").checked) {
+            if (text.includes("http22://") || text.includes("https22://")) return text;
+            return '*' + text + '*';
+        } else if (document.getElementById("boldtelegram").checked) {
+            return '**' + text + '**';
+        } else {
+            return text;
+        }
+    });
+    if (document.getElementById("boldtelegram").checked) {
+        document.getElementById("smessage").value = result.join("\n").replace(/\*\*\*\*/g, '');
+    } else {
+        document.getElementById("smessage").value = result.join("\n").replace(/\*\*/g, '');
+    }
+}
+
+function paste() {
+    navigator.clipboard.readText().then(cliptext => {
+        document.getElementById("smessage").value = cliptext;
+        setTimeout(gernatescript, 100);
+        setTimeout(gernatescriptcopy, 200);
+    }, err => console.log(err));
+}
+
+function gernatescriptcopy() {
+    const textarea = document.getElementById("smessage");
+    textarea.select();
+    document.execCommand("copy");
+    const notif = document.getElementById("snotif");
+    notif.innerHTML = "<span>Code copied!</span>";
+    setTimeout(() => { notif.innerHTML = ''; }, 2000);
+}
+
+function generate_bold_clear() {
+    document.getElementById("smessage").value = '';
+}
+</script>
+
+</body>
+</html>
