@@ -1,124 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Terms and Conditions</title></title>
-  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
-  <style>
-  @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
-    body { font-family: "Mukta", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding:20px; background:#eef2f7; color:#333; max-width: 600px;
-    margin: 0 auto; }
-    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Terms and Conditions</title>
+<link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: "Mukta", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px 25px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 28px;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    border-radius: 2px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #007bff;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 25px;
+}
+
+h2::before {
+    content: counter(section) ".";
+    counter-increment: section;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    color: #007bff;
+}
+
+p, li {
+    line-height: 1.65;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+.alert {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    padding: 14px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.alert strong {
+    color: #704214;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 20px 15px;
+        padding: 20px;
+    }
     h1 {
-      font-weight: 700;
-      font-size: 24px;
-      color: #007bff;
-      text-align: center;
-      margin-bottom: 25px;
-      position: relative;
-      letter-spacing: 0.5px;
-      padding-bottom: 10px;
+        font-size: 24px;
     }
+    h2 {
+        font-size: 18px;
+    }
+}
 
-    h1::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, #007bff, #00c6ff);
-      border-radius: 3px;
-    }
-
-    .stats { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:20px; }
-    .card { background:white; padding:15px 20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1 1 180px; }
-    table { border-collapse:collapse; width:100%; background:white; margin-top:15px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
-    th, td { border:1px solid #ccc; padding:10px; text-align:left; }
-    th { background:#007BFF; color:white; }
-    button { padding:10px 18px; background:#28a745; color:white; border:none; border-radius:4px; cursor:pointer;
-      margin-top: 15px;
-      font-weight: 600; }
-    button:hover { background:#218838; }
-    .back-btn { background: #218838; }
-    .back-btn:hover { background: #5a6268; }
-    .responsive { overflow:auto; }
-    .alert {
-      background-color:#fff3cd; color:#856404; border:1px solid #ffeeba;
-      padding:12px 18px; border-radius:8px; margin-bottom:20px;
-      font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.1);
-      text-align:center;
-    }
-    .alert strong { color:#704214; }
-  </style>
+</style>
 </head>
 <body>
-  <h1>Terms and Conditions</h1>
+<div class="container">
+    <h1>Terms and Conditions</h1>
 
-  <button class="back-btn" onclick="history.back()">⬅ Back to Previous Page</button>
-  <h2>1. Introduction</h2>
-<p>These Terms govern the relationship between Share Partners and the Platform. Non-compliance may lead to warnings, suspension, termination, and forfeiture of earnings.</p>
+    <h2>Introduction</h2>
+    <p>These Terms govern the relationship between Share Partners and the Platform. Non-compliance may lead to warnings, suspension, termination, and forfeiture of earnings.</p>
 
-<h2>2. Definitions</h2>
-<ul>
-  <li><strong>Share Partner:</strong> Person or entity registered to share referral links.</li>
-  <li><strong>Referral:</strong> Visitor, click, or sign-up from a Partner link.</li>
-  <li><strong>Self-click / Self-refer:</strong> Any attempt to generate referrals using your own or controlled accounts/devices.</li>
-  <li><strong>Fake Traffic:</strong> Traffic from bots, scripts, click farms, or non-genuine users.</li>
-  <li><strong>Faucet Traffic:</strong> Traffic from faucet sites or micro-traffic sources.</li>
-  <li><strong>VPN Abuse:</strong> Using VPNs or proxies to manipulate traffic/referrals.</li>
-</ul>
+    <h2>Definitions</h2>
+    <ul>
+        <li><strong>Share Partner:</strong> Person or entity registered to share referral links.</li>
+        <li><strong>Referral:</strong> Visitor, click, or sign-up from a Partner link.</li>
+        <li><strong>Self-click / Self-refer:</strong> Any attempt to generate referrals using your own or controlled accounts/devices.</li>
+        <li><strong>Fake Traffic:</strong> Traffic from bots, scripts, click farms, or non-genuine users.</li>
+        <li><strong>Faucet Traffic:</strong> Traffic from faucet sites or micro-traffic sources.</li>
+        <li><strong>VPN Abuse:</strong> Using VPNs or proxies to manipulate traffic/referrals.</li>
+    </ul>
 
-<h2>3. Prohibited Activities</h2>
-<ul>
-  <li>Self-clicking or self-referral.</li>
-  <li>VPN or proxy abuse.</li>
-  <li>Fake or automated traffic.</li>
-  <li>Faucet traffic.</li>
-  <li>Multiple account abuse or collusion.</li>
-  <li>Parameter manipulation.</li>
-  <li>Misrepresentation or fraud.</li>
-</ul>
+    <h2>Prohibited Activities</h2>
+    <ul>
+        <li>Self-clicking or self-referral.</li>
+        <li>VPN or proxy abuse.</li>
+        <li>Fake or automated traffic.</li>
+        <li>Faucet traffic.</li>
+        <li>Multiple account abuse or collusion.</li>
+        <li>Parameter manipulation.</li>
+        <li>Misrepresentation or fraud.</li>
+    </ul>
 
-<h2>4. Monitoring and Detection</h2>
-<p>Traffic and referral patterns are monitored using analytics and fraud detection tools. Suspicious activity may be investigated at any time.</p>
+    <h2>Monitoring and Detection</h2>
+    <p>Traffic and referral patterns are monitored using analytics and fraud detection tools. Suspicious activity may be investigated at any time.</p>
 
-<h2>5. Enforcement & Penalties</h2>
-<ul>
-  <li>First Warning: Written notice.</li>
-  <li>Temporary Suspension: Pending investigation.</li>
-  <li>Permanent Termination: Ban and forfeiture of earnings.</li>
-  <li>Earnings Forfeiture: Recovery or deduction of earnings from prohibited activities.</li>
-  <li>Legal Action: If criminal behavior is suspected.</li>
-</ul>
+    <h2>Enforcement & Penalties</h2>
+    <ul>
+        <li>First Warning: Written notice.</li>
+        <li>Temporary Suspension: Pending investigation.</li>
+        <li>Permanent Termination: Ban and forfeiture of earnings.</li>
+        <li>Earnings Forfeiture: Recovery or deduction of earnings from prohibited activities.</li>
+        <li>Legal Action: If criminal behavior is suspected.</li>
+    </ul>
 
-<h2>6. Reporting & Appeal</h2>
-<p>Report suspicious activity via email with evidence. Appeals must be submitted within 7 days and will be reviewed with final decision in writing.</p>
+    <h2>Reporting & Appeal</h2>
+    <p>Report suspicious activity via email with evidence. Appeals must be submitted within 7 days and will be reviewed with final decision in writing.</p>
 
-<h2>7. Partner Obligations</h2>
-<ul>
-  <li>Provide accurate registration information.</li>
-  <li>Use only lawful promotion methods.</li>
-  <li>Cooperate with investigations.</li>
-  <li>Comply with privacy regulations.</li>
-</ul>
+    <h2>Partner Obligations</h2>
+    <ul>
+        <li>Provide accurate registration information.</li>
+        <li>Use only lawful promotion methods.</li>
+        <li>Cooperate with investigations.</li>
+        <li>Comply with privacy regulations.</li>
+    </ul>
 
-<h2>8. Data, Privacy & Tracking</h2>
-<p>We collect minimal data for attribution, fraud detection, and payments. Partners must not attempt to obfuscate or delete tracking data.</p>
+    <h2>Data, Privacy & Tracking</h2>
+    <p>We collect minimal data for attribution, fraud detection, and payments. Partners must not attempt to obfuscate or delete tracking data.</p>
 
-<h2>9. Earnings, Payments & Withholding</h2>
-<p>We may withhold, reverse, or deduct payments earned through prohibited activities. Payment terms remain as per the Platform policy.</p>
+    <h2>Earnings, Payments & Withholding</h2>
+    <p>We may withhold, reverse, or deduct payments earned through prohibited activities. Payment terms remain as per the Platform policy.</p>
 
-<h2>10. Changes to Terms</h2>
-<p>These Terms may be updated anytime. Continued participation indicates acceptance of the updated Terms.</p>
+    <h2>Changes to Terms</h2>
+    <p>These Terms may be updated anytime. Continued participation indicates acceptance of the updated Terms.</p>
 
-<h2>11. Acceptance</h2>
-<p>By participating, you acknowledge that you have read and agree to these Terms.</p>
+    <h2>Acceptance</h2>
+    <p>By participating, you acknowledge that you have read and agree to these Terms.</p>
 
-<h2>12. Contact</h2>
-<p>Email: <a href="mailto:prakashraiya25@autopush.in">prakashraiya25@autopush.in</a></p>
-
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:prakashraiya25@autopush.in">prakashraiya25@autopush.in</a></p>
+</div>
 </body>
 </html>
