@@ -147,6 +147,11 @@ header a {
     text-decoration: none;
     color: #fff;
 }
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 </style>
 </head>
 <body>
@@ -157,13 +162,15 @@ header a {
 </header>
 
 <nav>
-  <a href="/analytics">📊 Analytics</a>
+  <a href="/generate-referral">🔗 Generate Referral Link</a>
   <a href="/payment-history">💵 Payments</a>
+  <a href="/payment-settings">🏦 Payment Settings</a>
   <a href="/contact">📞 Contact</a>
   <a href="/privacy">🔒 Privacy</a>
   <a href="/notice">📢 Notice</a>
   <a href="/logout">🚪 Logout</a>
 </nav>
+
 
 <div class="container">
   <h2>👋 Welcome - ${partner.name}</h2>
