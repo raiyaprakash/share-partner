@@ -110,6 +110,17 @@ button input[type="radio"] {
 </div>
 
 <div class="cnoti" id="snotif"></div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if 'refer_id' exists in localStorage
+    const referId = localStorage.getItem("refer_id");
+
+    if (!referId) {
+        // If not found, redirect to /login
+        window.location.href = "/login";
+    }
+});
+</script>
 
 <script>
 function gernatescript() {
