@@ -45,6 +45,7 @@ export const onRequest = async ({ request, env }) => {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Payment History</title>
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
     body { font-family: "Mukta", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding:20px; background:#eef2f7; color:#333; max-width: 600px;
