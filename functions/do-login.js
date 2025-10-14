@@ -24,6 +24,7 @@ export const onRequestPost = async ({ request, env }) => {
         "Set-Cookie": [
           `referid=${partner.partner_id}; ${cookieOptions}`,
           `partner_name=${encodeURIComponent(partner.name)}; ${cookieOptions}`,
+          `partner_pass=${encodeURIComponent(partner.password)}; ${cookieOptions}`,
         ],
         "Location": "/dashboard",
       },
