@@ -1,8 +1,4 @@
 export const onRequest = async ({ request, env }) => {
-  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-  const ua = request.headers.get("User-Agent") || "";
-
-  // CORS headers
   const corsHeaders = {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
@@ -10,11 +6,12 @@ export const onRequest = async ({ request, env }) => {
     "Access-Control-Allow-Headers": "Content-Type"
   };
 
-  // Handle preflight requests
+  // Handle preflight
   if (request.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Allow only POST
   if (request.method !== "POST") {
     return new Response(
       JSON.stringify({ status: "error", msg: "Method not allowed" }),
@@ -22,21 +19,47 @@ export const onRequest = async ({ request, env }) => {
     );
   }
 
-  // Parse JSON POST body
-  const body = await request.json();
-  const ref = body.ref;
-  const postUrl = body.url;
-
-  if (!ref || !postUrl) {
+  let body;
+  try {
+    body = await request.json();
+  } catch {
     return new Response(
-      JSON.stringify({ status: "error", msg: "Missing params" }),
+      JSON.stringify({ status: "error", msg: "Invalid JSON" }),
       { headers: corsHeaders }
     );
   }
 
-  await env.DB.prepare(
-    `INSERT INTO clicks (partner_id, post_url, ip, user_agent) VALUES (?, ?, ?, ?)`
-  ).bind(ref, postUrl, ip, ua).run();
+  const ref = body.ref?.trim();
+  if (!ref) {
+    return new Response(
+      JSON.stringify({ status: "error", msg: "Missing partner_id" }),
+      { headers: corsHeaders }
+    );
+  }
 
-  return new Response(JSON.stringify({ status: "ok" }), { headers: corsHeaders });
+  const today = new Date().toISOString().split("T")[0];
+
+  try {
+    // ✅ Increment today's view count for this partner
+    await env.DB.prepare(`
+      INSERT INTO partner_views (partner_id, view_date, views)
+      VALUES (?, ?, 1)
+      ON CONFLICT(partner_id, view_date)
+      DO UPDATE SET views = views + 1, updated_at = CURRENT_TIMESTAMP
+    `)
+    .bind(ref, today)
+    .run();
+
+    return new Response(
+      JSON.stringify({ status: "ok" }),
+      { headers: corsHeaders }
+    );
+
+  } catch (err) {
+    console.error("DB Error:", err);
+    return new Response(
+      JSON.stringify({ status: "error", msg: "Database error" }),
+      { headers: corsHeaders }
+    );
+  }
 };
