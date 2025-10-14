@@ -164,7 +164,7 @@ header a {
 
 <nav>
   <a href="/generate">🔗 Generate</a>
-  <a href="/payment-settings">🏦 Payment Settings</a>
+  <a href="/payment-settings">🏦 Settings</a>
   <a href="/payment-history">💵 Withdrawal</a>
   <a href="/contact">📞 Contact</a>
   <a href="/privacy">🔒 Privacy</a>
