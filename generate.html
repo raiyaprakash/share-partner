@@ -7,52 +7,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
-/* Body styling */
+<style>
+/* Reset & base */
+* {
+    box-sizing: border-box;
+}
 body {
-    background: #1e1e1e;
-    margin: 0;
-    font-family: 'Mukta', sans-serif;
+    background: #121212;
     color: #fff;
+    font-family: 'Mukta', sans-serif;
+    margin: 0;
     padding: 20px;
     text-align: center;
 }
 
+/* Heading */
+h2 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #FFD700;
+    text-shadow: 0 0 5px rgba(255,215,0,0.5);
+}
+
 /* Textarea */
 textarea {
-    width: 90%;
+    width: 100%;
     max-width: 800px;
     height: 300px;
     padding: 15px;
-    border-radius: 8px;
-    border: 2px solid #555;
-    background: #2c2c2c;
+    border-radius: 12px;
+    border: 2px solid #444;
+    background: #1f1f1f;
     color: #fff;
     resize: vertical;
-    margin-bottom: 15px;
-    font-size: 14px;
-    line-height: 1.5;
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.6;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Buttons */
-button {
-    background: #3a3a3a;
+textarea:focus {
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255,215,0,0.3);
+    outline: none;
+}
+
+/* Buttons container */
+button, .radio-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #333, #555);
     color: #fff;
-    border: 2px solid transparent;
-    padding: 10px 20px;
-    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    margin: 5px 3px;
     font-size: 14px;
     font-weight: 500;
-    border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-button:hover {
-    background: #555;
-    border-color: #ff0;
+button:hover, .radio-button:hover {
+    background: linear-gradient(135deg, #555, #777);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
 
-button input[type="radio"] {
+/* Radio buttons */
+.radio-button input[type="radio"] {
     margin-left: 5px;
 }
 
@@ -70,19 +93,14 @@ button input[type="radio"] {
 .cnoti span {
     display: block;
     padding: 12px 20px;
-    border-radius: 6px;
+    border-radius: 8px;
     background-color: #222;
     color: #fff;
     opacity: 0;
     line-height: 1.4;
     animation: slidein 2s ease forwards;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-@-webkit-keyframes slidein {
-    0% {opacity:0; bottom: -50px;}
-    20%,50%,80% {opacity:1; bottom: 20px;}
-    100% {opacity:0; bottom: -50px;}
+    font-weight: 500;
 }
 
 @keyframes slidein {
@@ -91,23 +109,34 @@ button input[type="radio"] {
     100% {opacity:0; bottom: -50px;}
 }
 
+/* Responsive buttons */
+@media (max-width: 600px) {
+    button, .radio-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
 </style>
 </head>
 <body>
 
 <h2>Generate & Earn Money</h2>
 
-<textarea id="smessage" name="text" spellcheck="false" placeholder="Enter text lines here..." required></textarea>
+<textarea id="smessage" name="text" spellcheck="false" placeholder="Enter Text/Link lines here..." required></textarea>
 
 <div>
     <button type="button" onclick="paste()">📋 Paste</button>
     <button type="button" onclick="gernatescript()">✏️ Generate</button>
     <button type="button" onclick="gernatescriptcopy()">📄 Copy</button>
-    <label for="select"><button><input type="radio" id="unbold" name="select"/> Un Bold</button></label>
-    <label for="select"><button><input type="radio" id="boldchange" name="select" checked/> Bold</button></label>
-    <label for="select"><button><input type="radio" id="boldtelegram" name="select"/> T-Bold</button></label>
+
+    <label class="radio-button"><input type="radio" id="unbold" name="select"/> Un Bold</label>
+    <label class="radio-button"><input type="radio" id="boldchange" name="select" checked/> Bold</label>
+    <label class="radio-button"><input type="radio" id="boldtelegram" name="select"/> T-Bold</label>
+
     <button type="button" onclick="generate_bold_clear()">🗑 Clear</button>
 </div>
+
+<div class="cnoti" id="snotif"></div>
 
 <div class="cnoti" id="snotif"></div>
 <script>
@@ -124,6 +153,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script>
 function gernatescript() {
+    const textarea = document.getElementById("smessage");
+    if (!textarea.value.trim()) {
+    const notif = document.getElementById("snotif");
+    notif.innerHTML = "<span>Error!</span>";
+    setTimeout(() => { notif.innerHTML = ''; }, 2000);
+        return;
+    }
     const referId = localStorage.getItem("refer_id") || "2";
     const lines = document.getElementById("smessage").value.split("\n");
 
