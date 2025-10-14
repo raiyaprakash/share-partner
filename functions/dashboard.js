@@ -121,7 +121,7 @@ h2 { color:#007BFF; margin-top:0; }
 .stats { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:20px; }
 .card {
   background:white; padding:15px 20px; border-radius:8px;
-  box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1 1 180px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1 1 250px;
 }
 .alert {
   background-color:#fff3cd; color:#856404;
