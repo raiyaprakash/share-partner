@@ -41,18 +41,18 @@ export const onRequest = async ({ request, env }) => {
   const rpm = partner.rpm || 0.35;
 
   // 🔹 Stats
-  const stats = await db
-    .prepare(
-      `SELECT
-        SUM(CASE WHEN DATE(created_at)=DATE('now','localtime') THEN 1 ELSE 0 END) AS today,
-        SUM(CASE WHEN DATE(created_at)=DATE('now','-1 day','localtime') THEN 1 ELSE 0 END) AS yesterday,
-        SUM(CASE WHEN strftime('%Y-%m', created_at)=strftime('%Y-%m','now','localtime') THEN 1 ELSE 0 END) AS this_month,
-        SUM(CASE WHEN strftime('%Y-%m', created_at)=strftime('%Y-%m','now','-1 month','localtime') THEN 1 ELSE 0 END) AS last_month,
-        COUNT(*) AS all_time
-      FROM clicks WHERE partner_id=?`
-    )
-    .bind(ref)
-    .first();
+const stats = await db
+  .prepare(`
+    SELECT
+      SUM(CASE WHEN view_date = DATE('now','localtime') THEN views ELSE 0 END) AS today,
+      SUM(CASE WHEN view_date = DATE('now','-1 day','localtime') THEN views ELSE 0 END) AS yesterday,
+      SUM(CASE WHEN strftime('%Y-%m', view_date) = strftime('%Y-%m','now','localtime') THEN views ELSE 0 END) AS this_month,
+      SUM(CASE WHEN strftime('%Y-%m', view_date) = strftime('%Y-%m','now','-1 month','localtime') THEN views ELSE 0 END) AS last_month,
+      SUM(views) AS all_time
+    FROM partner_views WHERE partner_id=?
+  `)
+  .bind(ref)
+  .first();
 
   const calc = (views) => ((views / 1000) * rpm).toFixed(3);
   const totalEarned = (stats.all_time / 1000) * rpm;
