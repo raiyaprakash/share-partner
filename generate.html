@@ -177,9 +177,9 @@ function gernatescript() {
             text = text.replace(/[?#].*$/, ""); // Clean homepage or directory URLs
 
             // Append new ?m=1#ref-ID
-            if (text.endsWith("/")) {
+          /*  if (text.endsWith("/")) {
                 text = text.slice(0, -1); // Remove trailing slash for consistency
-            }
+            }*/
             text += "?m=1#ref-" + referId;
         }
 
