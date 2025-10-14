@@ -83,7 +83,7 @@ body {
   color:#333;
   margin:0 auto;
   padding:0;
-  max-width:850px;font-size: 13px
+  max-width:850px;font-size: 14px
 }
 header {
   background:#007BFF;
