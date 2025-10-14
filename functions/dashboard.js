@@ -83,7 +83,7 @@ body {
   color:#333;
   margin:0 auto;
   padding:0;
-  max-width:850px;
+  max-width:850px;font-size: 13px
 }
 header {
   background:#007BFF;
@@ -137,7 +137,6 @@ button:hover { background:#218838; }
 footer {
   background:#f8f9fa;
   text-align:center;
-  font-size:14px;
   padding:10px;
   margin-top:30px;
   border-top:1px solid #ddd;
