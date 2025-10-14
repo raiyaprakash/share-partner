@@ -77,6 +77,7 @@ export const onRequest = async ({ request, env }) => {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Payment Settings</title>
+<link href='/favicon.ico' rel='icon' type='image/x-icon'/>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;500;700&display=swap');
 body { font-family: 'Mukta', sans-serif; background:#eef2f7; color:#333; margin:0 auto; padding:0; max-width:850px; }
