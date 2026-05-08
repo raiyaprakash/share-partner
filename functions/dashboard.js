@@ -324,29 +324,6 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
   </a>
 
-<!-- BALANCE HEADER -->
-
-<div class="flex items-center gap-3">
-
-  <div class="bg-green-500 text-white px-4 py-2 rounded shadow flex items-center gap-2">
-
-    <i data-lucide="wallet-2" class="w-5 h-5"></i>
-
-    <div class="leading-tight">
-
-      <div class="text-[11px] opacity-80">
-        Balance
-      </div>
-
-      <div class="font-bold text-sm">
-        $${currentBalance}
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
     <a href="/logout"
     class="flex items-center gap-4 px-4 py-3 rounded bg-red-500/10 border border-red-500/20 text-red-500 hover:bg-red-500/20 transition mt-5">
 
@@ -406,15 +383,11 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
     <div class="flex items-center gap-3">
 
-      <div class="bg-green-500 text-white px-4 py-2 rounded shadow flex items-center gap-2">
+      <div class="bg-blue-500 text-white px-4 py-2 rounded shadow flex items-center gap-2">
 
         <i data-lucide="wallet-2" class="w-5 h-5"></i>
 
         <div class="leading-tight">
-
-          <div class="text-[11px] opacity-80">
-            Balance
-          </div>
 
           <div class="font-bold text-sm">
             $${currentBalance}
