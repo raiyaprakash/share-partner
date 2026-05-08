@@ -358,11 +358,11 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
   <a href="/payment-settings"
   class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-    <i data-lucide="building-2" class="w-5 h-5"></i>
+      <i data-lucide="wallet" class="w-5 h-5"></i>
 
-    <span>
-      Settings
-    </span>
+      <span>
+        Payment Settings
+      </span>
 
   </a>
 
@@ -371,11 +371,11 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
   <a href="/payment-history"
   class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-    <i data-lucide="wallet" class="w-5 h-5"></i>
+      <i data-lucide="history" class="w-5 h-5"></i>
 
-    <span>
-      Withdrawal
-    </span>
+      <span>
+        Withdraw History
+      </span>
 
   </a>
 
