@@ -603,11 +603,33 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
     <!-- WITHDRAW -->
 
     ${
-      currentBalance >= .2
+      currentBalance >= 2
       ? `
 <button
 class="mt-8 px-8 py-4 rounded bg-green-700 hover:bg-slate-900 text-white hover:text-green-400 font-bold shadow transition-all duration-300 flex items-center gap-2">
 <i data-lucide="wallet-2" class="w-5 h-5"></i><span>Request Withdrawal</span></button>
+      <div id="withdrawMsg" style="margin-top:10px;color:green;"></div>
+      <script>
+        const btn=document.getElementById("withdrawBtn");
+        btn.onclick=async()=>{
+          btn.disabled=true;btn.innerText="Sending...";
+          try{
+            const res=await fetch("/withdraw?amount=${currentBalance}");
+            const data=await res.json();
+            const msg=document.getElementById("withdrawMsg");
+            if(data.status==="ok"){
+              msg.innerText=data.msg;
+              btn.style.display="none";
+            }else{
+              msg.innerText="Error: "+data.msg;
+              btn.disabled=false;btn.innerText="Request Withdrawal";
+            }
+          }catch{
+            document.getElementById("withdrawMsg").innerText="Network error";
+            btn.disabled=false;btn.innerText="Request Withdrawal";
+          }
+        };
+      </script>
       `
       : `
       <div class="glass rounded p-5 mt-8 text-red-500 font-semibold shadow-sm">
