@@ -107,22 +107,14 @@ function formatViews(num) {
 
 <title>${partner.name} - Dashboard</title>
 
-<!-- ROBOTO -->
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-<!-- TAILWIND -->
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- LUCIDE -->
-
-<script src="https://unpkg.com/lucide@latest"></script>
+<script src='https://cdn.jsdelivr.net/combine//npm/@tailwindcss/browser@4.2.2/dist/index.global.min.js,npm/lucide@1.7.0/dist/umd/lucide.min.js'></script>
+<link href='/favicon.ico' rel='icon' type='image/x-icon'/>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 
 *{
-  font-family:'Roboto',sans-serif;
+  font-family:'Google+Sans',sans-serif;
   box-sizing:border-box;
 }
 
