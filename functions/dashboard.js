@@ -611,7 +611,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
               $${todayEarning}
             </div>
 
-            <div class="mt-3 text-2xl font-bold text-slate-900">
+            <div class="mt-3 text-2xl font-bold text-slate-900" title="${stats.today}">
               ${formatViews(stats.today)}
             </div>
 
@@ -643,7 +643,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
               $${yesterdayEarning}
             </div>
 
-            <div class="mt-3 text-2xl font-bold text-slate-900">
+            <div class="mt-3 text-2xl font-bold text-slate-900" title="${stats.yesterday}">
               ${formatViews(stats.yesterday)}
             </div>
 
@@ -707,7 +707,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
               $${monthEarning}
             </div>
 
-            <div class="mt-3 text-2xl font-bold text-slate-900">
+            <div class="mt-3 text-2xl font-bold text-slate-900" title="${stats.this_month}">
               ${formatViews(stats.this_month)}
             </div>
 
@@ -739,7 +739,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
               $${lastMonthEarning}
             </div>
 
-            <div class="mt-3 text-2xl font-bold text-slate-900">
+            <div class="mt-3 text-2xl font-bold text-slate-900" title="${stats.last_month}">
               ${formatViews(stats.last_month)}
             </div>
 
@@ -771,7 +771,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
               $${totalEarnedFormatted}
             </div>
 
-            <div class="mt-3 text-2xl font-bold text-slate-900">
+            <div class="mt-3 text-2xl font-bold text-slate-900" title="${stats.all_time}">
               ${formatViews(stats.all_time)}
             </div>
 
