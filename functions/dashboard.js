@@ -334,34 +334,56 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
   <!-- HEADER -->
 
-  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200">
+<header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200">
 
-    <div class="flex items-center justify-between px-4 py-4">
+  <div class="flex items-center justify-between px-4 py-4">
 
-      <!-- LEFT -->
+    <!-- LEFT -->
 
-      <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3">
 
-        <!-- MENU -->
+      <!-- MENU -->
 
-        <button onclick="toggleSidebar()"
-        class="lg:hidden w-11 h-11 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center">
+      <button onclick="toggleSidebar()"
+      class="lg:hidden w-11 h-11 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center">
 
-          <i data-lucide="menu" class="w-5 h-5 text-slate-700"></i>
+        <i data-lucide="menu" class="w-5 h-5 text-slate-700"></i>
 
-        </button>
+      </button>
 
-        <!-- TITLE -->
+      <!-- TITLE -->
 
-        <div>
+      <div>
 
-          <h1 class="text-lg font-bold text-slate-900">
-            Dashboard
-          </h1>
+        <h1 class="text-lg font-bold text-slate-900">
+          Dashboard
+        </h1>
 
-          <p class="text-xs text-slate-500">
-            Welcome Back
-          </p>
+        <p class="text-xs text-slate-500">
+          Welcome Back
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- BALANCE HEADER -->
+
+    <div class="flex items-center gap-3">
+
+      <div class="bg-green-500 text-white px-4 py-2 rounded shadow flex items-center gap-2">
+
+        <i data-lucide="wallet-2" class="w-5 h-5"></i>
+
+        <div class="leading-tight">
+
+          <div class="text-[11px] opacity-80">
+            Balance
+          </div>
+
+          <div class="font-bold text-sm">
+            $${currentBalance}
+          </div>
 
         </div>
 
@@ -369,7 +391,9 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
     </div>
 
-  </header>
+  </div>
+
+</header>
 
   <!-- CONTENT -->
 
