@@ -308,8 +308,12 @@ body{
   border-color:#1e293b!important;
 }
 
-.dark nav a2:hover{
+.dark nav a:hover{
   background:#1e293b!important;
+}
+
+.dark nav a.logout:hover{
+  background:rgb(26 12 28);
 }
 
 .dark ::-webkit-scrollbar-thumb{
@@ -472,7 +476,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
   </a>
 
     <a href="/logout"
-    class="flex items-center gap-4 px-4 py-3 rounded bg-red-600/10 border border-red-600/20 text-red-500 hover:bg-red-500/20 transition mt-5">
+    class="flex items-center gap-4 px-4 py-3 rounded bg-red-500/10 border border-red-500/20 text-red-500 hover:bg-red-600/20 transition mt-5 logout">
       <i data-lucide="log-out" class="w-5 h-5"></i>
 
       <span>
