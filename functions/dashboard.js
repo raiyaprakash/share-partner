@@ -603,7 +603,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
     <!-- WITHDRAW -->
 
     ${
-      currentBalance >= 2
+      currentBalance >= .2
       ? `
 <button
 class="mt-8 px-8 py-4 rounded bg-green-500 hover:bg-slate-900 text-white hover:text-green-400 font-bold shadow transition-all duration-300 flex items-center gap-2">
