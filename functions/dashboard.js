@@ -70,8 +70,102 @@ const stats = await db
   .bind(ref)
   .first();
 
-  const calc = (views) => ((views / 1000) * rpm).toFixed(2);
-  const totalEarned = (stats.all_time / 1000) * rpm;
+// 🔥 Accurate Earnings Calculation
+
+const earningData = await db
+  .prepare(`
+    SELECT
+      view_date,
+      views,
+      CASE
+        WHEN rpm IS NOT NULL AND rpm != '' THEN CAST(rpm AS REAL)
+        WHEN ? IS NOT NULL AND ? != '' THEN CAST(? AS REAL)
+        ELSE 0.35
+      END as final_rpm
+    FROM partner_views
+    WHERE partner_id=?
+  `)
+  .bind(
+    partner.rpm,
+    partner.rpm,
+    partner.rpm,
+    ref
+  )
+  .all();
+
+const rows = earningData.results || [];
+
+function getDate(str) {
+  return new Date(str).toISOString().split("T")[0];
+}
+
+const todayDate = getDate(new Date());
+
+const yesterdayDate = getDate(
+  new Date(Date.now() - 86400000)
+);
+
+const currentMonth = todayDate.slice(0, 7);
+
+const lastMonthDate = new Date();
+lastMonthDate.setMonth(lastMonthDate.getMonth() - 1);
+
+const lastMonth = lastMonthDate
+  .toISOString()
+  .slice(0, 7);
+
+let todayEarn = 0;
+let yesterdayEarn = 0;
+let monthEarn = 0;
+let lastMonthEarn = 0;
+let allEarn = 0;
+
+for (const row of rows) {
+
+  const rowDate = row.view_date;
+  const rowMonth = rowDate.slice(0, 7);
+
+  const views = Number(row.views || 0);
+
+  const rowRPM = Number(row.final_rpm || 0.35);
+
+  const earn = (views / 1000) * rowRPM;
+
+  allEarn += earn;
+
+  if (rowDate === todayDate) {
+    todayEarn += earn;
+  }
+
+  if (rowDate === yesterdayDate) {
+    yesterdayEarn += earn;
+  }
+
+  if (rowMonth === currentMonth) {
+    monthEarn += earn;
+  }
+
+  if (rowMonth === lastMonth) {
+    lastMonthEarn += earn;
+  }
+}
+
+// Final formatted earnings
+
+const todayEarning = todayEarn.toFixed(2);
+
+const yesterdayEarning = yesterdayEarn.toFixed(2);
+
+const monthEarning = monthEarn.toFixed(2);
+
+const lastMonthEarning = lastMonthEarn.toFixed(2);
+
+const totalEarned = allEarn;
+
+const totalEarnedFormatted =
+  allEarn.toFixed(2);
+
+  
 
   const withdrawalData = await db
     .prepare("SELECT SUM(amount) AS withdrawn FROM withdrawals WHERE partner_id=?")
@@ -448,7 +542,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
           <div>
 
             <div class="text-4xl font-bold text-blue-500">
-              $${calc(stats.today)}
+              $${todayEarning}
             </div>
 
             <div class="mt-3 text-2xl font-bold text-slate-900">
@@ -480,7 +574,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
           <div>
 
             <div class="text-4xl font-bold text-blue-500">
-              $${calc(stats.yesterday)}
+              $${yesterdayEarning}
             </div>
 
             <div class="mt-3 text-2xl font-bold text-slate-900">
@@ -544,7 +638,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
           <div>
 
             <div class="text-4xl font-bold text-blue-500">
-              $${calc(stats.this_month)}
+              $${monthEarning}
             </div>
 
             <div class="mt-3 text-2xl font-bold text-slate-900">
@@ -576,7 +670,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
           <div>
 
             <div class="text-4xl font-bold text-blue-500">
-              $${calc(stats.last_month)}
+              $${lastMonthEarning}
             </div>
 
             <div class="mt-3 text-2xl font-bold text-slate-900">
@@ -608,7 +702,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
           <div>
 
             <div class="text-4xl font-bold text-blue-500">
-              $${calc(stats.all_time)}
+              $${totalEarnedFormatted}
             </div>
 
             <div class="mt-3 text-2xl font-bold text-slate-900">
