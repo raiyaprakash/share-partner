@@ -313,7 +313,7 @@ body{
 }
 
 .dark nav a.logout:hover{
-  background:rgb(26 12 28);
+  background:rgb(26 12 28)!important;
 }
 
 .dark ::-webkit-scrollbar-thumb{
