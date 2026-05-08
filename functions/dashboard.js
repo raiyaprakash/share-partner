@@ -126,14 +126,12 @@ function formatViews(num) {
   box-sizing:border-box;
 }
 
-/* BODY */
-
 body{
   overflow-x:hidden;
   background:#f1f5f9;
 }
 
-/* RADIUS */
+/* BORDER RADIUS */
 
 .rounded,
 .rounded-lg,
@@ -197,19 +195,28 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
   <!-- TOP -->
 
-  <div class="h-20 px-6 flex items-center border-b border-slate-200">
+  <div class="h-20 px-6 flex items-center justify-between border-b border-slate-200">
 
     <div>
 
-      <h2 class="text-2xl font-black text-slate-900">
-        Dashboard
+      <h2 class="text-xl font-bold text-slate-900">
+        Share Partner
       </h2>
 
       <p class="text-xs text-slate-500 mt-1">
-        Partner Panel
+        Earnings Dashboard
       </p>
 
     </div>
+
+    <!-- CLOSE -->
+
+    <button onclick="toggleSidebar()"
+    class="lg:hidden w-10 h-10 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center">
+
+      <i data-lucide="x" class="w-5 h-5 text-slate-700"></i>
+
+    </button>
 
   </div>
 
@@ -245,7 +252,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
   <nav class="p-4 space-y-2 overflow-y-auto h-[calc(100%-160px)]">
 
-    <!-- ITEM -->
+    <!-- ACTIVE -->
 
     <a href="/generate"
     class="flex items-center gap-4 px-4 py-3 rounded bg-blue-600 text-white shadow">
@@ -347,7 +354,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
         <button onclick="toggleSidebar()"
         class="lg:hidden w-11 h-11 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center">
 
-          <i data-lucide="menu" class="w-5 h-5"></i>
+          <i data-lucide="menu" class="w-5 h-5 text-slate-700"></i>
 
         </button>
 
@@ -360,7 +367,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
           </h1>
 
           <p class="text-xs text-slate-500">
-            Partner Panel
+            Welcome Back
           </p>
 
         </div>
@@ -393,7 +400,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
     </div>
 
-    <!-- ALERT -->
+    <!-- NOTICE -->
 
     <div class="glass rounded p-5 mb-6 shadow-sm">
 
@@ -489,7 +496,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
       </div>
 
-      <!-- MONTH -->
+      <!-- THIS MONTH -->
 
       <div class="glass rounded p-6 card-hover shadow-sm">
 
@@ -653,13 +660,13 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
 <script>
 
-/* REFER */
-
-localStorage.setItem('refer_id', '${ref}');
-
 /* ICONS */
 
 lucide.createIcons();
+
+/* REFER */
+
+localStorage.setItem('refer_id', '${ref}');
 
 /* SIDEBAR */
 
