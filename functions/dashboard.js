@@ -500,15 +500,6 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
     <!-- LEFT -->
 
     <div class="flex items-center gap-3">
-  <!-- DARK MODE -->
-
-  <button id="themeToggle"
-  onclick="toggleTheme()"
-  class="w-11 h-11 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center transition">
-
-    <i id="themeIcon" data-lucide="moon" class="w-5 h-5 text-slate-700"></i>
-
-  </button>
   
       <!-- MENU -->
 
@@ -538,7 +529,17 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
     <!-- BALANCE HEADER -->
 
     <div class="flex items-center gap-3">
+    
+  <!-- DARK MODE -->
 
+  <button id="themeToggle"
+  onclick="toggleTheme()"
+  class="w-11 h-11 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center transition">
+
+    <i id="themeIcon" data-lucide="moon" class="w-5 h-5 text-slate-700"></i>
+
+  </button>
+  
       <div class="bg-blue-500 text-white px-4 py-2 rounded shadow flex items-center gap-2">
 
         <i data-lucide="wallet-2" class="w-5 h-5"></i>
