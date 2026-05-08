@@ -2,7 +2,7 @@ export const onRequest = async ({ request, env }) => {
   const corsHeaders = {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type"
   };
 
@@ -11,19 +11,23 @@ export const onRequest = async ({ request, env }) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  // Only POST
-  if (request.method !== "POST") {
+  // ✅ Only GET allowed
+  if (request.method !== "GET") {
     return new Response(
       JSON.stringify({
         status: "error",
-        msg: "Method not allowed"
+        msg: "Only GET method allowed"
       }),
-      { headers: corsHeaders }
+      {
+        status: 405,
+        headers: corsHeaders
+      }
     );
   }
 
   try {
-    // 🔥 Find all partner_views rows where rpm is blank/null/0
+
+    // 🔥 Find blank RPM rows
     const rows = await env.DB.prepare(`
       SELECT pv.id, pv.partner_id
       FROM partner_views pv
@@ -57,7 +61,7 @@ export const onRequest = async ({ request, env }) => {
       .bind(row.partner_id)
       .first();
 
-      // Skip if no rpm found
+      // Skip if partner rpm not found
       if (!partner || partner.rpm == null || partner.rpm === '') {
         continue;
       }
