@@ -262,12 +262,65 @@ body{
 .sidebar-transition{
   transition:all .3s ease;
 }
+/* DARK MODE */
+
+.dark{
+  background:#020617 !important;
+  color:#f8fafc;
+}
+
+.dark .glass{
+  background:#0f172a !important;
+  border-color:#1e293b !important;
+}
+
+.dark aside{
+  background:#0f172a !important;
+  border-color:#1e293b !important;
+}
+
+.dark header{
+  background:rgba(15,23,42,.95)!important;
+  border-color:#1e293b!important;
+}
+
+.dark .text-slate-900{
+  color:#f8fafc!important;
+}
+
+.dark .text-slate-700{
+  color:#cbd5e1!important;
+}
+
+.dark .text-slate-500{
+  color:#94a3b8!important;
+}
+
+.dark .bg-white{
+  background:#0f172a!important;
+}
+
+.dark .bg-slate-100{
+  background:#1e293b!important;
+}
+
+.dark .border-slate-200{
+  border-color:#1e293b!important;
+}
+
+.dark nav a:hover{
+  background:#1e293b!important;
+}
+
+.dark ::-webkit-scrollbar-thumb{
+  background:#334155;
+}
 
 </style>
 
 </head>
 
-<body>
+<body id="body" class="transition-all duration-300">
 
 <!-- OVERLAY -->
 
@@ -447,7 +500,16 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
     <!-- LEFT -->
 
     <div class="flex items-center gap-3">
+  <!-- DARK MODE -->
 
+  <button id="themeToggle"
+  onclick="toggleTheme()"
+  class="w-11 h-11 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center transition">
+
+    <i id="themeIcon" data-lucide="moon" class="w-5 h-5 text-slate-700"></i>
+
+  </button>
+  
       <!-- MENU -->
 
       <button onclick="toggleSidebar()"
@@ -833,7 +895,50 @@ function toggleSidebar(){
   overlay.classList.toggle("hidden");
 
 }
+/* THEME */
 
+const body = document.getElementById("body");
+const themeIcon = document.getElementById("themeIcon");
+
+function applyTheme(mode){
+
+  if(mode === "dark"){
+
+    body.classList.add("dark");
+
+    themeIcon.setAttribute("data-lucide","sun");
+
+  }else{
+
+    body.classList.remove("dark");
+
+    themeIcon.setAttribute("data-lucide","moon");
+
+  }
+
+  lucide.createIcons();
+
+}
+
+function toggleTheme(){
+
+  const current =
+  localStorage.getItem("theme") || "light";
+
+  const newTheme =
+  current === "dark" ? "light" : "dark";
+
+  localStorage.setItem("theme", newTheme);
+
+  applyTheme(newTheme);
+
+}
+
+/* LOAD THEME */
+
+applyTheme(
+  localStorage.getItem("theme") || "light"
+);
 </script>
 
 </body>
