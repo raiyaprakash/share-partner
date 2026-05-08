@@ -38,7 +38,22 @@ export const onRequest = async ({ request, env }) => {
     });
   }
 
-  const rpm = partner.rpm || 0.35;
+  // 🔹 Get custom RPM from partner_views if exists
+const rpmData = await db
+  .prepare(`
+    SELECT rpm 
+    FROM partner_views 
+    WHERE partner_id=? 
+      AND rpm IS NOT NULL 
+      AND rpm != ''
+    ORDER BY id DESC 
+    LIMIT 1
+  `)
+  .bind(ref)
+  .first();
+
+// partner_views rpm -> partner rpm -> default 0.35
+const rpm = Number(rpmData?.rpm || partner.rpm || 0.35);
 
   // 🔹 Stats
 const stats = await db
