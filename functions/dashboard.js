@@ -605,11 +605,9 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
     ${
       currentBalance >= 2
       ? `
-      <button class="mt-8 px-8 py-4 rounded bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold shadow hover:scale-105 transition">
-
-        Request Withdrawal
-
-      </button>
+<button
+class="mt-8 px-8 py-4 rounded bg-green-500 hover:bg-slate-900 text-white hover:text-green-400 font-bold shadow transition-all duration-300 flex items-center gap-2">
+<i data-lucide="wallet-2" class="w-5 h-5"></i><span>Request Withdrawal</span></button>
       `
       : `
       <div class="glass rounded p-5 mt-8 text-red-500 font-semibold shadow-sm">
