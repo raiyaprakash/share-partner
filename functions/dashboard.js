@@ -473,7 +473,6 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
     <a href="/logout"
     class="flex items-center gap-4 px-4 py-3 rounded bg-red-600/10 border border-red-600/20 text-red-600 hover:bg-red-600/20 transition mt-5">
-
       <i data-lucide="log-out" class="w-5 h-5"></i>
 
       <span>
