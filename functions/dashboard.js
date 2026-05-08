@@ -374,24 +374,6 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
   <main class="p-4 md:p-7">
 
-    <!-- WELCOME -->
-
-    <div class="mb-6">
-
-      <h1 class="text-2xl md:text-3xl font-black text-slate-900">
-
-        👋 Welcome - ${partner.name}
-
-      </h1>
-
-      <p class="text-sm text-slate-500 mt-1">
-
-        Monitor your earnings & traffic analytics
-
-      </p>
-
-    </div>
-
     <!-- NOTICE -->
 
     <div class="glass rounded p-5 mb-6 shadow-sm">
@@ -432,7 +414,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-black text-green-500">
+            <div class="text-4xl font-bold text-green-500">
               $${calc(stats.today)}
             </div>
 
@@ -464,7 +446,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-black text-green-500">
+            <div class="text-4xl font-bold text-green-500">
               $${calc(stats.yesterday)}
             </div>
 
@@ -496,7 +478,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-black text-green-500">
+            <div class="text-4xl font-bold text-green-500">
               $${calc(stats.this_month)}
             </div>
 
@@ -528,7 +510,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-black text-green-500">
+            <div class="text-4xl font-bold text-green-500">
               $${calc(stats.last_month)}
             </div>
 
@@ -560,7 +542,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-black text-green-500">
+            <div class="text-4xl font-bold text-green-500">
               $${calc(stats.all_time)}
             </div>
 
@@ -592,7 +574,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-black text-green-500">
+            <div class="text-4xl font-bold text-green-500">
               $${currentBalance}
             </div>
 
