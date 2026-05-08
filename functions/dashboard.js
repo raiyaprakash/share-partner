@@ -43,10 +43,11 @@ const rpmData = await db
   .prepare(`
     SELECT rpm 
     FROM partner_views 
-    WHERE partner_id=? 
-      AND rpm IS NOT NULL 
+    WHERE partner_id = ?
+      AND DATE(view_date) = DATE('now')
+      AND rpm IS NOT NULL
       AND rpm != ''
-    ORDER BY id DESC 
+    ORDER BY id DESC
     LIMIT 1
   `)
   .bind(ref)
