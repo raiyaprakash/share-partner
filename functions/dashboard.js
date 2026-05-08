@@ -249,89 +249,89 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
   </div>
 
   <!-- MENU -->
+<!-- MENU -->
 
-  <nav class="p-4 space-y-2 overflow-y-auto h-[calc(100%-160px)]">
+<nav class="p-4 space-y-2 overflow-y-auto h-[calc(100%-160px)]">
 
-    <!-- ACTIVE -->
+  <!-- GENERATE -->
 
-    <a href="/generate"
-    class="flex items-center gap-4 px-4 py-3 rounded bg-blue-600 text-white shadow">
+  <a href="/generate"
+  class="flex items-center gap-4 px-4 py-3 rounded bg-blue-600 text-white shadow">
 
-      <i data-lucide="link-2" class="w-5 h-5"></i>
+    <i data-lucide="link-2" class="w-5 h-5"></i>
 
-      <span class="font-medium">
-        Generate Links
-      </span>
+    <span class="font-medium">
+      Generate
+    </span>
 
-    </a>
+  </a>
 
-    <a href="/analytics"
-    class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
+  <!-- SETTINGS -->
 
-      <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+  <a href="/payment-settings"
+  class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-      <span>
-        Analytics
-      </span>
+    <i data-lucide="building-2" class="w-5 h-5"></i>
 
-    </a>
+    <span>
+      Settings
+    </span>
 
-    <a href="/payment-settings"
-    class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
+  </a>
 
-      <i data-lucide="wallet" class="w-5 h-5"></i>
+  <!-- WITHDRAWAL -->
 
-      <span>
-        Payment Settings
-      </span>
+  <a href="/payment-history"
+  class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-    </a>
+    <i data-lucide="wallet" class="w-5 h-5"></i>
 
-    <a href="/payment-history"
-    class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
+    <span>
+      Withdrawal
+    </span>
 
-      <i data-lucide="history" class="w-5 h-5"></i>
+  </a>
 
-      <span>
-        Withdraw History
-      </span>
+  <!-- CONTACT -->
 
-    </a>
+  <a href="/contact"
+  class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-    <a href="/support"
-    class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
+    <i data-lucide="phone" class="w-5 h-5"></i>
 
-      <i data-lucide="headphones" class="w-5 h-5"></i>
+    <span>
+      Contact
+    </span>
 
-      <span>
-        Support
-      </span>
+  </a>
 
-    </a>
+  <!-- PRIVACY -->
 
-    <a href="/privacy"
-    class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
+  <a href="/privacy"
+  class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-      <i data-lucide="shield-check" class="w-5 h-5"></i>
+    <i data-lucide="shield-check" class="w-5 h-5"></i>
 
-      <span>
-        Privacy Policy
-      </span>
+    <span>
+      Privacy
+    </span>
 
-    </a>
+  </a>
 
-    <a href="/logout"
-    class="flex items-center gap-4 px-4 py-3 rounded bg-red-50 border border-red-200 text-red-500 hover:bg-red-100 transition mt-5">
+  <!-- TERMS -->
 
-      <i data-lucide="log-out" class="w-5 h-5"></i>
+  <a href="/terms"
+  class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-      <span>
-        Logout
-      </span>
+    <i data-lucide="file-text" class="w-5 h-5"></i>
 
-    </a>
+    <span>
+      Terms
+    </span>
 
-  </nav>
+  </a>
+
+</nav>
 
 </aside>
 
