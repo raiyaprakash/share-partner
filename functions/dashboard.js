@@ -309,7 +309,7 @@ body{
 }
 
 .dark nav a:hover{
-  background:#1e293b!important;
+  background: #2a1d30!important
 }
 
 .dark nav a.logout:hover{
