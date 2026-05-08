@@ -387,7 +387,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
     <i data-lucide="phone" class="w-5 h-5"></i>
 
     <span>
-      Contact
+      Contact US
     </span>
 
   </a>
@@ -400,7 +400,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
     <i data-lucide="shield-check" class="w-5 h-5"></i>
 
     <span>
-      Privacy
+      Privacy Policy
     </span>
 
   </a>
@@ -413,7 +413,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
     <i data-lucide="file-text" class="w-5 h-5"></i>
 
     <span>
-      Terms
+      Terms & Conditions
     </span>
 
   </a>
