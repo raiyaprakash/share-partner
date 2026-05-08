@@ -79,6 +79,20 @@ const stats = await db
 
   const totalWithdrawn = withdrawalData.withdrawn || 0;
   const currentBalance = (totalEarned - totalWithdrawn).toFixed(2);
+// Format Views Function
+function formatViews(num) {
+  num = Number(num || 0);
+
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1).replace('.0','') + 'M';
+  }
+
+  if (num >= 1000) {
+    return (num / 1000).toFixed(1).replace('.0','') + 'K';
+  }
+
+  return num.toString();
+}
 
   // 🔹 Render Dashboard HTML
   return new Response(
@@ -89,155 +103,333 @@ const stats = await db
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>${partner.name} - Partner Dashboard</title>
+
 <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;500;700&display=swap');
-body {
-  font-family: "Mukta", sans-serif;
-  background:#eef2f7;
-  color:#333;
-  margin:0 auto;
+*{
+  margin:0;
   padding:0;
-  max-width:850px;font-size: 14px
+  box-sizing:border-box;
 }
-header {
-  background:#007BFF;
-  color:white;
+
+body{
+  font-family:'Roboto',sans-serif;
+  background:#f1f3f4;
+  color:#202124;
+  max-width:900px;
+  margin:auto;
+  font-size:14px;
+}
+
+header{
+  background:#fff;
   padding:15px 20px;
-  border-bottom:4px solid #0056b3;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  border-bottom:1px solid #dadce0;
+  position:sticky;
+  top:0;
+  z-index:99;
 }
-header h1 { font-size:20px; margin:0; }
-nav {
-  background:white;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  padding:10px;
-  gap:8px;
-  border-bottom:1px solid #ddd;
+
+header h1{
+  font-size:22px;
+  color:#1a73e8;
+  font-weight:700;
 }
-nav a {
-  color:#007BFF;
+
+header a{
+  color:#ea4335;
   text-decoration:none;
   font-weight:500;
-  padding:6px 10px;
-  border-radius:4px;
-  transition:all 0.2s;
 }
-nav a:hover {
-  background:#007BFF;
-  color:white;
+
+nav{
+  background:#fff;
+  padding:12px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  border-bottom:1px solid #dadce0;
 }
-.container { padding:20px; }
-h2 { color:#007BFF; margin-top:0; }
-.stats { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:20px; }
-.card {
-  background:white; padding:15px 20px; border-radius:8px;
-  box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1 1 250px;
-}
-.alert {
-  background-color:#fff3cd; color:#856404;
-  border:1px solid #ffeeba; padding:12px 18px;
-  border-radius:8px; margin-bottom:20px;
-}
-button {
-  padding:10px 18px; background:#28a745;
-  color:white; border:none; border-radius:4px;
-  cursor:pointer;
-}
-button:hover { background:#218838; }
-footer {
+
+nav a{
+  text-decoration:none;
+  color:#1a73e8;
   background:#f8f9fa;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:500;
+  transition:.2s;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+nav a:hover{
+  background:#1a73e8;
+  color:#fff;
+}
+
+.container{
+  padding:20px;
+}
+
+.welcome{
+  margin-bottom:20px;
+}
+
+.welcome h2{
+  font-size:24px;
+  font-weight:700;
+  color:#202124;
+}
+
+.alert{
+  background:#fff3cd;
+  color:#856404;
+  border:1px solid #ffeeba;
+  padding:14px;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.card{
+  background:#fff;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+}
+
+.card-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+
+.icon{
+  width:50px;
+  height:50px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  color:#fff;
+}
+
+.blue{background:#1a73e8;}
+.green{background:#34a853;}
+.orange{background:#fbbc05;}
+.red{background:#ea4335;}
+.purple{background:#9334e6;}
+.dark{background:#202124;}
+
+.card h3{
+  font-size:14px;
+  color:#5f6368;
+  margin-bottom:5px;
+  font-weight:500;
+}
+
+.card .views{
+  font-size:22px;
+  font-weight:700;
+}
+
+.earn{
+  margin-top:8px;
+  color:#34a853;
+  font-weight:600;
+  font-size:15px;
+}
+
+button{
+  margin-top:25px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#34a853;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+
+button:hover{
+  background:#2d9249;
+}
+
+footer{
   text-align:center;
-  padding:10px;
-  margin-top:30px;
-  border-top:1px solid #ddd;
-  color:#555;
-}
-    h2 { color:#007BFF; }
-header a {
-    text-decoration: none;
-    color: #fff;
-}
-* {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+  padding:20px;
+  color:#5f6368;
+  font-size:13px;
 }
 </style>
 </head>
+
 <body>
 
 <header>
-  <h1>Partner Dashboard</h1>
-  <span> <a href="/logout">Logout</a></span>
+  <h1><i class="fa-solid fa-chart-line"></i> Dashboard</h1>
+  <a href="/logout">
+    <i class="fa-solid fa-right-from-bracket"></i> Logout
+  </a>
 </header>
 
 <nav>
-  <a href="/generate">🔗 Generate</a>
-  <a href="/payment-settings">🏦 Settings</a>
-  <a href="/payment-history">💵 Withdrawal</a>
-  <a href="/contact">📞 Contact</a>
-  <a href="/privacy">🔒 Privacy</a>
-  <a href="/terms">📄 Terms</a>
-  <!--a href="/notice">📢 Notice</a-->
+  <a href="/generate"><i class="fa-solid fa-link"></i> Generate</a>
+  <a href="/payment-settings"><i class="fa-solid fa-building-columns"></i> Settings</a>
+  <a href="/payment-history"><i class="fa-solid fa-money-bill-wave"></i> Withdrawal</a>
+  <a href="/contact"><i class="fa-solid fa-headset"></i> Contact</a>
+  <a href="/privacy"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
+  <a href="/terms"><i class="fa-solid fa-file-lines"></i> Terms</a>
 </nav>
 
-
 <div class="container">
-  <h2>👋 Welcome - ${partner.name}</h2>
-  <div class="alert">⚠️ Dashboard resets daily at <strong>05:30 AM IST</strong>.</div>
+
+  <div class="welcome">
+    <h2>👋 Welcome, ${partner.name}</h2>
+
+    <div class="alert">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      Dashboard resets daily at <strong>05:30 AM IST</strong>
+    </div>
+  </div>
 
   <div class="stats">
-    <div class="card">Today: ${stats.today} | 💰 $${calc(stats.today)}</div>
-    <div class="card">Yesterday: ${stats.yesterday} | 💰 $${calc(stats.yesterday)}</div>
-    <div class="card">This Month: ${stats.this_month} | 💰 $${calc(stats.this_month)}</div>
-    <div class="card">Last Month: ${stats.last_month} | 💰 $${calc(stats.last_month)}</div>
-    <div class="card">All Time: ${stats.all_time} | 💰 $${calc(stats.all_time)}</div>
-    <div class="card">💵 Balance: $${currentBalance}</div>
-    <div class="card">Withdrawn: $${totalWithdrawn.toFixed(2)}</div>
+
+    <div class="card">
+      <div class="card-top">
+        <div>
+          <h3>Today</h3>
+          <div class="views">${formatViews(stats.today)}</div>
+        </div>
+        <div class="icon blue">
+          <i class="fa-solid fa-calendar-day"></i>
+        </div>
+      </div>
+      <div class="earn">$${calc(stats.today)}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div>
+          <h3>Yesterday</h3>
+          <div class="views">${formatViews(stats.yesterday)}</div>
+        </div>
+        <div class="icon orange">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
+      </div>
+      <div class="earn">$${calc(stats.yesterday)}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div>
+          <h3>This Month</h3>
+          <div class="views">${formatViews(stats.this_month)}</div>
+        </div>
+        <div class="icon green">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+      </div>
+      <div class="earn">$${calc(stats.this_month)}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div>
+          <h3>Last Month</h3>
+          <div class="views">${formatViews(stats.last_month)}</div>
+        </div>
+        <div class="icon red">
+          <i class="fa-solid fa-chart-column"></i>
+        </div>
+      </div>
+      <div class="earn">$${calc(stats.last_month)}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div>
+          <h3>All Time</h3>
+          <div class="views">${formatViews(stats.all_time)}</div>
+        </div>
+        <div class="icon purple">
+          <i class="fa-solid fa-earth-americas"></i>
+        </div>
+      </div>
+      <div class="earn">$${calc(stats.all_time)}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div>
+          <h3>Balance</h3>
+          <div class="views">$${currentBalance}</div>
+        </div>
+        <div class="icon dark">
+          <i class="fa-solid fa-wallet"></i>
+        </div>
+      </div>
+      <div class="earn">Available Balance</div>
+    </div>
+
   </div>
 
   ${
     currentBalance >= 2
       ? `
-      <button id="withdrawBtn">Request Withdrawal</button>
-      <div id="withdrawMsg" style="margin-top:10px;color:green;"></div>
-      <script>
-        const btn=document.getElementById("withdrawBtn");
-        btn.onclick=async()=>{
-          btn.disabled=true;btn.innerText="Sending...";
-          try{
-            const res=await fetch("/withdraw?amount=${currentBalance}");
-            const data=await res.json();
-            const msg=document.getElementById("withdrawMsg");
-            if(data.status==="ok"){
-              msg.innerText=data.msg;
-              btn.style.display="none";
-            }else{
-              msg.innerText="Error: "+data.msg;
-              btn.disabled=false;btn.innerText="Request Withdrawal";
-            }
-          }catch{
-            document.getElementById("withdrawMsg").innerText="Network error";
-            btn.disabled=false;btn.innerText="Request Withdrawal";
-          }
-        };
-      </script>`
-      : `<div class="alert" style="color:red;">Minimum $2 required for withdrawal</div>`
+      <button id="withdrawBtn">
+        <i class="fa-solid fa-money-check-dollar"></i>
+        Request Withdrawal
+      </button>
+
+      <div id="withdrawMsg" style="margin-top:15px;font-weight:600;"></div>
+      `
+      : `
+      <div class="alert" style="margin-top:20px;color:#d93025;">
+        <i class="fa-solid fa-circle-info"></i>
+        Minimum $2 required for withdrawal
+      </div>
+      `
   }
+
 </div>
+
+<footer>
+  © ${new Date().getFullYear()} ShareLinks Partner Network
+</footer>
 <script>
 localStorage.setItem('refer_id', '${ref}');
 </script>
-
-<footer>
-  © ${new Date().getFullYear()} ShareLinks Partner Network. All rights reserved.
-</footer>
-
 </body>
 </html>
 `,
