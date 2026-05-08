@@ -90,83 +90,188 @@ const stats = await db
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>${partner.name} - Partner Dashboard</title>
 <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;500;700&display=swap');
-body {
-  font-family: "Mukta", sans-serif;
-  background:#eef2f7;
-  color:#333;
-  margin:0 auto;
-  padding:0;
-  max-width:850px;font-size: 14px
+
+*{
+  box-sizing:border-box;
 }
-header {
-  background:#007BFF;
-  color:white;
-  padding:15px 20px;
-  border-bottom:4px solid #0056b3;
+
+body{
+  margin:0;
+  background:#f1f3f4;
+  font-family:'Roboto',sans-serif;
+  color:#202124;
+}
+
+/* ===== HEADER ===== */
+
+header{
+  background:#1a73e8;
+  color:#fff;
+  padding:16px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  box-shadow:0 2px 6px rgba(0,0,0,.1);
 }
-header h1 { font-size:20px; margin:0; }
-nav {
-  background:white;
+
+header h1{
+  margin:0;
+  font-size:22px;
+  font-weight:500;
+}
+
+header a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* ===== NAV ===== */
+
+nav{
+  background:#fff;
   display:flex;
   flex-wrap:wrap;
-  justify-content:center;
-  padding:10px;
-  gap:8px;
-  border-bottom:1px solid #ddd;
+  gap:10px;
+  padding:14px;
+  border-bottom:1px solid #e0e0e0;
 }
-nav a {
-  color:#007BFF;
+
+nav a{
   text-decoration:none;
+  color:#1a73e8;
+  padding:10px 14px;
+  border-radius:8px;
+  font-size:14px;
   font-weight:500;
-  padding:6px 10px;
-  border-radius:4px;
-  transition:all 0.2s;
+  transition:.2s;
 }
-nav a:hover {
-  background:#007BFF;
-  color:white;
+
+nav a:hover{
+  background:#e8f0fe;
 }
-.container { padding:20px; }
-h2 { color:#007BFF; margin-top:0; }
-.stats { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:20px; }
-.card {
-  background:white; padding:15px 20px; border-radius:8px;
-  box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1 1 250px;
+
+/* ===== CONTAINER ===== */
+
+.container{
+  padding:20px;
 }
-.alert {
-  background-color:#fff3cd; color:#856404;
-  border:1px solid #ffeeba; padding:12px 18px;
-  border-radius:8px; margin-bottom:20px;
+
+/* ===== ADSENSE STYLE CARDS ===== */
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+  margin-top:20px;
 }
-button {
-  padding:10px 18px; background:#28a745;
-  color:white; border:none; border-radius:4px;
+
+.earning-card{
+  background:#1a73e8;
+  color:#fff;
+  border-radius:18px;
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+  transition:0.25s ease;
+}
+
+.earning-card:hover{
+  transform:translateY(-3px);
+}
+
+.earning-card .icon{
+  position:absolute;
+  top:18px;
+  right:18px;
+  font-size:20px;
+  opacity:.9;
+}
+
+.card-title{
+  font-size:15px;
+  opacity:.95;
+  margin-bottom:12px;
+  font-weight:400;
+}
+
+.card-value{
+  font-size:38px;
+  font-weight:500;
+  line-height:1;
+  margin-bottom:10px;
+}
+
+.card-sub{
+  font-size:14px;
+  opacity:.9;
+}
+
+.card-views{
+  margin-top:12px;
+  font-size:13px;
+  opacity:.85;
+}
+
+/* ===== BALANCE CARD ===== */
+
+.balance-card{
+  background:#fff;
+  color:#202124;
+}
+
+.balance-card .card-value{
+  color:#188038;
+}
+
+.balance-card .icon{
+  color:#188038;
+}
+
+/* ===== ALERT ===== */
+
+.alert{
+  background:#fff8e1;
+  border-left:4px solid #fbbc04;
+  padding:14px 16px;
+  border-radius:10px;
+  margin-top:20px;
+  color:#5f4339;
+}
+
+/* ===== BUTTON ===== */
+
+button{
+  margin-top:20px;
+  background:#188038;
+  color:#fff;
+  border:none;
+  padding:14px 20px;
+  border-radius:10px;
   cursor:pointer;
+  font-size:15px;
+  font-weight:500;
 }
-button:hover { background:#218838; }
-footer {
-  background:#f8f9fa;
+
+button:hover{
+  opacity:.95;
+}
+
+footer{
   text-align:center;
-  padding:10px;
-  margin-top:30px;
-  border-top:1px solid #ddd;
-  color:#555;
+  padding:25px;
+  color:#5f6368;
+  font-size:14px;
 }
-    h2 { color:#007BFF; }
-header a {
-    text-decoration: none;
-    color: #fff;
-}
-* {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
+
 </style>
 </head>
 <body>
@@ -191,15 +296,117 @@ header a {
   <h2>👋 Welcome - ${partner.name}</h2>
   <div class="alert">⚠️ Dashboard resets daily at <strong>05:30 AM IST</strong>.</div>
 
-  <div class="stats">
-    <div class="card">Today: ${stats.today} | 💰 $${calc(stats.today)}</div>
-    <div class="card">Yesterday: ${stats.yesterday} | 💰 $${calc(stats.yesterday)}</div>
-    <div class="card">This Month: ${stats.this_month} | 💰 $${calc(stats.this_month)}</div>
-    <div class="card">Last Month: ${stats.last_month} | 💰 $${calc(stats.last_month)}</div>
-    <div class="card">All Time: ${stats.all_time} | 💰 $${calc(stats.all_time)}</div>
-    <div class="card">💵 Balance: $${currentBalance}</div>
-    <div class="card">Withdrawn: $${totalWithdrawn.toFixed(2)}</div>
+<div class="stats-grid">
+
+  <div class="earning-card">
+    <i class="fa-solid fa-chart-line icon"></i>
+
+    <div class="card-title">Today's Earnings</div>
+
+    <div class="card-value">
+      $${calc(stats.today)}
+    </div>
+
+    <div class="card-sub">
+      ${stats.today} Views
+    </div>
+
+    <div class="card-views">
+      Revenue generated today
+    </div>
   </div>
+
+  <div class="earning-card">
+    <i class="fa-solid fa-calendar-day icon"></i>
+
+    <div class="card-title">Yesterday</div>
+
+    <div class="card-value">
+      $${calc(stats.yesterday)}
+    </div>
+
+    <div class="card-sub">
+      ${stats.yesterday} Views
+    </div>
+
+    <div class="card-views">
+      Previous day performance
+    </div>
+  </div>
+
+  <div class="earning-card">
+    <i class="fa-solid fa-calendar-check icon"></i>
+
+    <div class="card-title">This Month</div>
+
+    <div class="card-value">
+      $${calc(stats.this_month)}
+    </div>
+
+    <div class="card-sub">
+      ${stats.this_month} Views
+    </div>
+
+    <div class="card-views">
+      Monthly estimated revenue
+    </div>
+  </div>
+
+  <div class="earning-card">
+    <i class="fa-solid fa-clock-rotate-left icon"></i>
+
+    <div class="card-title">Last Month</div>
+
+    <div class="card-value">
+      $${calc(stats.last_month)}
+    </div>
+
+    <div class="card-sub">
+      ${stats.last_month} Views
+    </div>
+
+    <div class="card-views">
+      Previous month earnings
+    </div>
+  </div>
+
+  <div class="earning-card">
+    <i class="fa-solid fa-globe icon"></i>
+
+    <div class="card-title">All Time Earnings</div>
+
+    <div class="card-value">
+      $${calc(stats.all_time)}
+    </div>
+
+    <div class="card-sub">
+      ${stats.all_time} Total Views
+    </div>
+
+    <div class="card-views">
+      Lifetime revenue stats
+    </div>
+  </div>
+
+  <div class="earning-card balance-card">
+    <i class="fa-solid fa-wallet icon"></i>
+
+    <div class="card-title">Available Balance</div>
+
+    <div class="card-value">
+      $${currentBalance}
+    </div>
+
+    <div class="card-sub">
+      Withdrawn: $${totalWithdrawn.toFixed(2)}
+    </div>
+
+    <div class="card-views">
+      Ready for withdrawal
+    </div>
+  </div>
+
+</div>
 
   ${
     currentBalance >= 2
