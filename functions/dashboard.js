@@ -406,6 +406,38 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
 
+<!-- TODAY RPM -->
+
+<div class="glass rounded p-6 card-hover shadow-sm">
+
+  <div class="flex items-start justify-between">
+
+    <div>
+
+      <div class="text-4xl font-black text-blue-500">
+        $${rpm}
+      </div>
+
+      <div class="mt-3 text-2xl font-bold text-slate-900">
+        RPM
+      </div>
+
+      <div class="mt-1 text-sm text-slate-500">
+        Today Page RPM
+      </div>
+
+    </div>
+
+    <div class="w-16 h-16 rounded bg-blue-500 flex items-center justify-center shadow">
+
+      <i data-lucide="badge-dollar-sign" class="w-8 h-8 text-white"></i>
+
+    </div>
+
+  </div>
+
+</div>
+
       <!-- TODAY -->
 
       <div class="glass rounded p-6 card-hover shadow-sm">
