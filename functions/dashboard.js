@@ -98,13 +98,14 @@ function formatViews(num) {
   return new Response(
     `
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
+
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>${partner.name} - Share Partner</title>
+<title>${partner.name} - Dashboard</title>
 
 <!-- ROBOTO -->
 
@@ -129,6 +130,7 @@ function formatViews(num) {
 
 body{
   overflow-x:hidden;
+  background:#f1f5f9;
 }
 
 /* RADIUS */
@@ -149,16 +151,8 @@ body{
 }
 
 ::-webkit-scrollbar-thumb{
-  background:#475569;
+  background:#cbd5e1;
   border-radius:20px;
-}
-
-/* GLASS */
-
-.glass{
-  background:rgba(15,23,42,.75);
-  backdrop-filter:blur(18px);
-  border:1px solid rgba(255,255,255,.05);
 }
 
 /* CARD */
@@ -168,7 +162,14 @@ body{
 }
 
 .card-hover:hover{
-  transform:translateY(-4px);
+  transform:translateY(-3px);
+}
+
+/* GLASS */
+
+.glass{
+  background:#ffffff;
+  border:1px solid #e2e8f0;
 }
 
 /* SIDEBAR */
@@ -181,51 +182,44 @@ body{
 
 </head>
 
-<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-all duration-300">
+<body>
 
 <!-- OVERLAY -->
 
 <div id="sidebarOverlay"
-class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 hidden lg:hidden"
+class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"
 onclick="toggleSidebar()"></div>
 
 <!-- SIDEBAR -->
 
 <aside id="sidebar"
-class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 shadow-2xl sidebar-transition -translate-x-full lg:translate-x-0">
+class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 shadow-xl sidebar-transition -translate-x-full lg:translate-x-0">
 
   <!-- TOP -->
 
-  <div class="h-20 px-6 flex items-center justify-between border-b border-slate-200 dark:border-slate-800">
+  <div class="h-20 px-6 flex items-center border-b border-slate-200">
 
     <div>
 
-      <h2 class="text-2xl font-black tracking-wide text-slate-900 dark:text-white">
-        Share Partner
+      <h2 class="text-2xl font-black text-slate-900">
+        Dashboard
       </h2>
 
-      <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
-        Earnings Dashboard
+      <p class="text-xs text-slate-500 mt-1">
+        Partner Panel
       </p>
 
     </div>
-
-    <button onclick="toggleSidebar()"
-    class="lg:hidden w-10 h-10 rounded bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
-
-      <i data-lucide="x" class="w-5 h-5"></i>
-
-    </button>
 
   </div>
 
   <!-- PROFILE -->
 
-  <div class="p-5 border-b border-slate-200 dark:border-slate-800">
+  <div class="p-5 border-b border-slate-200">
 
     <div class="flex items-center gap-3">
 
-      <div class="w-14 h-14 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-xl font-bold text-white">
+      <div class="w-14 h-14 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-xl font-bold text-white shadow">
 
         ${partner.name.charAt(0)}
 
@@ -233,11 +227,11 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
       <div>
 
-        <h3 class="font-semibold text-slate-900 dark:text-white">
+        <h3 class="font-semibold text-slate-900">
           ${partner.name}
         </h3>
 
-        <p class="text-xs text-green-500">
+        <p class="text-xs text-green-500 mt-1">
           ● Active Partner
         </p>
 
@@ -265,7 +259,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
     </a>
 
     <a href="/analytics"
-    class="flex items-center gap-4 px-4 py-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+    class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
       <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
 
@@ -276,7 +270,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
     </a>
 
     <a href="/payment-settings"
-    class="flex items-center gap-4 px-4 py-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+    class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
       <i data-lucide="wallet" class="w-5 h-5"></i>
 
@@ -287,7 +281,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
     </a>
 
     <a href="/payment-history"
-    class="flex items-center gap-4 px-4 py-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+    class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
       <i data-lucide="history" class="w-5 h-5"></i>
 
@@ -298,7 +292,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
     </a>
 
     <a href="/support"
-    class="flex items-center gap-4 px-4 py-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+    class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
       <i data-lucide="headphones" class="w-5 h-5"></i>
 
@@ -309,7 +303,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
     </a>
 
     <a href="/privacy"
-    class="flex items-center gap-4 px-4 py-3 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+    class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
       <i data-lucide="shield-check" class="w-5 h-5"></i>
 
@@ -320,7 +314,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
     </a>
 
     <a href="/logout"
-    class="flex items-center gap-4 px-4 py-3 rounded bg-red-500/10 border border-red-500/20 text-red-500 hover:bg-red-500/20 transition mt-5">
+    class="flex items-center gap-4 px-4 py-3 rounded bg-red-50 border border-red-200 text-red-500 hover:bg-red-100 transition mt-5">
 
       <i data-lucide="log-out" class="w-5 h-5"></i>
 
@@ -340,7 +334,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
   <!-- HEADER -->
 
-  <header class="sticky top-0 z-30 bg-white/90 dark:bg-slate-950/90 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800">
+  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200">
 
     <div class="flex items-center justify-between px-4 py-4">
 
@@ -351,7 +345,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
         <!-- MENU -->
 
         <button onclick="toggleSidebar()"
-        class="lg:hidden w-11 h-11 rounded bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+        class="lg:hidden w-11 h-11 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center">
 
           <i data-lucide="menu" class="w-5 h-5"></i>
 
@@ -361,32 +355,15 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
         <div>
 
-          <h1 class="text-lg font-bold text-slate-900 dark:text-white">
-            Share Partner
+          <h1 class="text-lg font-bold text-slate-900">
+            Dashboard
           </h1>
 
-          <p class="text-xs text-slate-500 dark:text-slate-400">
-            ${partner.name}
+          <p class="text-xs text-slate-500">
+            Partner Panel
           </p>
 
         </div>
-
-      </div>
-
-      <!-- RIGHT -->
-
-      <div class="flex items-center gap-3">
-
-        <!-- DARK MODE -->
-
-        <button id="themeToggle"
-        class="w-11 h-11 rounded bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 flex items-center justify-center">
-
-          <i id="themeIcon"
-          data-lucide="sun"
-          class="w-5 h-5 text-yellow-500"></i>
-
-        </button>
 
       </div>
 
@@ -398,13 +375,31 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
   <main class="p-4 md:p-7">
 
+    <!-- WELCOME -->
+
+    <div class="mb-6">
+
+      <h1 class="text-2xl md:text-3xl font-black text-slate-900">
+
+        👋 Welcome - ${partner.name}
+
+      </h1>
+
+      <p class="text-sm text-slate-500 mt-1">
+
+        Monitor your earnings & traffic analytics
+
+      </p>
+
+    </div>
+
     <!-- ALERT -->
 
-    <div class="glass rounded p-5 mb-6">
+    <div class="glass rounded p-5 mb-6 shadow-sm">
 
       <div class="flex items-center gap-4">
 
-        <div class="w-14 h-14 rounded bg-yellow-500 flex items-center justify-center">
+        <div class="w-14 h-14 rounded bg-yellow-400 flex items-center justify-center">
 
           <i data-lucide="badge-alert" class="w-7 h-7 text-black"></i>
 
@@ -412,11 +407,11 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
         <div>
 
-          <h3 class="font-bold">
+          <h3 class="font-bold text-slate-900">
             Dashboard Notice
           </h3>
 
-          <p class="text-sm text-slate-400 mt-1">
+          <p class="text-sm text-slate-500 mt-1">
             Dashboard resets daily at 05:30 AM IST
           </p>
 
@@ -430,29 +425,29 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
 
-      <!-- CARD -->
+      <!-- TODAY -->
 
-      <div class="glass rounded p-6 card-hover">
+      <div class="glass rounded p-6 card-hover shadow-sm">
 
         <div class="flex items-start justify-between">
 
           <div>
 
-            <div class="text-4xl font-black text-green-400">
+            <div class="text-4xl font-black text-green-500">
               $${calc(stats.today)}
             </div>
 
-            <div class="mt-3 text-2xl font-bold">
+            <div class="mt-3 text-2xl font-bold text-slate-900">
               ${formatViews(stats.today)}
             </div>
 
-            <div class="mt-1 text-sm text-slate-400">
+            <div class="mt-1 text-sm text-slate-500">
               Today Traffic
             </div>
 
           </div>
 
-          <div class="w-16 h-16 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow">
 
             <i data-lucide="calendar-days" class="w-8 h-8 text-white"></i>
 
@@ -464,27 +459,27 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
       <!-- YESTERDAY -->
 
-      <div class="glass rounded p-6 card-hover">
+      <div class="glass rounded p-6 card-hover shadow-sm">
 
         <div class="flex items-start justify-between">
 
           <div>
 
-            <div class="text-4xl font-black text-green-400">
+            <div class="text-4xl font-black text-green-500">
               $${calc(stats.yesterday)}
             </div>
 
-            <div class="mt-3 text-2xl font-bold">
+            <div class="mt-3 text-2xl font-bold text-slate-900">
               ${formatViews(stats.yesterday)}
             </div>
 
-            <div class="mt-1 text-sm text-slate-400">
+            <div class="mt-1 text-sm text-slate-500">
               Yesterday Traffic
             </div>
 
           </div>
 
-          <div class="w-16 h-16 rounded bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow">
 
             <i data-lucide="history" class="w-8 h-8 text-white"></i>
 
@@ -496,27 +491,27 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
       <!-- MONTH -->
 
-      <div class="glass rounded p-6 card-hover">
+      <div class="glass rounded p-6 card-hover shadow-sm">
 
         <div class="flex items-start justify-between">
 
           <div>
 
-            <div class="text-4xl font-black text-green-400">
+            <div class="text-4xl font-black text-green-500">
               $${calc(stats.this_month)}
             </div>
 
-            <div class="mt-3 text-2xl font-bold">
+            <div class="mt-3 text-2xl font-bold text-slate-900">
               ${formatViews(stats.this_month)}
             </div>
 
-            <div class="mt-1 text-sm text-slate-400">
+            <div class="mt-1 text-sm text-slate-500">
               This Month
             </div>
 
           </div>
 
-          <div class="w-16 h-16 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow">
 
             <i data-lucide="calendar-range" class="w-8 h-8 text-white"></i>
 
@@ -528,27 +523,27 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
       <!-- LAST MONTH -->
 
-      <div class="glass rounded p-6 card-hover">
+      <div class="glass rounded p-6 card-hover shadow-sm">
 
         <div class="flex items-start justify-between">
 
           <div>
 
-            <div class="text-4xl font-black text-green-400">
+            <div class="text-4xl font-black text-green-500">
               $${calc(stats.last_month)}
             </div>
 
-            <div class="mt-3 text-2xl font-bold">
+            <div class="mt-3 text-2xl font-bold text-slate-900">
               ${formatViews(stats.last_month)}
             </div>
 
-            <div class="mt-1 text-sm text-slate-400">
+            <div class="mt-1 text-sm text-slate-500">
               Last Month
             </div>
 
           </div>
 
-          <div class="w-16 h-16 rounded bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center">
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow">
 
             <i data-lucide="chart-column" class="w-8 h-8 text-white"></i>
 
@@ -560,27 +555,27 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
       <!-- ALL TIME -->
 
-      <div class="glass rounded p-6 card-hover">
+      <div class="glass rounded p-6 card-hover shadow-sm">
 
         <div class="flex items-start justify-between">
 
           <div>
 
-            <div class="text-4xl font-black text-green-400">
+            <div class="text-4xl font-black text-green-500">
               $${calc(stats.all_time)}
             </div>
 
-            <div class="mt-3 text-2xl font-bold">
+            <div class="mt-3 text-2xl font-bold text-slate-900">
               ${formatViews(stats.all_time)}
             </div>
 
-            <div class="mt-1 text-sm text-slate-400">
+            <div class="mt-1 text-sm text-slate-500">
               All Time Traffic
             </div>
 
           </div>
 
-          <div class="w-16 h-16 rounded bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow">
 
             <i data-lucide="globe" class="w-8 h-8 text-white"></i>
 
@@ -592,27 +587,27 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
       <!-- BALANCE -->
 
-      <div class="glass rounded p-6 card-hover">
+      <div class="glass rounded p-6 card-hover shadow-sm">
 
         <div class="flex items-start justify-between">
 
           <div>
 
-            <div class="text-4xl font-black text-green-400">
+            <div class="text-4xl font-black text-green-500">
               $${currentBalance}
             </div>
 
-            <div class="mt-3 text-2xl font-bold">
+            <div class="mt-3 text-2xl font-bold text-slate-900">
               Wallet Balance
             </div>
 
-            <div class="mt-1 text-sm text-slate-400">
+            <div class="mt-1 text-sm text-slate-500">
               Available Amount
             </div>
 
           </div>
 
-          <div class="w-16 h-16 rounded bg-gradient-to-br from-slate-700 to-black flex items-center justify-center">
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-slate-700 to-black flex items-center justify-center shadow">
 
             <i data-lucide="wallet-cards" class="w-8 h-8 text-white"></i>
 
@@ -636,7 +631,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
       </button>
       `
       : `
-      <div class="glass rounded p-5 mt-8 text-red-400 font-semibold">
+      <div class="glass rounded p-5 mt-8 text-red-500 font-semibold shadow-sm">
 
         Minimum $2 required for withdrawal
 
@@ -662,7 +657,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white dark:bg-slate-950 border-r b
 
 localStorage.setItem('refer_id', '${ref}');
 
-/* LUCIDE */
+/* ICONS */
 
 lucide.createIcons();
 
@@ -678,63 +673,6 @@ function toggleSidebar(){
   overlay.classList.toggle("hidden");
 
 }
-
-/* DARK MODE */
-
-const themeToggle = document.getElementById("themeToggle");
-const themeIcon = document.getElementById("themeIcon");
-
-/* LOAD SAVED THEME */
-
-if(localStorage.getItem("theme") === "light"){
-
-  document.documentElement.classList.remove("dark");
-
-}else{
-
-  document.documentElement.classList.add("dark");
-
-}
-
-/* ICON */
-
-function updateThemeIcon(){
-
-  if(document.documentElement.classList.contains("dark")){
-
-    themeIcon.setAttribute("data-lucide","sun");
-
-  }else{
-
-    themeIcon.setAttribute("data-lucide","moon");
-
-  }
-
-  lucide.createIcons();
-
-}
-
-updateThemeIcon();
-
-/* TOGGLE */
-
-themeToggle.addEventListener("click", () => {
-
-  document.documentElement.classList.toggle("dark");
-
-  if(document.documentElement.classList.contains("dark")){
-
-    localStorage.setItem("theme","dark");
-
-  }else{
-
-    localStorage.setItem("theme","light");
-
-  }
-
-  updateThemeIcon();
-
-});
 
 </script>
 
