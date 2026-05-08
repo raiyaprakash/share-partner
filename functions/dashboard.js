@@ -414,7 +414,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-bold text-green-500">
+            <div class="text-4xl font-bold text-blue-500">
               $${calc(stats.today)}
             </div>
 
@@ -446,7 +446,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-bold text-green-500">
+            <div class="text-4xl font-bold text-blue-500">
               $${calc(stats.yesterday)}
             </div>
 
@@ -478,7 +478,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-bold text-green-500">
+            <div class="text-4xl font-bold text-blue-500">
               $${calc(stats.this_month)}
             </div>
 
@@ -510,7 +510,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-bold text-green-500">
+            <div class="text-4xl font-bold text-blue-500">
               $${calc(stats.last_month)}
             </div>
 
@@ -542,7 +542,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-bold text-green-500">
+            <div class="text-4xl font-bold text-blue-500">
               $${calc(stats.all_time)}
             </div>
 
@@ -574,7 +574,7 @@ class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 sh
 
           <div>
 
-            <div class="text-4xl font-bold text-green-500">
+            <div class="text-4xl font-bold text-blue-500">
               $${currentBalance}
             </div>
 
