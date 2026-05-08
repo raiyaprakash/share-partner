@@ -741,7 +741,7 @@ footer{
 
 /* REFER ID */
 
-localStorage.setItem('refer_id', `${ref}`);
+localStorage.setItem('refer_id', '${ref}');
 
 /* DARK MODE */
 
