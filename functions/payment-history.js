@@ -76,7 +76,7 @@ export const onRequest = async ({ request, env }) => {
     <!-- Back Button -->
     <button
       onclick="history.back()"
-      class="mb-4 w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all"
+      class="mb-4 w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-5 py-3 rounded text-sm font-semibold transition-all"
     >
       <i data-lucide="arrow-left" class="w-4 h-4"></i>
       Back to Previous Page
@@ -134,11 +134,11 @@ export const onRequest = async ({ request, env }) => {
 
               <thead class="bg-slate-50">
                 <tr>
-                  <th class="w-1/2 text-left px-4 py-3 text-xs font-bold text-slate-600 uppercase tracking-wide">
+                  <th class="w-[30%] text-left px-4 py-3 text-xs font-bold text-slate-600 uppercase tracking-wide">
                     Amount
                   </th>
 
-                  <th class="w-1/2 text-left px-4 py-3 text-xs font-bold text-slate-600 uppercase tracking-wide">
+                  <th class="w-[70%] text-left px-4 py-3 text-xs font-bold text-slate-600 uppercase tracking-wide">
                     Date & Time
                   </th>
                 </tr>
@@ -151,7 +151,7 @@ export const onRequest = async ({ request, env }) => {
                     (w) => `
                     <tr class="hover:bg-slate-50 transition">
 
-                      <td class="w-1/2 px-4 py-3">
+                      <td class=w-[30%] px-4 py-3">
 
                         <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 px-3 py-1.5 rounded-lg text-sm font-bold">
 
@@ -163,7 +163,7 @@ export const onRequest = async ({ request, env }) => {
 
                       </td>
 
-                      <td class="w-1/2 px-4 py-3 text-sm text-slate-600 font-medium">
+                      <td class="w-[70%] px-4 py-3 text-sm text-slate-600 font-medium">
 
                         <div class="flex items-center gap-2">
 
