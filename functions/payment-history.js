@@ -73,14 +73,6 @@ export const onRequest = async ({ request, env }) => {
 <body class="bg-slate-100 min-h-screen p-3 sm:p-5">
 
   <div class="max-w-3xl mx-auto">
-    <!-- Back Button -->
-    <button
-      onclick="history.back()"
-      class="mb-4 w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-5 py-3 rounded text-sm font-semibold transition-all"
-    >
-      <i data-lucide="arrow-left" class="w-4 h-4"></i>
-      Back to Previous Page
-    </button>
     
     <!-- Header -->
     <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-5 mb-4">
@@ -211,7 +203,14 @@ export const onRequest = async ({ request, env }) => {
     }
 
   </div>
-
+<!-- Fixed Back Button -->
+<button
+  onclick="history.back()"
+  class="fixed bottom-4 left-4 z-50 bg-white border border-slate-200 shadow-sm hover:shadow-md rounded px-3 py-2 flex items-center gap-2 text-slate-700 hover:bg-slate-50 transition-all duration-200"
+>
+  <i data-lucide="arrow-left" class="w-4 h-4"></i>
+  <span class="text-sm font-medium">Back</span>
+</button>
   <script>
     lucide.createIcons();
   </script>
