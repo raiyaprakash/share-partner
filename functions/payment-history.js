@@ -43,84 +43,180 @@ export const onRequest = async ({ request, env }) => {
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Payment History</title>
-  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+
+<script src='https://cdn.jsdelivr.net/combine//npm/@tailwindcss/browser@4.2.2/dist/index.global.min.js,npm/lucide@1.7.0/dist/umd/lucide.min.js'></script>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
-    body { font-family: "Mukta", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding:20px; background:#eef2f7; color:#333; max-width: 600px;
-    margin: 0 auto; }
-    
-    h2 {
-      font-weight: 700;
-      font-size: 24px;
-      color: #007bff;
-      text-align: center;
-      margin-bottom: 25px;
-      position: relative;
-      letter-spacing: 0.5px;
-      padding-bottom: 10px;
+    body{
+      font-family: "Mukta", sans-serif;
     }
 
-    h2::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, #007bff, #00c6ff);
-      border-radius: 3px;
+    ::-webkit-scrollbar{
+      width:6px;
+      height:6px;
     }
 
-    .stats { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:20px; }
-    .card { background:white; padding:15px 20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1 1 180px; }
-    table { border-collapse:collapse; width:100%; background:white; margin-top:15px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
-    th, td { border:1px solid #ccc; padding:10px; text-align:left; }
-    th { background:#007BFF; color:white; }
-    button { padding:10px 18px; background:#28a745; color:white; border:none; border-radius:4px; cursor:pointer;
-      margin-top: 15px;
-      font-weight: 600; }
-    button:hover { background:#218838; }
-    .back-btn { background: #218838; }
-    .back-btn:hover { background: #5a6268; }
-    .responsive { overflow:auto; }
-    .alert {
-      background-color:#fff3cd; color:#856404; border:1px solid #ffeeba;
-      padding:12px 18px; border-radius:8px; margin-bottom:20px;
-      font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.1);
-      text-align:center;
+    ::-webkit-scrollbar-thumb{
+      background:#cbd5e1;
+      border-radius:10px;
     }
-    .alert strong { color:#704214; }
   </style>
 </head>
-<body>
-  <h2>💰 Withdrawal History</h2>
+<body class="bg-slate-100 min-h-screen p-3 sm:p-5">
 
-  ${
-    hasWithdrawals
-      ? `
-      <div class="responsive">
-        <table>
-          <tr><th>Amount Paid</th><th>Date</th></tr>
-          ${withdrawals.results
-            .map(
-              (w) => `
-              <tr>
-                <td>$${w.amount.toFixed(2)}</td>
-                <td>${new Date(
-                  new Date(w.created_at).getTime() + 5.5 * 60 * 60 * 1000
-                ).toLocaleString("en-IN")}</td>
-              </tr>`
-            )
-            .join("")}
-        </table>
-      </div>`
-      : `<div class="alert"><strong>No withdrawal history found.</strong><br>Your payment records will appear here once you make a withdrawal.</div>`
-  }
+  <div class="max-w-3xl mx-auto">
 
-  <button class="back-btn" onclick="history.back()">⬅ Back to Previous Page</button>
+    <!-- Header -->
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-5 mb-4">
+
+      <div class="flex items-center gap-3">
+
+        <div class="w-11 h-11 rounded-lg bg-green-100 flex items-center justify-center">
+          <i data-lucide="wallet" class="w-5 h-5 text-green-600"></i>
+        </div>
+
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-800 leading-tight">
+            Withdrawal History
+          </h2>
+
+          <p class="text-sm text-slate-500 mt-0.5">
+            View all your completed withdrawal payments
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    ${
+      hasWithdrawals
+        ? `
+        <!-- Table Card -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+
+          <!-- Top -->
+          <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100">
+
+            <div class="flex items-center gap-2">
+              <i data-lucide="history" class="w-4 h-4 text-slate-500"></i>
+              <span class="text-sm font-semibold text-slate-700">
+                Payment Records
+              </span>
+            </div>
+
+            <div class="text-xs bg-green-100 text-green-700 px-2.5 py-1 rounded-md font-medium">
+              ${withdrawals.results.length} Records
+            </div>
+
+          </div>
+
+          <!-- Responsive Table -->
+          <div class="overflow-x-auto">
+
+            <table class="w-full min-w-[500px]">
+
+              <thead class="bg-slate-50">
+                <tr>
+                  <th class="text-left px-4 py-3 text-xs font-bold text-slate-600 uppercase tracking-wide">
+                    Amount
+                  </th>
+
+                  <th class="text-left px-4 py-3 text-xs font-bold text-slate-600 uppercase tracking-wide">
+                    Date & Time
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody class="divide-y divide-slate-100">
+
+                ${withdrawals.results
+                  .map(
+                    (w) => `
+                    <tr class="hover:bg-slate-50 transition">
+
+                      <td class="px-4 py-3">
+
+                        <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 px-3 py-1.5 rounded-lg text-sm font-bold">
+
+                          <i data-lucide="dollar-sign" class="w-4 h-4"></i>
+
+                          $${w.amount.toFixed(2)}
+
+                        </div>
+
+                      </td>
+
+                      <td class="px-4 py-3 text-sm text-slate-600 font-medium">
+
+                        <div class="flex items-center gap-2">
+
+                          <i data-lucide="calendar-days" class="w-4 h-4 text-slate-400"></i>
+
+                          ${new Date(
+                            new Date(w.created_at).getTime() + 5.5 * 60 * 60 * 1000
+                          ).toLocaleString("en-IN")}
+
+                        </div>
+
+                      </td>
+
+                    </tr>
+                  `
+                  )
+                  .join("")}
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+        `
+        : `
+        <!-- Empty State -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 text-center">
+
+          <div class="w-16 h-16 mx-auto rounded-full bg-yellow-100 flex items-center justify-center mb-4">
+            <i data-lucide="circle-alert" class="w-8 h-8 text-yellow-600"></i>
+          </div>
+
+          <h3 class="text-lg font-bold text-slate-800 mb-1">
+            No Withdrawal History
+          </h3>
+
+          <p class="text-sm text-slate-500 leading-relaxed max-w-sm mx-auto">
+            Your withdrawal records will appear here once you make a successful payment request.
+          </p>
+
+        </div>
+        `
+    }
+
+    <!-- Back Button -->
+    <button
+      onclick="history.back()"
+      class="mt-4 w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all"
+    >
+      <i data-lucide="arrow-left" class="w-4 h-4"></i>
+      Back to Previous Page
+    </button>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
 </body>
 </html>
     `,
