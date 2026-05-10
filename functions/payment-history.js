@@ -151,7 +151,7 @@ body{
                 <!-- Table -->
                 <div class="overflow-x-auto border border-slate-200 rounded-md">
 
-                    <table class="w-full min-w-[500px]">
+                    <table class="w-full">
 
                         <thead class="bg-slate-50">
 
