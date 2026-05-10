@@ -3,178 +3,355 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <title>Terms and Conditions</title>
-<link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+<!-- TailwindCSS + Lucide -->
+<script src="https://cdn.jsdelivr.net/combine/npm/@tailwindcss/browser@4.2.2/dist/index.global.min.js,npm/lucide@1.7.0/dist/umd/lucide.min.js"></script>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
-
-body {
-    font-family: "Mukta", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f4f6f8;
-    color: #333;
-    margin: 0;
-    padding: 0;
+body{
+    font-family: "Mukta", sans-serif;
 }
-
-.container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 30px 25px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-
-h1 {
-    font-weight: 800;
-    font-size: 28px;
-    color: #007bff;
-    text-align: center;
-    margin-bottom: 30px;
-    position: relative;
-}
-
-h1::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -10px;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, #007bff, #00c6ff);
-    border-radius: 2px;
-}
-
-h2 {
-    font-size: 20px;
-    color: #007bff;
-    margin-top: 25px;
-    margin-bottom: 12px;
-    position: relative;
-    padding-left: 25px;
-}
-
-h2::before {
-    content: counter(section) ".";
-    counter-increment: section;
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
-    color: #007bff;
-}
-
-p, li {
-    line-height: 1.65;
-    margin-bottom: 12px;
-    font-size: 15px;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-ul li {
-    margin-bottom: 8px;
-}
-
-.alert {
-    background-color: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeeba;
-    padding: 14px 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-    font-size: 14px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-
-.alert strong {
-    color: #704214;
-}
-
-@media (max-width: 600px) {
-    .container {
-        margin: 20px 15px;
-        padding: 20px;
-    }
-    h1 {
-        font-size: 24px;
-    }
-    h2 {
-        font-size: 18px;
-    }
-}
-
 </style>
 </head>
-<body>
-<div class="container">
-    <h1>Terms and Conditions</h1>
 
-    <h2>Introduction</h2>
-    <p>These Terms govern the relationship between Share Partners and the Platform. Non-compliance may lead to warnings, suspension, termination, and forfeiture of earnings.</p>
+<body class="bg-slate-100 text-slate-700">
 
-    <h2>Definitions</h2>
-    <ul>
-        <li><strong>Share Partner:</strong> Person or entity registered to share referral links.</li>
-        <li><strong>Referral:</strong> Visitor, click, or sign-up from a Partner link.</li>
-        <li><strong>Self-click / Self-refer:</strong> Any attempt to generate referrals using your own or controlled accounts/devices.</li>
-        <li><strong>Fake Traffic:</strong> Traffic from bots, scripts, click farms, or non-genuine users.</li>
-        <li><strong>Faucet Traffic:</strong> Traffic from faucet sites or micro-traffic sources.</li>
-        <li><strong>VPN Abuse:</strong> Using VPNs or proxies to manipulate traffic/referrals.</li>
-    </ul>
+<!-- Header -->
+<div class="sticky top-0 z-50 bg-white border-b border-slate-200">
 
-    <h2>Prohibited Activities</h2>
-    <ul>
-        <li>Self-clicking or self-referral.</li>
-        <li>VPN or proxy abuse.</li>
-        <li>Fake or automated traffic.</li>
-        <li>Faucet traffic.</li>
-        <li>Multiple account abuse or collusion.</li>
-        <li>Parameter manipulation.</li>
-        <li>Misrepresentation or fraud.</li>
-    </ul>
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center gap-3">
 
-    <h2>Monitoring and Detection</h2>
-    <p>Traffic and referral patterns are monitored using analytics and fraud detection tools. Suspicious activity may be investigated at any time.</p>
+        <!-- Back -->
+        <button
+            onclick="history.back()"
+            class="w-9 h-9 rounded-md border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition"
+        >
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        </button>
 
-    <h2>Enforcement & Penalties</h2>
-    <ul>
-        <li>First Warning: Written notice.</li>
-        <li>Temporary Suspension: Pending investigation.</li>
-        <li>Permanent Termination: Ban and forfeiture of earnings.</li>
-        <li>Earnings Forfeiture: Recovery or deduction of earnings from prohibited activities.</li>
-        <li>Legal Action: If criminal behavior is suspected.</li>
-    </ul>
+        <div>
+            <h1 class="text-base md:text-lg font-bold text-slate-800">
+                Terms & Conditions
+            </h1>
 
-    <h2>Reporting & Appeal</h2>
-    <p>Report suspicious activity via email with evidence. Appeals must be submitted within 7 days and will be reviewed with final decision in writing.</p>
+            <p class="text-[11px] md:text-xs text-slate-500">
+                Please read carefully before using our platform
+            </p>
+        </div>
 
-    <h2>Partner Obligations</h2>
-    <ul>
-        <li>Provide accurate registration information.</li>
-        <li>Use only lawful promotion methods.</li>
-        <li>Cooperate with investigations.</li>
-        <li>Comply with privacy regulations.</li>
-    </ul>
+    </div>
 
-    <h2>Data, Privacy & Tracking</h2>
-    <p>We collect minimal data for attribution, fraud detection, and payments. Partners must not attempt to obfuscate or delete tracking data.</p>
-
-    <h2>Earnings, Payments & Withholding</h2>
-    <p>We may withhold, reverse, or deduct payments earned through prohibited activities. Payment terms remain as per the Platform policy.</p>
-
-    <h2>Changes to Terms</h2>
-    <p>These Terms may be updated anytime. Continued participation indicates acceptance of the updated Terms.</p>
-
-    <h2>Acceptance</h2>
-    <p>By participating, you acknowledge that you have read and agree to these Terms.</p>
-
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:prakashraiya25@autopush.in">prakashraiya25@autopush.in</a></p>
 </div>
+
+<!-- Container -->
+<div class="max-w-4xl mx-auto p-3 md:p-6">
+
+    <div class="bg-white border border-slate-200 rounded-md shadow-sm overflow-hidden">
+
+        <!-- Hero -->
+        <div class="bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-7 md:px-6 md:py-8 text-center text-white">
+
+            <div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 mx-auto flex items-center justify-center mb-4">
+                <i data-lucide="file-check-2" class="w-7 h-7 md:w-8 md:h-8"></i>
+            </div>
+
+            <h2 class="text-xl md:text-3xl font-extrabold">
+                Terms & Conditions
+            </h2>
+
+            <p class="mt-2 text-[13px] md:text-base text-blue-50">
+                Understand the rules, obligations, and policies of our platform.
+            </p>
+
+        </div>
+
+        <!-- Content -->
+        <div class="p-4 md:p-7 space-y-5">
+
+            <!-- Alert -->
+            <div class="bg-amber-50 border border-amber-200 rounded-md p-3 md:p-4 flex gap-3">
+
+                <div class="mt-0.5">
+                    <i data-lucide="alert-triangle" class="w-4 h-4 md:w-5 md:h-5 text-amber-600"></i>
+                </div>
+
+                <div>
+                    <p class="text-[12px] md:text-sm text-amber-800 leading-5 md:leading-6">
+                        <span class="font-bold">Important:</span>
+                        Violation of these terms may lead to suspension, termination, or forfeiture of earnings.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Introduction -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="file-text" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Introduction
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    These Terms govern the relationship between Share Partners and the Platform. Non-compliance may lead to warnings, suspension, termination, and forfeiture of earnings.
+                </p>
+
+            </div>
+
+            <!-- Definitions -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="book-open" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Definitions
+                    </h3>
+                </div>
+
+                <ul class="space-y-2 text-[13px] md:text-[15px] leading-6 md:leading-7">
+
+                    <li><strong>Share Partner:</strong> Person or entity registered to share referral links.</li>
+
+                    <li><strong>Referral:</strong> Visitor, click, or sign-up from a Partner link.</li>
+
+                    <li><strong>Self-click / Self-refer:</strong> Any attempt to generate referrals using your own or controlled accounts/devices.</li>
+
+                    <li><strong>Fake Traffic:</strong> Traffic from bots, scripts, click farms, or non-genuine users.</li>
+
+                    <li><strong>Faucet Traffic:</strong> Traffic from faucet sites or micro-traffic sources.</li>
+
+                    <li><strong>VPN Abuse:</strong> Using VPNs or proxies to manipulate traffic/referrals.</li>
+
+                </ul>
+
+            </div>
+
+            <!-- Prohibited -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="shield-x" class="w-4 h-4 md:w-5 md:h-5 text-red-500"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Prohibited Activities
+                    </h3>
+                </div>
+
+                <ul class="space-y-2 text-[13px] md:text-[15px] leading-6 md:leading-7">
+
+                    <li>Self-clicking or self-referral.</li>
+
+                    <li>VPN or proxy abuse.</li>
+
+                    <li>Fake or automated traffic.</li>
+
+                    <li>Faucet traffic.</li>
+
+                    <li>Multiple account abuse or collusion.</li>
+
+                    <li>Parameter manipulation.</li>
+
+                    <li>Misrepresentation or fraud.</li>
+
+                </ul>
+
+            </div>
+
+            <!-- Monitoring -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="eye" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Monitoring and Detection
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    Traffic and referral patterns are monitored using analytics and fraud detection tools. Suspicious activity may be investigated at any time.
+                </p>
+
+            </div>
+
+            <!-- Enforcement -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="gavel" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Enforcement & Penalties
+                    </h3>
+                </div>
+
+                <ul class="space-y-2 text-[13px] md:text-[15px] leading-6 md:leading-7">
+
+                    <li>First Warning: Written notice.</li>
+
+                    <li>Temporary Suspension: Pending investigation.</li>
+
+                    <li>Permanent Termination: Ban and forfeiture of earnings.</li>
+
+                    <li>Earnings Forfeiture: Recovery or deduction of earnings from prohibited activities.</li>
+
+                    <li>Legal Action: If criminal behavior is suspected.</li>
+
+                </ul>
+
+            </div>
+
+            <!-- Appeal -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="message-square-warning" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Reporting & Appeal
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    Report suspicious activity via email with evidence. Appeals must be submitted within 7 days and will be reviewed with final decision in writing.
+                </p>
+
+            </div>
+
+            <!-- Obligations -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="badge-check" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Partner Obligations
+                    </h3>
+                </div>
+
+                <ul class="space-y-2 text-[13px] md:text-[15px] leading-6 md:leading-7">
+
+                    <li>Provide accurate registration information.</li>
+
+                    <li>Use only lawful promotion methods.</li>
+
+                    <li>Cooperate with investigations.</li>
+
+                    <li>Comply with privacy regulations.</li>
+
+                </ul>
+
+            </div>
+
+            <!-- Privacy -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="database" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Data, Privacy & Tracking
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    We collect minimal data for attribution, fraud detection, and payments. Partners must not attempt to obfuscate or delete tracking data.
+                </p>
+
+            </div>
+
+            <!-- Earnings -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="wallet" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Earnings, Payments & Withholding
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    We may withhold, reverse, or deduct payments earned through prohibited activities. Payment terms remain as per the Platform policy.
+                </p>
+
+            </div>
+
+            <!-- Changes -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Changes to Terms
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    These Terms may be updated anytime. Continued participation indicates acceptance of the updated Terms.
+                </p>
+
+            </div>
+
+            <!-- Acceptance -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 md:w-5 md:h-5 text-green-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Acceptance
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    By participating, you acknowledge that you have read and agree to these Terms.
+                </p>
+
+            </div>
+
+            <!-- Contact -->
+            <div class="bg-slate-50 border border-slate-200 rounded-md p-4 md:p-5">
+
+                <div class="flex items-center gap-2 mb-3">
+                    <i data-lucide="mail" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Contact
+                    </h3>
+                </div>
+
+                <a
+                    href="mailto:prakashraiya25@autopush.in"
+                    class="inline-flex items-center gap-2 text-[13px] md:text-[15px] text-blue-600 font-semibold hover:underline break-all"
+                >
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    prakashraiya25@autopush.in
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+lucide.createIcons();
+</script>
+
 </body>
 </html>
