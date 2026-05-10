@@ -4,162 +4,333 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Privacy Policy</title>
-<link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+<script src='https://cdn.jsdelivr.net/combine//npm/@tailwindcss/browser@4.2.2/dist/index.global.min.js,npm/lucide@1.7.0/dist/umd/lucide.min.js'></script>
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
-
-body {
-    font-family: "Mukta", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f4f6f8;
-    color: #333;
-    margin: 0;
-    padding: 0;
+body{
+    font-family: "Mukta", sans-serif;
 }
-
-.container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 30px 25px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-
-h1 {
-    font-weight: 800;
-    font-size: 28px;
-    color: #007bff;
-    text-align: center;
-    margin-bottom: 30px;
-    position: relative;
-}
-
-h1::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -10px;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, #007bff, #00c6ff);
-    border-radius: 2px;
-}
-
-h2 {
-    font-size: 20px;
-    color: #007bff;
-    margin-top: 25px;
-    margin-bottom: 12px;
-    position: relative;
-    padding-left: 25px;
-}
-
-h2::before {
-    content: counter(section) ".";
-    counter-increment: section;
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
-    color: #007bff;
-}
-
-p, li {
-    line-height: 1.65;
-    margin-bottom: 12px;
-    font-size: 15px;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-ul li {
-    margin-bottom: 8px;
-}
-
-.alert {
-    background-color: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeeba;
-    padding: 14px 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-    font-size: 14px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-
-.alert strong {
-    color: #704214;
-}
-
-@media (max-width: 600px) {
-    .container {
-        margin: 20px 15px;
-        padding: 20px;
-    }
-    h1 {
-        font-size: 24px;
-    }
-    h2 {
-        font-size: 18px;
-    }
-}
-
 </style>
 </head>
-<body>
-<div class="container">
-    <h1>Privacy Policy</h1>
 
-    <h2>Introduction</h2>
-    <p>This Privacy Policy explains how we collect, use, and protect the information of our users and Share Partners on the Platform. By using our services, you agree to this Privacy Policy.</p>
+<body class="bg-slate-100 text-slate-700">
 
-    <h2>Information We Collect</h2>
-    <ul>
-        <li><strong>Personal Information:</strong> Such as name, email, and registration details.</li>
-        <li><strong>Non-Personal Information:</strong> IP addresses, browser type, device information, and referral sources.</li>
-        <li><strong>Cookies & Tracking:</strong> We use cookies and tracking tools to analyze traffic, improve user experience, and prevent fraud.</li>
-    </ul>
+<!-- Header -->
+<div class="sticky top-0 z-50 bg-white border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center gap-3">
 
-    <h2>Use of Information</h2>
-    <ul>
-        <li>To provide and maintain the Platform services.</li>
-        <li>To monitor traffic and prevent fraudulent activity.</li>
-        <li>To process payments and referrals.</li>
-        <li>To send important notifications or updates.</li>
-    </ul>
+        <!-- Back Button -->
+        <button onclick="history.back()"
+            class="w-9 h-9 rounded-md border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        </button>
 
-    <h2>Data Sharing & Disclosure</h2>
-    <ul>
-        <li>We do not sell or rent personal information to third parties.</li>
-        <li>Data may be shared with trusted service providers for analytics, payments, or operational purposes.</li>
-        <li>We may disclose information if required by law or to protect our legal rights.</li>
-    </ul>
+        <div>
+            <h1 class="text-base md:text-lg font-bold text-slate-800">
+                Privacy Policy
+            </h1>
 
-    <h2>Data Security</h2>
-    <p>We implement reasonable technical and administrative measures to protect your data from unauthorized access, loss, or misuse. However, no system is completely secure, and we cannot guarantee absolute security.</p>
+            <p class="text-[11px] md:text-xs text-slate-500">
+                Your privacy matters to us
+            </p>
+        </div>
 
-    <h2>User Rights</h2>
-    <ul>
-        <li>Access and update personal information provided during registration.</li>
-        <li>Request deletion of personal data, subject to Platform obligations.</li>
-        <li>Opt-out of certain tracking or promotional communications.</li>
-    </ul>
-
-    <h2>Third-Party Links</h2>
-    <p>The Platform may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. Users should read the privacy policies of each website they visit.</p>
-
-    <h2>Children's Privacy</h2>
-    <p>Our services are not directed to children under 13 years of age. We do not knowingly collect information from children.</p>
-
-    <h2>Changes to Privacy Policy</h2>
-    <p>We may update this Privacy Policy at any time. Continued use of the Platform constitutes acceptance of any changes.</p>
-
-    <h2>Contact</h2>
-    <p>If you have any questions about this Privacy Policy, you can contact us at: <a href="mailto:prakashraiya25@autopush.in">prakashraiya25@autopush.in</a></p>
+    </div>
 </div>
+
+<!-- Container -->
+<div class="max-w-4xl mx-auto p-3 md:p-6">
+
+    <div class="bg-white rounded-md border border-slate-200 shadow-sm overflow-hidden">
+
+        <!-- Hero -->
+        <div class="bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-7 md:px-6 md:py-8 text-white text-center">
+
+            <div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 mx-auto flex items-center justify-center mb-4">
+                <i data-lucide="shield-check" class="w-7 h-7 md:w-8 md:h-8"></i>
+            </div>
+
+            <h2 class="text-xl md:text-3xl font-extrabold">
+                Privacy Policy
+            </h2>
+
+            <p class="mt-2 text-[13px] md:text-base text-blue-50">
+                Learn how we collect, use, and protect your information.
+            </p>
+
+        </div>
+
+        <!-- Content -->
+        <div class="p-4 md:p-7 space-y-5 md:space-y-6">
+
+            <!-- Alert -->
+            <div class="bg-amber-50 border border-amber-200 rounded-md p-3 md:p-4 flex gap-3">
+
+                <div class="mt-0.5">
+                    <i data-lucide="alert-triangle" class="w-4 h-4 md:w-5 md:h-5 text-amber-600"></i>
+                </div>
+
+                <div>
+                    <p class="text-[12px] md:text-sm text-amber-800 leading-5 md:leading-6">
+                        <span class="font-bold">Important:</span>
+                        By using our platform, you agree to the practices described in this Privacy Policy.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Introduction -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="file-text" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Introduction
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    This Privacy Policy explains how we collect, use, and protect the information of our users and Share Partners on the Platform. By using our services, you agree to this Privacy Policy.
+                </p>
+
+            </div>
+
+            <!-- Information -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="database" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Information We Collect
+                    </h3>
+                </div>
+
+                <ul class="space-y-2 text-[13px] md:text-[15px]">
+
+                    <li class="flex gap-3">
+                        <i data-lucide="user" class="w-4 h-4 mt-1 text-slate-500"></i>
+
+                        <span>
+                            <strong>Personal Information:</strong>
+                            Such as name, email, and registration details.
+                        </span>
+                    </li>
+
+                    <li class="flex gap-3">
+                        <i data-lucide="monitor-smartphone" class="w-4 h-4 mt-1 text-slate-500"></i>
+
+                        <span>
+                            <strong>Non-Personal Information:</strong>
+                            IP addresses, browser type, device information, and referral sources.
+                        </span>
+                    </li>
+
+                    <li class="flex gap-3">
+                        <i data-lucide="cookie" class="w-4 h-4 mt-1 text-slate-500"></i>
+
+                        <span>
+                            <strong>Cookies & Tracking:</strong>
+                            We use cookies and tracking tools to analyze traffic, improve user experience, and prevent fraud.
+                        </span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Use -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="settings" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Use of Information
+                    </h3>
+                </div>
+
+                <ul class="space-y-2 text-[13px] md:text-[15px]">
+
+                    <li class="flex gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 mt-1 text-green-600"></i>
+                        <span>To provide and maintain the Platform services.</span>
+                    </li>
+
+                    <li class="flex gap-3">
+                        <i data-lucide="shield" class="w-4 h-4 mt-1 text-green-600"></i>
+                        <span>To monitor traffic and prevent fraudulent activity.</span>
+                    </li>
+
+                    <li class="flex gap-3">
+                        <i data-lucide="wallet" class="w-4 h-4 mt-1 text-green-600"></i>
+                        <span>To process payments and referrals.</span>
+                    </li>
+
+                    <li class="flex gap-3">
+                        <i data-lucide="bell" class="w-4 h-4 mt-1 text-green-600"></i>
+                        <span>To send important notifications or updates.</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Sharing -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="share-2" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Data Sharing & Disclosure
+                    </h3>
+                </div>
+
+                <ul class="space-y-2 text-[13px] md:text-[15px] leading-6 md:leading-7">
+
+                    <li>We do not sell or rent personal information to third parties.</li>
+
+                    <li>Data may be shared with trusted service providers for analytics, payments, or operational purposes.</li>
+
+                    <li>We may disclose information if required by law or to protect our legal rights.</li>
+
+                </ul>
+
+            </div>
+
+            <!-- Security -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Data Security
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    We implement reasonable technical and administrative measures to protect your data from unauthorized access, loss, or misuse. However, no system is completely secure, and we cannot guarantee absolute security.
+                </p>
+
+            </div>
+
+            <!-- Rights -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="badge-check" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        User Rights
+                    </h3>
+                </div>
+
+                <ul class="space-y-2 text-[13px] md:text-[15px] leading-6 md:leading-7">
+
+                    <li>Access and update personal information provided during registration.</li>
+
+                    <li>Request deletion of personal data, subject to Platform obligations.</li>
+
+                    <li>Opt-out of certain tracking or promotional communications.</li>
+
+                </ul>
+
+            </div>
+
+            <!-- Third Party -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="external-link" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Third-Party Links
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    The Platform may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. Users should read the privacy policies of each website they visit.
+                </p>
+
+            </div>
+
+            <!-- Children -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="baby" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Children's Privacy
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    Our services are not directed to children under 13 years of age. We do not knowingly collect information from children.
+                </p>
+
+            </div>
+
+            <!-- Changes -->
+            <div>
+
+                <div class="flex items-center gap-2 mb-2 md:mb-3">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Changes to Privacy Policy
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    We may update this Privacy Policy at any time. Continued use of the Platform constitutes acceptance of any changes.
+                </p>
+
+            </div>
+
+            <!-- Contact -->
+            <div class="bg-slate-50 border border-slate-200 rounded-md p-4 md:p-5">
+
+                <div class="flex items-center gap-2 mb-3">
+                    <i data-lucide="mail" class="w-4 h-4 md:w-5 md:h-5 text-blue-600"></i>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800">
+                        Contact
+                    </h3>
+                </div>
+
+                <p class="text-[13px] md:text-[15px] leading-6 md:leading-7">
+                    If you have any questions about this Privacy Policy, you can contact us at:
+                </p>
+
+                <a href="mailto:prakashraiya25@autopush.in"
+                    class="inline-flex items-center gap-2 mt-3 text-[13px] md:text-[15px] text-blue-600 font-semibold hover:underline">
+
+                    <i data-lucide="send" class="w-4 h-4"></i>
+
+                    prakashraiya25@autopush.in
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+lucide.createIcons();
+</script>
+
 </body>
 </html>
