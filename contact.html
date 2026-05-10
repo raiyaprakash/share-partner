@@ -2,84 +2,135 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us</title>
-  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+  <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+
+<script src='https://cdn.jsdelivr.net/combine//npm/@tailwindcss/browser@4.2.2/dist/index.global.min.js,npm/lucide@1.7.0/dist/umd/lucide.min.js'></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
-    body { 
-      font-family: "Mukta", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      padding:20px; background:#eef2f7; color:#333; max-width: 600px; margin: 0 auto; 
+    body{
+      font-family: "Mukta", sans-serif;
     }
-
-    h1 {
-      font-weight: 700;
-      font-size: 24px;
-      color: #007bff;
-      text-align: center;
-      margin-bottom: 25px;
-      position: relative;
-      letter-spacing: 0.5px;
-      padding-bottom: 10px;
-    }
-
-    h1::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, #007bff, #00c6ff);
-      border-radius: 3px;
-    }
-
-    p, li { line-height: 1.6; }
-
-    .contact-card {
-      background:white; 
-      padding:20px; 
-      border-radius:8px; 
-      box-shadow:0 2px 6px rgba(0,0,0,0.1); 
-      margin-bottom:20px;
-    }
-
-    a { color: #007bff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    button { 
-      padding:10px 18px; background:#28a745; color:white; border:none; border-radius:4px; cursor:pointer;
-      margin: 15px 0;
-      font-weight: 600; 
-    }
-    button:hover { background:#218838; }
-    .back-btn { background: #218838; }
-    .back-btn:hover { background: #5a6268; }
   </style>
 </head>
-<body>
 
-  <h1>Contact Us</h1>
-  <div class="contact-card">
-    <h2>Office Address</h2>
-    <p>Village Nagla Durji, Hathras, UTTAR PRADESH, 204101</p>
-  </div>
+<body class="bg-slate-100 min-h-screen px-4 py-6">
 
-  <div class="contact-card">
-    <h2>Phone</h2>
-    <p>📞 <a href="tel:+917017161590">+91 70171 61590</a></p>
-  </div>
+  <div class="max-w-xl mx-auto">
 
-  <div class="contact-card">
-    <h2>Email</h2>
-    <p>✉️ <a href="mailto:prakashraiya25@autopush.in">prakashraiya25@autopush.in</a></p>
-  </div>
+    <!-- Header -->
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-bold text-blue-600">
+        Contact Us
+      </h1>
 
-  <div class="contact-card">
-    <h2>Contact Person</h2>
-    <p>Prakash Raiya</p>
+      <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mx-auto mt-3"></div>
+    </div>
+
+    <!-- Office Address -->
+    <div class="bg-white rounded shadow-sm border border-slate-200 p-4 mb-4">
+      <div class="flex items-start gap-3">
+
+        <div class="w-11 h-11 rounded bg-blue-100 flex items-center justify-center shrink-0">
+          <i data-lucide="map-pin" class="w-5 h-5 text-blue-600"></i>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-slate-800 mb-1">
+            Office Address
+          </h2>
+
+          <p class="text-slate-600 leading-6 text-[15px]">
+            Village Nagla Durji, Hathras,<br>
+            Uttar Pradesh, 204101
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Phone -->
+    <div class="bg-white rounded shadow-sm border border-slate-200 p-4 mb-4">
+      <div class="flex items-start gap-3">
+
+        <div class="w-11 h-11 rounded bg-green-100 flex items-center justify-center shrink-0">
+          <i data-lucide="phone-call" class="w-5 h-5 text-green-600"></i>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-slate-800 mb-1">
+            Phone
+          </h2>
+
+          <a href="tel:+917017161590"
+             class="text-[15px] text-blue-600 hover:underline">
+            +91 70171 61590
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="bg-white rounded shadow-sm border border-slate-200 p-4 mb-4">
+      <div class="flex items-start gap-3">
+
+        <div class="w-11 h-11 rounded bg-red-100 flex items-center justify-center shrink-0">
+          <i data-lucide="mail" class="w-5 h-5 text-red-500"></i>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-slate-800 mb-1">
+            Email
+          </h2>
+
+          <a href="mailto:prakashraiya25@autopush.in"
+             class="text-[15px] text-blue-600 hover:underline break-all">
+            prakashraiya25@autopush.in
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contact Person -->
+    <div class="bg-white rounded shadow-sm border border-slate-200 p-4">
+      <div class="flex items-start gap-3">
+
+        <div class="w-11 h-11 rounded bg-purple-100 flex items-center justify-center shrink-0">
+          <i data-lucide="user-round" class="w-5 h-5 text-purple-600"></i>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-slate-800 mb-1">
+            Contact Person
+          </h2>
+
+          <p class="text-slate-600 text-[15px]">
+            Prakash Raiya
+          </p>
+        </div>
+
+      </div>
+    </div>
+
   </div>
+<!-- Fixed Back Button -->
+<button
+  onclick="history.back()"
+  class="fixed bottom-4 left-4 z-50 bg-white border border-slate-200 shadow-sm hover:shadow-md rounded px-3 py-2 flex items-center gap-2 text-slate-700 hover:bg-slate-50 transition-all duration-200"
+>
+  <i data-lucide="arrow-left" class="w-4 h-4"></i>
+  <span class="text-sm font-medium">Back</span>
+</button>
+  <script>
+    lucide.createIcons();
+  </script>
 
 </body>
 </html>
