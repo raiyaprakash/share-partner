@@ -130,15 +130,15 @@ export const onRequest = async ({ request, env }) => {
           <!-- Responsive Table -->
           <div class="overflow-x-auto">
 
-            <table class="w-full min-w-[500px]">
+            <table class="w-full">
 
               <thead class="bg-slate-50">
                 <tr>
-                  <th class="text-left px-4 py-3 text-xs font-bold text-slate-600 uppercase tracking-wide">
+                  <th class="w-1/2 text-left px-4 py-3 text-xs font-bold text-slate-600 uppercase tracking-wide">
                     Amount
                   </th>
 
-                  <th class="text-left px-4 py-3 text-xs font-bold text-slate-600 uppercase tracking-wide">
+                  <th class="w-1/2 text-left px-4 py-3 text-xs font-bold text-slate-600 uppercase tracking-wide">
                     Date & Time
                   </th>
                 </tr>
@@ -151,11 +151,11 @@ export const onRequest = async ({ request, env }) => {
                     (w) => `
                     <tr class="hover:bg-slate-50 transition">
 
-                      <td class="px-4 py-3">
+                      <td class="w-1/2 px-4 py-3">
 
                         <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 px-3 py-1.5 rounded-lg text-sm font-bold">
 
-                          <i data-lucide="dollar-sign" class="w-4 h-4"></i>
+                          <!--i data-lucide="dollar-sign" class="w-4 h-4"></i-->
 
                           $${w.amount.toFixed(2)}
 
@@ -163,7 +163,7 @@ export const onRequest = async ({ request, env }) => {
 
                       </td>
 
-                      <td class="px-4 py-3 text-sm text-slate-600 font-medium">
+                      <td class="w-1/2 px-4 py-3 text-sm text-slate-600 font-medium">
 
                         <div class="flex items-center gap-2">
 
