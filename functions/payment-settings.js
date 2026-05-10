@@ -81,7 +81,7 @@ export const onRequest = async ({ request, env }) => {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Payment Settings</title>
 
@@ -93,83 +93,66 @@ export const onRequest = async ({ request, env }) => {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    *{
-      box-sizing:border-box;
-    }
-
     body{
       font-family:'Inter',sans-serif;
-    }
-
-    input,
-    select,
-    button{
-      font-size:14px;
     }
   </style>
 </head>
 
-<body class="bg-slate-100 text-[14px] min-h-screen">
+<body class="bg-slate-100 min-h-screen">
 
   <!-- Header -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-
+  <header class="bg-white border-b border-slate-200">
     <div class="max-w-2xl mx-auto px-3 py-3 flex items-center justify-between">
 
       <div class="flex items-center gap-2">
-
-        <div class="w-9 h-9 rounded-[4px] bg-blue-100 flex items-center justify-center">
+        <div class="w-10 h-10 rounded bg-blue-100 flex items-center justify-center">
           <i data-lucide="wallet" class="w-4 h-4 text-blue-600"></i>
         </div>
 
         <div>
-          <h1 class="text-[15px] font-semibold text-slate-800">
+          <h1 class="text-base md:text-lg font-semibold text-slate-800">
             Payment Settings
           </h1>
 
-          <p class="text-[11px] text-slate-500">
+          <p class="text-xs text-slate-500">
             Manage payout details
           </p>
         </div>
-
       </div>
 
-      <a 
+      <a
         href="/dashboard"
-        class="flex items-center gap-1 bg-slate-100 hover:bg-slate-200 transition px-3 py-2 rounded-[4px] text-[13px] font-medium text-slate-700"
+        class="h-10 px-3 rounded bg-slate-100 hover:bg-slate-200 transition flex items-center gap-2 text-sm text-slate-700"
       >
         <i data-lucide="arrow-left" class="w-4 h-4"></i>
         Back
       </a>
 
     </div>
-
   </header>
 
   <!-- Main -->
-  <main class="max-w-2xl mx-auto p-3">
+  <main class="max-w-2xl mx-auto p-3 md:p-4">
 
-    <form 
-      method="POST"
-      class="bg-white rounded-[4px] border border-slate-200 shadow-sm overflow-hidden"
-    >
+    <form method="POST" class="bg-white rounded shadow-sm border border-slate-200 overflow-hidden">
 
       <!-- Top Banner -->
-      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-4 text-white">
+      <div class="bg-blue-600 p-4 text-white">
 
         <div class="flex items-center gap-3">
 
-          <div class="w-11 h-11 rounded-[4px] bg-white/20 flex items-center justify-center">
+          <div class="w-10 h-10 rounded bg-white/20 flex items-center justify-center">
             <i data-lucide="credit-card" class="w-5 h-5"></i>
           </div>
 
           <div>
-            <h2 class="text-[16px] font-semibold">
-              Update Payment Info
+            <h2 class="text-base font-semibold">
+              Update Payment Information
             </h2>
 
-            <p class="text-[12px] text-blue-100 mt-1">
-              Add bank or UPI details securely
+            <p class="text-xs text-blue-100 mt-1">
+              Add your bank or UPI details securely.
             </p>
           </div>
 
@@ -177,13 +160,12 @@ export const onRequest = async ({ request, env }) => {
 
       </div>
 
-      <!-- Form Fields -->
-      <div class="p-4 space-y-4">
+      <!-- Form Body -->
+      <div class="p-4 md:p-5 space-y-4">
 
         <!-- Name -->
         <div>
-
-          <label class="flex items-center gap-2 text-[13px] font-medium text-slate-700 mb-2">
+          <label class="text-sm font-medium text-slate-700 flex items-center gap-2 mb-1">
             <i data-lucide="user" class="w-4 h-4"></i>
             Full Name
           </label>
@@ -194,15 +176,13 @@ export const onRequest = async ({ request, env }) => {
             value="${data?.name || ""}"
             required
             placeholder="Enter your full name"
-            class="w-full h-10 rounded-[4px] border border-slate-300 bg-slate-50 px-3 outline-none focus:border-blue-500"
+            class="w-full h-10 rounded border border-slate-300 bg-slate-50 px-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
           />
-
         </div>
 
         <!-- Phone -->
         <div>
-
-          <label class="flex items-center gap-2 text-[13px] font-medium text-slate-700 mb-2">
+          <label class="text-sm font-medium text-slate-700 flex items-center gap-2 mb-1">
             <i data-lucide="phone" class="w-4 h-4"></i>
             Phone Number
           </label>
@@ -212,16 +192,14 @@ export const onRequest = async ({ request, env }) => {
             name="phone"
             value="${data?.phone || ""}"
             required
-            placeholder="Enter mobile number"
-            class="w-full h-10 rounded-[4px] border border-slate-300 bg-slate-50 px-3 outline-none focus:border-blue-500"
+            placeholder="Enter phone number"
+            class="w-full h-10 rounded border border-slate-300 bg-slate-50 px-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
           />
-
         </div>
 
         <!-- Payment Method -->
         <div>
-
-          <label class="flex items-center gap-2 text-[13px] font-medium text-slate-700 mb-2">
+          <label class="text-sm font-medium text-slate-700 flex items-center gap-2 mb-1">
             <i data-lucide="circle-dollar-sign" class="w-4 h-4"></i>
             Payment Method
           </label>
@@ -230,9 +208,8 @@ export const onRequest = async ({ request, env }) => {
             name="method"
             id="method"
             onchange="toggleFields()"
-            class="w-full h-10 rounded-[4px] border border-slate-300 bg-slate-50 px-3 outline-none focus:border-blue-500"
+            class="w-full h-10 rounded border border-slate-300 bg-slate-50 px-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
           >
-
             <option value="bank" ${data?.method === "bank" ? "selected" : ""}>
               Bank Transfer
             </option>
@@ -240,26 +217,22 @@ export const onRequest = async ({ request, env }) => {
             <option value="upi" ${data?.method === "upi" ? "selected" : ""}>
               UPI Transfer
             </option>
-
           </select>
-
         </div>
 
         <!-- Bank Fields -->
-        <div 
+        <div
           id="bankFields"
-          class="space-y-4 bg-slate-50 border border-slate-200 rounded-[4px] p-4"
+          class="rounded border border-slate-200 p-4 bg-slate-50 space-y-4"
         >
 
-          <div class="flex items-center gap-2 text-[13px] font-semibold text-slate-700">
+          <div class="flex items-center gap-2 text-sm font-medium text-slate-700">
             <i data-lucide="building-2" class="w-4 h-4"></i>
             Bank Details
           </div>
 
-          <!-- Bank Name -->
           <div>
-
-            <label class="text-[12px] font-medium text-slate-600 mb-2 block">
+            <label class="text-sm font-medium text-slate-600 mb-1 block">
               Bank Name
             </label>
 
@@ -268,15 +241,12 @@ export const onRequest = async ({ request, env }) => {
               name="bank_name"
               value="${data?.bank_name || ""}"
               placeholder="State Bank of India"
-              class="w-full h-10 rounded-[4px] border border-slate-300 bg-white px-3 outline-none focus:border-blue-500"
+              class="w-full h-10 rounded border border-slate-300 bg-white px-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             />
-
           </div>
 
-          <!-- Account Number -->
           <div>
-
-            <label class="text-[12px] font-medium text-slate-600 mb-2 block">
+            <label class="text-sm font-medium text-slate-600 mb-1 block">
               Account Number
             </label>
 
@@ -285,15 +255,12 @@ export const onRequest = async ({ request, env }) => {
               name="account_number"
               value="${data?.account_number || ""}"
               placeholder="XXXXXXXXXXXX"
-              class="w-full h-10 rounded-[4px] border border-slate-300 bg-white px-3 outline-none focus:border-blue-500"
+              class="w-full h-10 rounded border border-slate-300 bg-white px-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             />
-
           </div>
 
-          <!-- IFSC -->
           <div>
-
-            <label class="text-[12px] font-medium text-slate-600 mb-2 block">
+            <label class="text-sm font-medium text-slate-600 mb-1 block">
               IFSC Code
             </label>
 
@@ -302,28 +269,25 @@ export const onRequest = async ({ request, env }) => {
               name="ifsc_code"
               value="${data?.ifsc_code || ""}"
               placeholder="SBIN0001234"
-              class="w-full h-10 rounded-[4px] border border-slate-300 bg-white px-3 uppercase outline-none focus:border-blue-500"
+              class="w-full h-10 rounded border border-slate-300 bg-white px-3 text-sm uppercase outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             />
-
           </div>
 
         </div>
 
         <!-- UPI Fields -->
-        <div 
+        <div
           id="upiFields"
-          class="space-y-4 bg-slate-50 border border-slate-200 rounded-[4px] p-4"
+          class="rounded border border-slate-200 p-4 bg-slate-50 space-y-4"
         >
 
-          <div class="flex items-center gap-2 text-[13px] font-semibold text-slate-700">
+          <div class="flex items-center gap-2 text-sm font-medium text-slate-700">
             <i data-lucide="smartphone" class="w-4 h-4"></i>
             UPI Details
           </div>
 
-          <!-- UPI -->
           <div>
-
-            <label class="text-[12px] font-medium text-slate-600 mb-2 block">
+            <label class="text-sm font-medium text-slate-600 mb-1 block">
               UPI ID
             </label>
 
@@ -332,9 +296,8 @@ export const onRequest = async ({ request, env }) => {
               name="upi_id"
               value="${data?.upi_id || ""}"
               placeholder="example@upi"
-              class="w-full h-10 rounded-[4px] border border-slate-300 bg-white px-3 outline-none focus:border-blue-500"
+              class="w-full h-10 rounded border border-slate-300 bg-white px-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             />
-
           </div>
 
         </div>
@@ -343,16 +306,16 @@ export const onRequest = async ({ request, env }) => {
         ${
           data?.last_modified
             ? `
-            <div class="bg-amber-50 border border-amber-200 rounded-[4px] px-3 py-3 flex items-start gap-3">
+            <div class="rounded border border-amber-200 bg-amber-50 px-3 py-2 flex items-start gap-2">
 
               <i data-lucide="clock-3" class="w-4 h-4 text-amber-600 mt-0.5"></i>
 
               <div>
-                <p class="text-[12px] font-medium text-amber-800">
+                <p class="text-sm font-medium text-amber-800">
                   Last Modified
                 </p>
 
-                <p class="text-[11px] text-amber-700 mt-1">
+                <p class="text-xs text-amber-700 mt-1">
                   ${new Date(data.last_modified).toLocaleString("en-IN")}
                 </p>
               </div>
@@ -365,13 +328,10 @@ export const onRequest = async ({ request, env }) => {
         <!-- Save Button -->
         <button
           type="submit"
-          class="w-full h-11 rounded-[4px] bg-blue-600 hover:bg-blue-700 transition text-white font-medium flex items-center justify-center gap-2"
+          class="w-full h-11 rounded bg-blue-600 hover:bg-blue-700 transition text-white text-sm font-medium flex items-center justify-center gap-2"
         >
-
           <i data-lucide="save" class="w-4 h-4"></i>
-
           Save Changes
-
         </button>
 
       </div>
@@ -381,10 +341,8 @@ export const onRequest = async ({ request, env }) => {
   </main>
 
   <!-- Footer -->
-  <footer class="text-center text-[12px] text-slate-500 py-5">
-
+  <footer class="text-center text-xs text-slate-500 py-6">
     © ${new Date().getFullYear()} ShareLinks Partner Network
-
   </footer>
 
   <script>
