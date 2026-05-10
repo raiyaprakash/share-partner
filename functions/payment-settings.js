@@ -93,120 +93,146 @@ export const onRequest = async ({ request, env }) => {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    *{
+      box-sizing:border-box;
+    }
+
     body{
       font-family:'Inter',sans-serif;
+    }
+
+    input,
+    select,
+    button{
+      font-size:14px;
     }
   </style>
 </head>
 
-<body class="bg-slate-100 min-h-screen">
+<body class="bg-slate-100 text-[14px] min-h-screen">
 
   <!-- Header -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-    <div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
-      
-      <div class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-2xl bg-blue-100 flex items-center justify-center">
-          <i data-lucide="wallet" class="w-5 h-5 text-blue-600"></i>
+
+    <div class="max-w-2xl mx-auto px-3 py-3 flex items-center justify-between">
+
+      <div class="flex items-center gap-2">
+
+        <div class="w-9 h-9 rounded-[4px] bg-blue-100 flex items-center justify-center">
+          <i data-lucide="wallet" class="w-4 h-4 text-blue-600"></i>
         </div>
 
         <div>
-          <h1 class="text-lg font-bold text-slate-800">
+          <h1 class="text-[15px] font-semibold text-slate-800">
             Payment Settings
           </h1>
-          <p class="text-xs text-slate-500">
-            Manage your payout details
+
+          <p class="text-[11px] text-slate-500">
+            Manage payout details
           </p>
         </div>
+
       </div>
 
       <a 
         href="/dashboard"
-        class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 transition px-4 py-2 rounded-xl text-sm font-medium text-slate-700"
+        class="flex items-center gap-1 bg-slate-100 hover:bg-slate-200 transition px-3 py-2 rounded-[4px] text-[13px] font-medium text-slate-700"
       >
         <i data-lucide="arrow-left" class="w-4 h-4"></i>
         Back
       </a>
 
     </div>
+
   </header>
 
   <!-- Main -->
-  <main class="max-w-3xl mx-auto p-4">
+  <main class="max-w-2xl mx-auto p-3">
 
-    <form method="POST" class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+    <form 
+      method="POST"
+      class="bg-white rounded-[4px] border border-slate-200 shadow-sm overflow-hidden"
+    >
 
       <!-- Top Banner -->
-      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
-        <div class="flex items-center gap-4">
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-4 text-white">
 
-          <div class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center">
-            <i data-lucide="credit-card" class="w-7 h-7"></i>
+        <div class="flex items-center gap-3">
+
+          <div class="w-11 h-11 rounded-[4px] bg-white/20 flex items-center justify-center">
+            <i data-lucide="credit-card" class="w-5 h-5"></i>
           </div>
 
           <div>
-            <h2 class="text-xl font-bold">
-              Update Payment Information
+            <h2 class="text-[16px] font-semibold">
+              Update Payment Info
             </h2>
 
-            <p class="text-sm text-blue-100 mt-1">
-              Add your bank account or UPI details securely.
+            <p class="text-[12px] text-blue-100 mt-1">
+              Add bank or UPI details securely
             </p>
           </div>
 
         </div>
+
       </div>
 
       <!-- Form Fields -->
-      <div class="p-5 md:p-7 space-y-5">
+      <div class="p-4 space-y-4">
 
         <!-- Name -->
         <div>
-          <label class="text-sm font-semibold text-slate-700 flex items-center gap-2 mb-2">
+
+          <label class="flex items-center gap-2 text-[13px] font-medium text-slate-700 mb-2">
             <i data-lucide="user" class="w-4 h-4"></i>
             Full Name
           </label>
 
-          <input 
+          <input
             type="text"
             name="name"
             value="${data?.name || ""}"
             required
             placeholder="Enter your full name"
-            class="w-full h-12 rounded-2xl border border-slate-300 bg-slate-50 px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+            class="w-full h-10 rounded-[4px] border border-slate-300 bg-slate-50 px-3 outline-none focus:border-blue-500"
           />
+
         </div>
 
         <!-- Phone -->
         <div>
-          <label class="text-sm font-semibold text-slate-700 flex items-center gap-2 mb-2">
+
+          <label class="flex items-center gap-2 text-[13px] font-medium text-slate-700 mb-2">
             <i data-lucide="phone" class="w-4 h-4"></i>
             Phone Number
           </label>
 
-          <input 
+          <input
             type="tel"
             name="phone"
             value="${data?.phone || ""}"
             required
             placeholder="Enter mobile number"
-            class="w-full h-12 rounded-2xl border border-slate-300 bg-slate-50 px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+            class="w-full h-10 rounded-[4px] border border-slate-300 bg-slate-50 px-3 outline-none focus:border-blue-500"
           />
+
         </div>
 
-        <!-- Method -->
+        <!-- Payment Method -->
         <div>
-          <label class="text-sm font-semibold text-slate-700 flex items-center gap-2 mb-2">
+
+          <label class="flex items-center gap-2 text-[13px] font-medium text-slate-700 mb-2">
             <i data-lucide="circle-dollar-sign" class="w-4 h-4"></i>
             Payment Method
           </label>
 
-          <select 
+          <select
             name="method"
             id="method"
             onchange="toggleFields()"
-            class="w-full h-12 rounded-2xl border border-slate-300 bg-slate-50 px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+            class="w-full h-10 rounded-[4px] border border-slate-300 bg-slate-50 px-3 outline-none focus:border-blue-500"
           >
+
             <option value="bank" ${data?.method === "bank" ? "selected" : ""}>
               Bank Transfer
             </option>
@@ -214,60 +240,71 @@ export const onRequest = async ({ request, env }) => {
             <option value="upi" ${data?.method === "upi" ? "selected" : ""}>
               UPI Transfer
             </option>
+
           </select>
+
         </div>
 
         <!-- Bank Fields -->
         <div 
           id="bankFields"
-          class="space-y-5 bg-slate-50 border border-slate-200 rounded-3xl p-5"
+          class="space-y-4 bg-slate-50 border border-slate-200 rounded-[4px] p-4"
         >
 
-          <div class="flex items-center gap-2 text-slate-700 font-semibold">
-            <i data-lucide="building-2" class="w-5 h-5"></i>
+          <div class="flex items-center gap-2 text-[13px] font-semibold text-slate-700">
+            <i data-lucide="building-2" class="w-4 h-4"></i>
             Bank Details
           </div>
 
+          <!-- Bank Name -->
           <div>
-            <label class="text-sm font-medium text-slate-600 mb-2 block">
+
+            <label class="text-[12px] font-medium text-slate-600 mb-2 block">
               Bank Name
             </label>
 
-            <input 
+            <input
               type="text"
               name="bank_name"
               value="${data?.bank_name || ""}"
               placeholder="State Bank of India"
-              class="w-full h-12 rounded-2xl border border-slate-300 bg-white px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+              class="w-full h-10 rounded-[4px] border border-slate-300 bg-white px-3 outline-none focus:border-blue-500"
             />
+
           </div>
 
+          <!-- Account Number -->
           <div>
-            <label class="text-sm font-medium text-slate-600 mb-2 block">
+
+            <label class="text-[12px] font-medium text-slate-600 mb-2 block">
               Account Number
             </label>
 
-            <input 
+            <input
               type="text"
               name="account_number"
               value="${data?.account_number || ""}"
               placeholder="XXXXXXXXXXXX"
-              class="w-full h-12 rounded-2xl border border-slate-300 bg-white px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+              class="w-full h-10 rounded-[4px] border border-slate-300 bg-white px-3 outline-none focus:border-blue-500"
             />
+
           </div>
 
+          <!-- IFSC -->
           <div>
-            <label class="text-sm font-medium text-slate-600 mb-2 block">
+
+            <label class="text-[12px] font-medium text-slate-600 mb-2 block">
               IFSC Code
             </label>
 
-            <input 
+            <input
               type="text"
               name="ifsc_code"
               value="${data?.ifsc_code || ""}"
               placeholder="SBIN0001234"
-              class="w-full h-12 rounded-2xl border border-slate-300 bg-white px-4 uppercase outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+              class="w-full h-10 rounded-[4px] border border-slate-300 bg-white px-3 uppercase outline-none focus:border-blue-500"
             />
+
           </div>
 
         </div>
@@ -275,26 +312,29 @@ export const onRequest = async ({ request, env }) => {
         <!-- UPI Fields -->
         <div 
           id="upiFields"
-          class="space-y-5 bg-slate-50 border border-slate-200 rounded-3xl p-5"
+          class="space-y-4 bg-slate-50 border border-slate-200 rounded-[4px] p-4"
         >
 
-          <div class="flex items-center gap-2 text-slate-700 font-semibold">
-            <i data-lucide="smartphone" class="w-5 h-5"></i>
+          <div class="flex items-center gap-2 text-[13px] font-semibold text-slate-700">
+            <i data-lucide="smartphone" class="w-4 h-4"></i>
             UPI Details
           </div>
 
+          <!-- UPI -->
           <div>
-            <label class="text-sm font-medium text-slate-600 mb-2 block">
+
+            <label class="text-[12px] font-medium text-slate-600 mb-2 block">
               UPI ID
             </label>
 
-            <input 
+            <input
               type="text"
               name="upi_id"
               value="${data?.upi_id || ""}"
               placeholder="example@upi"
-              class="w-full h-12 rounded-2xl border border-slate-300 bg-white px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+              class="w-full h-10 rounded-[4px] border border-slate-300 bg-white px-3 outline-none focus:border-blue-500"
             />
+
           </div>
 
         </div>
@@ -303,16 +343,16 @@ export const onRequest = async ({ request, env }) => {
         ${
           data?.last_modified
             ? `
-            <div class="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3 flex items-start gap-3">
-              
-              <i data-lucide="clock-3" class="w-5 h-5 text-amber-600 mt-0.5"></i>
+            <div class="bg-amber-50 border border-amber-200 rounded-[4px] px-3 py-3 flex items-start gap-3">
+
+              <i data-lucide="clock-3" class="w-4 h-4 text-amber-600 mt-0.5"></i>
 
               <div>
-                <p class="text-sm font-medium text-amber-800">
+                <p class="text-[12px] font-medium text-amber-800">
                   Last Modified
                 </p>
 
-                <p class="text-xs text-amber-700 mt-1">
+                <p class="text-[11px] text-amber-700 mt-1">
                   ${new Date(data.last_modified).toLocaleString("en-IN")}
                 </p>
               </div>
@@ -322,13 +362,16 @@ export const onRequest = async ({ request, env }) => {
             : ""
         }
 
-        <!-- Button -->
-        <button 
+        <!-- Save Button -->
+        <button
           type="submit"
-          class="w-full h-14 rounded-2xl bg-blue-600 hover:bg-blue-700 transition text-white font-semibold text-base flex items-center justify-center gap-2 shadow-lg shadow-blue-200"
+          class="w-full h-11 rounded-[4px] bg-blue-600 hover:bg-blue-700 transition text-white font-medium flex items-center justify-center gap-2"
         >
-          <i data-lucide="save" class="w-5 h-5"></i>
+
+          <i data-lucide="save" class="w-4 h-4"></i>
+
           Save Changes
+
         </button>
 
       </div>
@@ -338,8 +381,10 @@ export const onRequest = async ({ request, env }) => {
   </main>
 
   <!-- Footer -->
-  <footer class="text-center text-sm text-slate-500 py-8">
+  <footer class="text-center text-[12px] text-slate-500 py-5">
+
     © ${new Date().getFullYear()} ShareLinks Partner Network
+
   </footer>
 
   <script>
