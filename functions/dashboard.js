@@ -203,24 +203,18 @@ function formatViews(num) {
 <title>${partner.name} - Dashboard</title>
 
 <script src='https://cdn.jsdelivr.net/combine//npm/@tailwindcss/browser@4.2.2/dist/index.global.min.js,npm/lucide@1.7.0/dist/umd/lucide.min.js'></script>
-
 <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 *{
   font-family:'Roboto',sans-serif;
   box-sizing:border-box;
 }
 
-html,body{
-  width:100%;
-  overflow-x:hidden;
-}
-
 body{
+  overflow-x:hidden;
   background:#f1f5f9;
 }
 
@@ -232,7 +226,7 @@ body{
 .rounded-2xl,
 .rounded-3xl,
 .rounded-\[28px\]{
-  border-radius:4px!important;
+  border-radius:4px !important;
 }
 
 /* SCROLLBAR */
@@ -259,7 +253,7 @@ body{
 /* GLASS */
 
 .glass{
-  background:#fff;
+  background:#ffffff;
   border:1px solid #e2e8f0;
 }
 
@@ -268,22 +262,21 @@ body{
 .sidebar-transition{
   transition:all .3s ease;
 }
-
 /* DARK MODE */
 
 .dark{
-  background:#020617!important;
+  background:#020617 !important;
   color:#f8fafc;
 }
 
 .dark .glass{
-  background:#0f172a!important;
-  border-color:#1e293b!important;
+  background:#0f172a !important;
+  border-color:#1e293b !important;
 }
 
 .dark aside{
-  background:#0f172a!important;
-  border-color:#1e293b!important;
+  background:#0f172a !important;
+  border-color:#1e293b !important;
 }
 
 .dark header{
@@ -316,29 +309,15 @@ body{
 }
 
 .dark nav a:hover{
-  background:#1e293b!important;
+  background: #1e293b!important;
 }
 
 .dark nav a.logout:hover{
-  background:#2a1d30!important;
+  background: #2a1d30!important;
 }
 
 .dark ::-webkit-scrollbar-thumb{
   background:#334155;
-}
-
-/* MOBILE FIX */
-
-@media(max-width:640px){
-
-  body{
-    font-size:14px;
-  }
-
-  .card-hover:hover{
-    transform:none;
-  }
-
 }
 
 </style>
@@ -356,141 +335,156 @@ onclick="toggleSidebar()"></div>
 <!-- SIDEBAR -->
 
 <aside id="sidebar"
-class="fixed top-0 left-0 z-50 h-full w-[260px] sm:w-72 bg-white border-r border-slate-200 shadow-xl sidebar-transition -translate-x-full lg:translate-x-0">
+class="fixed top-0 left-0 z-50 h-full w-72 bg-white border-r border-slate-200 shadow-xl sidebar-transition -translate-x-full lg:translate-x-0">
 
-<!-- TOP -->
+  <!-- TOP -->
 
-<div class="h-16 sm:h-20 px-4 sm:px-6 flex items-center justify-between border-b border-slate-200">
+  <div class="h-20 px-6 flex items-center justify-between border-b border-slate-200">
 
-<div>
+    <div>
 
-<h2 class="text-lg sm:text-xl font-bold text-slate-900">
-Share Partner
-</h2>
+      <h2 class="text-xl font-bold text-slate-900">
+        Share Partner
+      </h2>
 
-<p class="text-[11px] sm:text-xs text-slate-500 mt-1">
-Earnings Dashboard
-</p>
+      <p class="text-xs text-slate-500 mt-1">
+        Earnings Dashboard
+      </p>
 
-</div>
+    </div>
 
-<button onclick="toggleSidebar()"
-class="lg:hidden w-9 h-9 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center">
+    <!-- CLOSE -->
 
-<i data-lucide="x" class="w-5 h-5 text-slate-700"></i>
+    <button onclick="toggleSidebar()"
+    class="lg:hidden w-10 h-10 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center">
 
-</button>
+      <i data-lucide="x" class="w-5 h-5 text-slate-700"></i>
 
-</div>
+    </button>
 
-<!-- PROFILE -->
+  </div>
 
-<div class="p-4 sm:p-5 border-b border-slate-200">
+  <!-- PROFILE -->
 
-<div class="flex items-center gap-3">
+  <div class="p-5 border-b border-slate-200">
 
-<div class="w-11 h-11 sm:w-14 sm:h-14 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-lg sm:text-xl font-bold text-white shadow">
+    <div class="flex items-center gap-3">
 
-${partner.name.charAt(0)}
+      <div class="w-14 h-14 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-xl font-bold text-white shadow">
 
-</div>
+        ${partner.name.charAt(0)}
 
-<div>
+      </div>
 
-<h3 class="font-semibold text-slate-900 text-sm sm:text-base">
-${partner.name}
-</h3>
+      <div>
 
-<p class="text-[11px] sm:text-xs text-green-500 mt-1">
-● Active Partner
-</p>
+        <h3 class="font-semibold text-slate-900">
+          ${partner.name}
+        </h3>
 
-</div>
+        <p class="text-xs text-green-500 mt-1">
+          ● Active Partner
+        </p>
 
-</div>
+      </div>
 
-</div>
+    </div>
 
+  </div>
+
+  <!-- MENU -->
 <!-- MENU -->
 
-<nav class="p-3 sm:p-4 space-y-2 overflow-y-auto h-[calc(100%-140px)]">
+<nav class="p-4 space-y-2 overflow-y-auto h-[calc(100%-160px)]">
 
-<a href="/generate"
-class="flex items-center gap-3 px-4 py-3 rounded bg-blue-600 text-white shadow">
+  <!-- GENERATE -->
 
-<i data-lucide="link-2" class="w-5 h-5"></i>
+  <a href="/generate"
+  class="flex items-center gap-4 px-4 py-3 rounded bg-blue-600 text-white shadow">
 
-<span class="text-sm sm:text-base font-medium">
-Generate Links
-</span>
+    <i data-lucide="link-2" class="w-5 h-5"></i>
 
-</a>
+    <span class="font-medium">
+      Generate Links
+    </span>
 
-<a href="/payment-settings"
-class="flex items-center gap-3 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
+  </a>
 
-<i data-lucide="wallet" class="w-5 h-5"></i>
+  <!-- SETTINGS -->
 
-<span class="text-sm sm:text-base">
-Payment Settings
-</span>
+  <a href="/payment-settings"
+  class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-</a>
+      <i data-lucide="wallet" class="w-5 h-5"></i>
 
-<a href="/payment-history"
-class="flex items-center gap-3 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
+      <span>
+        Payment Settings
+      </span>
 
-<i data-lucide="history" class="w-5 h-5"></i>
+  </a>
 
-<span class="text-sm sm:text-base">
-Withdraw History
-</span>
+  <!-- WITHDRAWAL -->
 
-</a>
+  <a href="/payment-history"
+  class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-<a href="/contact"
-class="flex items-center gap-3 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
+      <i data-lucide="history" class="w-5 h-5"></i>
 
-<i data-lucide="phone" class="w-5 h-5"></i>
+      <span>
+        Withdraw History
+      </span>
 
-<span class="text-sm sm:text-base">
-Contact US
-</span>
+  </a>
 
-</a>
+  <!-- CONTACT -->
 
-<a href="/privacy"
-class="flex items-center gap-3 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
+  <a href="/contact"
+  class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-<i data-lucide="shield-check" class="w-5 h-5"></i>
+    <i data-lucide="phone" class="w-5 h-5"></i>
 
-<span class="text-sm sm:text-base">
-Privacy Policy
-</span>
+    <span>
+      Contact US
+    </span>
 
-</a>
+  </a>
 
-<a href="/terms"
-class="flex items-center gap-3 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
+  <!-- PRIVACY -->
 
-<i data-lucide="file-text" class="w-5 h-5"></i>
+  <a href="/privacy"
+  class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-<span class="text-sm sm:text-base">
-Terms & Conditions
-</span>
+    <i data-lucide="shield-check" class="w-5 h-5"></i>
 
-</a>
+    <span>
+      Privacy Policy
+    </span>
 
-<a href="/logout"
-class="flex items-center gap-3 px-4 py-3 rounded bg-red-600/10 border border-red-500/20 text-red-400 hover:bg-red-600/20 transition mt-5 logout">
+  </a>
 
-<i data-lucide="log-out" class="w-5 h-5"></i>
+  <!-- TERMS -->
 
-<span class="text-sm sm:text-base">
-Logout
-</span>
+  <a href="/terms"
+  class="flex items-center gap-4 px-4 py-3 rounded text-slate-700 hover:bg-slate-100 transition">
 
-</a>
+    <i data-lucide="file-text" class="w-5 h-5"></i>
+
+    <span>
+      Terms & Conditions
+    </span>
+
+  </a>
+
+    <a href="/logout"
+    class="flex items-center gap-4 px-4 py-3 rounded bg-red-600/10 border border-red-500/20 text-red-400 hover:bg-red-600/20 transition mt-5 logout">
+      <i data-lucide="log-out" class="w-5 h-5"></i>
+
+      <span>
+        Logout
+      </span>
+
+    </a>
+
 
 </nav>
 
@@ -500,164 +494,386 @@ Logout
 
 <div class="lg:ml-72 min-h-screen">
 
-<!-- HEADER -->
+  <!-- HEADER -->
 
 <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200">
 
-<div class="flex items-center justify-between px-3 sm:px-4 py-3 sm:py-4">
+  <div class="flex items-center justify-between px-4 py-4">
 
-<!-- LEFT -->
+    <!-- LEFT -->
 
-<div class="flex items-center gap-3">
+    <div class="flex items-center gap-3">
+  
+      <!-- MENU -->
 
-<button onclick="toggleSidebar()"
-class="lg:hidden w-10 h-10 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center">
+      <button onclick="toggleSidebar()"
+      class="lg:hidden w-11 h-11 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center">
 
-<i data-lucide="menu" class="w-5 h-5 text-slate-700"></i>
+        <i data-lucide="menu" class="w-5 h-5 text-slate-700"></i>
 
-</button>
+      </button>
 
-<div>
+      <!-- TITLE -->
 
-<h1 class="text-base sm:text-lg font-bold text-slate-900">
-Dashboard
-</h1>
+      <div>
 
-<p class="text-[11px] sm:text-xs text-slate-500">
-Welcome Back
-</p>
+        <h1 class="text-lg font-bold text-slate-900">
+          Dashboard
+        </h1>
 
-</div>
+        <p class="text-xs text-slate-500">
+          Welcome Back
+        </p>
 
-</div>
+      </div>
 
-<!-- RIGHT -->
+    </div>
 
-<div class="flex items-center gap-2 sm:gap-3">
+    <!-- BALANCE HEADER -->
 
-<button id="themeToggle"
-onclick="toggleTheme()"
-class="w-10 h-10 sm:w-11 sm:h-11 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center transition">
+    <div class="flex items-center gap-3">
+    
+  <!-- DARK MODE -->
 
-<i id="themeIcon" data-lucide="moon" class="w-5 h-5 text-slate-700"></i>
+  <button id="themeToggle"
+  onclick="toggleTheme()"
+  class="w-11 h-11 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center transition">
 
-</button>
+    <i id="themeIcon" data-lucide="moon" class="w-5 h-5 text-slate-700"></i>
 
-<div class="bg-blue-500 text-white px-3 sm:px-4 py-2 rounded shadow flex items-center gap-2">
+  </button>
+  
+      <div class="bg-blue-500 text-white px-4 py-2 rounded shadow flex items-center gap-2">
 
-<i data-lucide="wallet-2" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+        <i data-lucide="wallet-2" class="w-5 h-5"></i>
 
-<div class="leading-tight">
+        <div class="leading-tight">
 
-<div class="font-bold text-xs sm:text-sm">
-$${currentBalance}
-</div>
+          <div class="font-bold text-sm">
+            $${currentBalance}
+          </div>
 
-</div>
+        </div>
 
-</div>
+      </div>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
 </header>
 
-<!-- CONTENT -->
+  <!-- CONTENT -->
 
-<main class="p-3 sm:p-4 md:p-7">
+  <main class="p-4 md:p-7">
 
-<!-- NOTICE -->
+    <!-- NOTICE -->
 
-<div class="glass rounded p-4 sm:p-5 mb-5 sm:mb-6 shadow-sm">
+    <div class="glass rounded p-5 mb-6 shadow-sm">
 
-<div class="flex items-center gap-3 sm:gap-4">
+      <div class="flex items-center gap-4">
 
-<div class="w-12 h-12 sm:w-14 sm:h-14 rounded bg-yellow-400 flex items-center justify-center">
+        <div class="w-14 h-14 rounded bg-yellow-400 flex items-center justify-center">
 
-<i data-lucide="badge-alert" class="w-6 h-6 sm:w-7 sm:h-7 text-black"></i>
+          <i data-lucide="badge-alert" class="w-7 h-7 text-black"></i>
+
+        </div>
+
+        <div>
+
+          <h3 class="font-bold text-slate-900">
+            Dashboard Notice
+          </h3>
+
+          <p class="text-sm text-slate-500 mt-1">
+            Dashboard resets daily at 05:30 AM IST
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+
+      <!-- TODAY -->
+
+      <div class="glass rounded p-6 card-hover shadow-sm">
+
+        <div class="flex items-start justify-between">
+
+          <div>
+
+            <div class="text-4xl font-bold text-blue-500">
+              $${todayEarning}
+            </div>
+
+            <div class="mt-3 text-2xl font-bold text-slate-900" title="${stats.today}">
+              ${formatViews(stats.today)}
+            </div>
+
+            <div class="mt-1 text-sm text-slate-500">
+              Today Traffic
+            </div>
+
+          </div>
+
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow">
+
+            <i data-lucide="calendar-days" class="w-8 h-8 text-white"></i>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- YESTERDAY -->
+
+      <div class="glass rounded p-6 card-hover shadow-sm">
+
+        <div class="flex items-start justify-between">
+
+          <div>
+
+            <div class="text-4xl font-bold text-blue-500">
+              $${yesterdayEarning}
+            </div>
+
+            <div class="mt-3 text-2xl font-bold text-slate-900" title="${stats.yesterday}">
+              ${formatViews(stats.yesterday)}
+            </div>
+
+            <div class="mt-1 text-sm text-slate-500">
+              Yesterday Traffic
+            </div>
+
+          </div>
+
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow">
+
+            <i data-lucide="history" class="w-8 h-8 text-white"></i>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+<!-- TODAY RPM -->
+
+<div class="glass rounded p-6 card-hover shadow-sm">
+
+  <div class="flex items-start justify-between">
+
+    <div>
+
+      <div class="text-4xl font-black text-blue-500">
+        $${rpm.toFixed(2)}
+      </div>
+
+      <div class="mt-3 text-2xl font-bold text-slate-900">
+        RPM
+      </div>
+
+      <div class="mt-1 text-sm text-slate-500">
+        Today Page RPM
+      </div>
+
+    </div>
+
+    <div class="w-16 h-16 rounded bg-blue-500 flex items-center justify-center shadow">
+
+      <i data-lucide="badge-dollar-sign" class="w-8 h-8 text-white"></i>
+
+    </div>
+
+  </div>
 
 </div>
+      <!-- THIS MONTH -->
 
-<div>
+      <div class="glass rounded p-6 card-hover shadow-sm">
 
-<h3 class="font-bold text-slate-900 text-sm sm:text-base">
-Dashboard Notice
-</h3>
+        <div class="flex items-start justify-between">
 
-<p class="text-xs sm:text-sm text-slate-500 mt-1">
-Dashboard resets daily at 05:30 AM IST
-</p>
+          <div>
 
-</div>
+            <div class="text-4xl font-bold text-blue-500">
+              $${monthEarning}
+            </div>
 
-</div>
+            <div class="mt-3 text-2xl font-bold text-slate-900" title="${stats.this_month}">
+              ${formatViews(stats.this_month)}
+            </div>
 
-</div>
+            <div class="mt-1 text-sm text-slate-500">
+              This Month
+            </div>
 
-<!-- STATS -->
+          </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow">
 
-<!-- CARD -->
+            <i data-lucide="calendar-range" class="w-8 h-8 text-white"></i>
 
-<div class="glass rounded p-4 sm:p-6 card-hover shadow-sm">
+          </div>
 
-<div class="flex items-start justify-between gap-3">
+        </div>
 
-<div>
+      </div>
 
-<div class="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-500">
-$${todayEarning}
-</div>
+      <!-- LAST MONTH -->
 
-<div class="mt-2 sm:mt-3 text-xl sm:text-2xl font-bold text-slate-900">
-${formatViews(stats.today)}
-</div>
+      <div class="glass rounded p-6 card-hover shadow-sm">
 
-<div class="mt-1 text-xs sm:text-sm text-slate-500">
-Today Traffic
-</div>
+        <div class="flex items-start justify-between">
 
-</div>
+          <div>
 
-<div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow">
+            <div class="text-4xl font-bold text-blue-500">
+              $${lastMonthEarning}
+            </div>
 
-<i data-lucide="calendar-days"
-class="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white"></i>
+            <div class="mt-3 text-2xl font-bold text-slate-900" title="${stats.last_month}">
+              ${formatViews(stats.last_month)}
+            </div>
 
-</div>
+            <div class="mt-1 text-sm text-slate-500">
+              Last Month
+            </div>
 
-</div>
+          </div>
 
-</div>
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow">
 
-<!-- COPY SAME STYLE FOR OTHER CARDS -->
+            <i data-lucide="chart-column" class="w-8 h-8 text-white"></i>
 
-</div>
+          </div>
 
-<!-- WITHDRAW -->
+        </div>
 
+      </div>
+
+      <!-- ALL TIME -->
+
+      <div class="glass rounded p-6 card-hover shadow-sm">
+
+        <div class="flex items-start justify-between">
+
+          <div>
+
+            <div class="text-4xl font-bold text-blue-500">
+              $${totalEarnedFormatted}
+            </div>
+
+            <div class="mt-3 text-2xl font-bold text-slate-900" title="${stats.all_time}">
+              ${formatViews(stats.all_time)}
+            </div>
+
+            <div class="mt-1 text-sm text-slate-500">
+              All Time Traffic
+            </div>
+
+          </div>
+
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow">
+
+            <i data-lucide="globe" class="w-8 h-8 text-white"></i>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- BALANCE -->
+
+      <div class="glass rounded p-6 card-hover shadow-sm">
+
+        <div class="flex items-start justify-between">
+
+          <div>
+
+            <div class="text-4xl font-bold text-blue-500">
+              $${currentBalance}
+            </div>
+
+            <div class="mt-3 text-2xl font-bold text-slate-900">
+              Wallet Balance
+            </div>
+
+            <div class="mt-1 text-sm text-slate-500">
+              Available Amount
+            </div>
+
+          </div>
+
+          <div class="w-16 h-16 rounded bg-gradient-to-br from-slate-700 to-black flex items-center justify-center shadow">
+
+            <i data-lucide="wallet-cards" class="w-8 h-8 text-white"></i>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- WITHDRAW -->
+
+    ${
+      currentBalance >= 2
+      ? `
 <button
-class="mt-6 sm:mt-8 px-5 sm:px-8 py-3 sm:py-4 rounded bg-green-700 hover:bg-slate-900 text-white hover:text-green-400 font-bold shadow transition-all duration-300 flex items-center gap-2">
+class="mt-8 px-8 py-4 rounded bg-green-700 hover:bg-slate-900 text-white hover:text-green-400 font-bold shadow transition-all duration-300 flex items-center gap-2" id="withdrawBtn">
+<i data-lucide="wallet-2" class="w-5 h-5"></i><span>Request Withdrawal</span></button>
+      <div id="withdrawMsg" style="margin-top:10px;color:green;"></div>
+      <script>
+        const btn=document.getElementById("withdrawBtn");
+        btn.onclick=async()=>{
+          btn.disabled=true;btn.innerText="Sending...";
+          try{
+            const res=await fetch("/withdraw?amount=${currentBalance}");
+            const data=await res.json();
+            const msg=document.getElementById("withdrawMsg");
+            if(data.status==="ok"){
+              msg.innerText=data.msg;
+              btn.style.display="none";
+            }else{
+              msg.innerText="Error: "+data.msg;
+              btn.disabled=false;btn.innerText="Request Withdrawal";
+            }
+          }catch{
+            document.getElementById("withdrawMsg").innerText="Network error";
+            btn.disabled=false;btn.innerText="Request Withdrawal";
+          }
+        };
+      </script>
+      `
+      : `
+      <div class="glass rounded p-5 mt-8 text-red-500 font-semibold shadow-sm">
 
-<i data-lucide="wallet-2" class="w-5 h-5"></i>
+        Minimum $2 required for withdrawal
 
-<span class="text-sm sm:text-base">
-Request Withdrawal
-</span>
+      </div>
+      `
+    }
 
-</button>
+    <!-- FOOTER -->
 
-<!-- FOOTER -->
+    <footer class="text-center text-slate-500 mt-12 pb-6 text-sm">
 
-<footer class="text-center text-slate-500 mt-10 sm:mt-12 pb-6 text-xs sm:text-sm">
+      © ${new Date().getFullYear()} Share Partner Network
 
-© ${new Date().getFullYear()} Share Partner Network
+    </footer>
 
-</footer>
-
-</main>
+  </main>
 
 </div>
 
@@ -667,61 +883,66 @@ Request Withdrawal
 
 lucide.createIcons();
 
+/* REFER */
+
+localStorage.setItem('refer_id', '${ref}');
+
 /* SIDEBAR */
 
-const sidebar=document.getElementById("sidebar");
-const overlay=document.getElementById("sidebarOverlay");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("sidebarOverlay");
 
 function toggleSidebar(){
 
-sidebar.classList.toggle("-translate-x-full");
+  sidebar.classList.toggle("-translate-x-full");
 
-overlay.classList.toggle("hidden");
+  overlay.classList.toggle("hidden");
 
 }
-
 /* THEME */
 
-const body=document.getElementById("body");
-const themeIcon=document.getElementById("themeIcon");
+const body = document.getElementById("body");
+const themeIcon = document.getElementById("themeIcon");
 
 function applyTheme(mode){
 
-if(mode==="dark"){
+  if(mode === "dark"){
 
-body.classList.add("dark");
+    body.classList.add("dark");
 
-themeIcon.setAttribute("data-lucide","sun");
+    themeIcon.setAttribute("data-lucide","sun");
 
-}else{
+  }else{
 
-body.classList.remove("dark");
+    body.classList.remove("dark");
 
-themeIcon.setAttribute("data-lucide","moon");
+    themeIcon.setAttribute("data-lucide","moon");
 
-}
+  }
 
-lucide.createIcons();
+  lucide.createIcons();
 
 }
 
 function toggleTheme(){
 
-const current=localStorage.getItem("theme") || "light";
+  const current =
+  localStorage.getItem("theme") || "light";
 
-const newTheme=current==="dark" ? "light" : "dark";
+  const newTheme =
+  current === "dark" ? "light" : "dark";
 
-localStorage.setItem("theme",newTheme);
+  localStorage.setItem("theme", newTheme);
 
-applyTheme(newTheme);
+  applyTheme(newTheme);
 
 }
 
-applyTheme(localStorage.getItem("theme") || "light");
-/* REFER */
+/* LOAD THEME */
 
-localStorage.setItem('refer_id', '${ref}');
-
+applyTheme(
+  localStorage.getItem("theme") || "light"
+);
 </script>
 
 </body>
