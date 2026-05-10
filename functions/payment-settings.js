@@ -81,86 +81,286 @@ export const onRequest = async ({ request, env }) => {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Payment Settings</title>
-<link href='/favicon.ico' rel='icon' type='image/x-icon'/>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;500;700&display=swap');
-body { font-family: 'Mukta', sans-serif; background:#eef2f7; color:#333; margin:0 auto; padding:0; max-width:850px; }
-header { background:#007BFF; color:white; padding:15px 20px; border-bottom:4px solid #0056b3; display:flex; justify-content:space-between; align-items:center; }
-header h1 { font-size:20px; margin:0; }
-form { background:white; padding:20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); margin:20px; }
-label { display:block; font-weight:600; margin-top:12px; }
-input, select { width:100%; padding:8px; margin-top:4px; border:1px solid #ccc; border-radius:4px; }
-button { margin-top:20px; padding:10px 18px; background:#28a745; color:white; border:none; border-radius:4px; cursor:pointer; }
-button:hover { background:#218838; }
-footer { background:#f8f9fa; text-align:center; font-size:14px; padding:10px; margin-top:30px; border-top:1px solid #ddd; color:#555; }
-* {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Settings</title>
+
+  <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+
+<script src='https://cdn.jsdelivr.net/combine//npm/@tailwindcss/browser@4.2.2/dist/index.global.min.js,npm/lucide@1.7.0/dist/umd/lucide.min.js'></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      font-family:'Inter',sans-serif;
+    }
+  </style>
 </head>
-<body>
-<header>
-  <h1>Payment Settings</h1>
-  <a href="/dashboard" style="color:white;text-decoration:none;">⬅ Back</a>
-</header>
 
-<form method="POST">
-  <label>Name *</label>
-  <input name="name" value="${data?.name || ""}" required />
+<body class="bg-slate-100 min-h-screen">
 
-  <label>Phone Number *</label>
-  <input name="phone" value="${data?.phone || ""}" required />
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-2xl bg-blue-100 flex items-center justify-center">
+          <i data-lucide="wallet" class="w-5 h-5 text-blue-600"></i>
+        </div>
 
-  <label>Payment Method</label>
-  <select name="method" id="method" onchange="toggleFields()">
-    <option value="bank" ${data?.method === "bank" ? "selected" : ""}>Bank Transfer</option>
-    <option value="upi" ${data?.method === "upi" ? "selected" : ""}>UPI Transfer</option>
-  </select>
+        <div>
+          <h1 class="text-lg font-bold text-slate-800">
+            Payment Settings
+          </h1>
+          <p class="text-xs text-slate-500">
+            Manage your payout details
+          </p>
+        </div>
+      </div>
 
-  <div id="bankFields" style="display:none;">
-    <label>Bank Name</label>
-    <input name="bank_name" value="${data?.bank_name || ""}" />
+      <a 
+        href="/dashboard"
+        class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 transition px-4 py-2 rounded-xl text-sm font-medium text-slate-700"
+      >
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        Back
+      </a>
 
-    <label>Account Number</label>
-    <input name="account_number" value="${data?.account_number || ""}" />
+    </div>
+  </header>
 
-    <label>IFSC Code</label>
-    <input name="ifsc_code" value="${data?.ifsc_code || ""}" />
-  </div>
+  <!-- Main -->
+  <main class="max-w-3xl mx-auto p-4">
 
-  <div id="upiFields" style="display:none;">
-    <label>UPI ID</label>
-    <input name="upi_id" value="${data?.upi_id || ""}" />
-  </div>
+    <form method="POST" class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
 
-  <button type="submit">Save Changes</button>
+      <!-- Top Banner -->
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
+        <div class="flex items-center gap-4">
 
-  ${
-    data?.last_modified
-      ? `<p style="margin-top:15px;font-size:14px;color:#666;">
-          Last Modified: ${new Date(data.last_modified).toLocaleString("en-IN")}
-        </p>`
-      : ""
-  }
-</form>
+          <div class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center">
+            <i data-lucide="credit-card" class="w-7 h-7"></i>
+          </div>
 
-<script>
-function toggleFields() {
-  const method = document.getElementById('method').value;
-  document.getElementById('bankFields').style.display = method === 'bank' ? 'block' : 'none';
-  document.getElementById('upiFields').style.display = method === 'upi' ? 'block' : 'none';
-}
-toggleFields();
-</script>
+          <div>
+            <h2 class="text-xl font-bold">
+              Update Payment Information
+            </h2>
 
-<footer>
-  © ${new Date().getFullYear()} ShareLinks Partner Network
-</footer>
+            <p class="text-sm text-blue-100 mt-1">
+              Add your bank account or UPI details securely.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Form Fields -->
+      <div class="p-5 md:p-7 space-y-5">
+
+        <!-- Name -->
+        <div>
+          <label class="text-sm font-semibold text-slate-700 flex items-center gap-2 mb-2">
+            <i data-lucide="user" class="w-4 h-4"></i>
+            Full Name
+          </label>
+
+          <input 
+            type="text"
+            name="name"
+            value="${data?.name || ""}"
+            required
+            placeholder="Enter your full name"
+            class="w-full h-12 rounded-2xl border border-slate-300 bg-slate-50 px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+          />
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <label class="text-sm font-semibold text-slate-700 flex items-center gap-2 mb-2">
+            <i data-lucide="phone" class="w-4 h-4"></i>
+            Phone Number
+          </label>
+
+          <input 
+            type="tel"
+            name="phone"
+            value="${data?.phone || ""}"
+            required
+            placeholder="Enter mobile number"
+            class="w-full h-12 rounded-2xl border border-slate-300 bg-slate-50 px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+          />
+        </div>
+
+        <!-- Method -->
+        <div>
+          <label class="text-sm font-semibold text-slate-700 flex items-center gap-2 mb-2">
+            <i data-lucide="circle-dollar-sign" class="w-4 h-4"></i>
+            Payment Method
+          </label>
+
+          <select 
+            name="method"
+            id="method"
+            onchange="toggleFields()"
+            class="w-full h-12 rounded-2xl border border-slate-300 bg-slate-50 px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+          >
+            <option value="bank" ${data?.method === "bank" ? "selected" : ""}>
+              Bank Transfer
+            </option>
+
+            <option value="upi" ${data?.method === "upi" ? "selected" : ""}>
+              UPI Transfer
+            </option>
+          </select>
+        </div>
+
+        <!-- Bank Fields -->
+        <div 
+          id="bankFields"
+          class="space-y-5 bg-slate-50 border border-slate-200 rounded-3xl p-5"
+        >
+
+          <div class="flex items-center gap-2 text-slate-700 font-semibold">
+            <i data-lucide="building-2" class="w-5 h-5"></i>
+            Bank Details
+          </div>
+
+          <div>
+            <label class="text-sm font-medium text-slate-600 mb-2 block">
+              Bank Name
+            </label>
+
+            <input 
+              type="text"
+              name="bank_name"
+              value="${data?.bank_name || ""}"
+              placeholder="State Bank of India"
+              class="w-full h-12 rounded-2xl border border-slate-300 bg-white px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+            />
+          </div>
+
+          <div>
+            <label class="text-sm font-medium text-slate-600 mb-2 block">
+              Account Number
+            </label>
+
+            <input 
+              type="text"
+              name="account_number"
+              value="${data?.account_number || ""}"
+              placeholder="XXXXXXXXXXXX"
+              class="w-full h-12 rounded-2xl border border-slate-300 bg-white px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+            />
+          </div>
+
+          <div>
+            <label class="text-sm font-medium text-slate-600 mb-2 block">
+              IFSC Code
+            </label>
+
+            <input 
+              type="text"
+              name="ifsc_code"
+              value="${data?.ifsc_code || ""}"
+              placeholder="SBIN0001234"
+              class="w-full h-12 rounded-2xl border border-slate-300 bg-white px-4 uppercase outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+            />
+          </div>
+
+        </div>
+
+        <!-- UPI Fields -->
+        <div 
+          id="upiFields"
+          class="space-y-5 bg-slate-50 border border-slate-200 rounded-3xl p-5"
+        >
+
+          <div class="flex items-center gap-2 text-slate-700 font-semibold">
+            <i data-lucide="smartphone" class="w-5 h-5"></i>
+            UPI Details
+          </div>
+
+          <div>
+            <label class="text-sm font-medium text-slate-600 mb-2 block">
+              UPI ID
+            </label>
+
+            <input 
+              type="text"
+              name="upi_id"
+              value="${data?.upi_id || ""}"
+              placeholder="example@upi"
+              class="w-full h-12 rounded-2xl border border-slate-300 bg-white px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+            />
+          </div>
+
+        </div>
+
+        <!-- Last Modified -->
+        ${
+          data?.last_modified
+            ? `
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3 flex items-start gap-3">
+              
+              <i data-lucide="clock-3" class="w-5 h-5 text-amber-600 mt-0.5"></i>
+
+              <div>
+                <p class="text-sm font-medium text-amber-800">
+                  Last Modified
+                </p>
+
+                <p class="text-xs text-amber-700 mt-1">
+                  ${new Date(data.last_modified).toLocaleString("en-IN")}
+                </p>
+              </div>
+
+            </div>
+            `
+            : ""
+        }
+
+        <!-- Button -->
+        <button 
+          type="submit"
+          class="w-full h-14 rounded-2xl bg-blue-600 hover:bg-blue-700 transition text-white font-semibold text-base flex items-center justify-center gap-2 shadow-lg shadow-blue-200"
+        >
+          <i data-lucide="save" class="w-5 h-5"></i>
+          Save Changes
+        </button>
+
+      </div>
+
+    </form>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-slate-500 py-8">
+    © ${new Date().getFullYear()} ShareLinks Partner Network
+  </footer>
+
+  <script>
+
+    function toggleFields() {
+
+      const method = document.getElementById('method').value;
+
+      document.getElementById('bankFields').style.display =
+        method === 'bank' ? 'block' : 'none';
+
+      document.getElementById('upiFields').style.display =
+        method === 'upi' ? 'block' : 'none';
+    }
+
+    toggleFields();
+
+    lucide.createIcons();
+
+  </script>
+
 </body>
 </html>
 `;
