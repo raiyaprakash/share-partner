@@ -130,7 +130,7 @@ export const onRequest = async ({ request, env }) => {
 
       <!-- Right Side Back Button -->
       <a href="/dashboard"
-        class="h-10 md:h-11 px-3 md:px-4 rounded bg-slate-100 hover:bg-slate-200 transition flex items-center justify-center gap-2 text-xs md:text-sm font-medium text-slate-700 shrink-0">
+        class="h-10 md:h-11 px-3 md:px-4 rounded bg-slate-100 hover:bg-slate-200 transition flex items-center justify-center gap-2 text-xs md:text-sm font-medium text-slate-700 shrink-0 border border-slate-300">
         <i data-lucide="arrow-left" class="w-4 h-4"></i>
 
         <span class="hidden sm:block">
@@ -145,10 +145,7 @@ export const onRequest = async ({ request, env }) => {
   <!-- Main -->
   <main class="max-w-5xl mx-auto px-3 sm:px-5 py-4 md:py-8">
 
-    <form
-      method="POST"
-      class="bg-white rounded border border-slate-200 shadow-sm overflow-hidden"
-    >
+    <form method="POST" class="bg-white rounded border border-slate-200 shadow-sm overflow-hidden">
 
       <!-- Banner -->
       <div class="bg-blue-600 p-4 md:p-7 text-white">
@@ -325,11 +322,7 @@ export const onRequest = async ({ request, env }) => {
         }
 
         <!-- Save Button -->
-        <button type="submit"
-          class="w-full h-11 md:h-14 rounded bg-blue-600 hover:bg-blue-700 active:scale-[0.99] transition text-sm md:text-base font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-200">
-          <i data-lucide="save" class="w-5 h-5"></i>
-          Save Changes
-        </button>
+        <button type="submit" class="w-full h-11 md:h-14 rounded bg-blue-600 hover:bg-blue-700 active:scale-[0.99] transition text-white text-sm md:text-base font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-200"><i data-lucide="save" class="w-5 h-5 text-white"></i>Save Changes</button>
 
       </div>
 
