@@ -538,7 +538,7 @@ Welcome Back
 onclick="toggleTheme()"
 class="w-10 h-10 sm:w-11 sm:h-11 rounded bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center transition">
 
-<i id="themeIcon" data-lucide="moon" class="w-5 h-5 text-slate-700"></i>
+<i data-lucide="moon" class="w-5 h-5 text-slate-700"></i>
 
 </button>
 
@@ -897,21 +897,21 @@ function toggleSidebar(){
 /* THEME */
 
 const body = document.getElementById("body");
-const themeIcon = document.getElementById("themeIcon");
+const themeToggle = document.getElementById("themeToggle");
 
 function applyTheme(mode){
 
   if(mode === "dark"){
 
     body.classList.add("dark");
-
-    themeIcon.setAttribute("data-lucide","sun");
+    
+    themeToggle.innerHTML = '<i data-lucide="sun" class="w-5 h-5 text-slate-700"></i>';
 
   }else{
 
     body.classList.remove("dark");
 
-    themeIcon.setAttribute("data-lucide","moon");
+    themeToggle.innerHTML = '<i data-lucide="moon" class="w-5 h-5 text-slate-700"></i>';
 
   }
 
