@@ -300,18 +300,18 @@ export const onRequest = async ({ request, env }) => {
         ${
           data?.last_modified
             ? `
-            <div class="rounded border border-amber-200 bg-amber-50 p-4 flex items-start gap-3">
+            <div class="rounded border border-amber-200 bg-slate-50 p-4 flex items-start gap-3">
 
-              <div class="w-9 h-9 rounded bg-amber-100 flex items-center justify-center shrink-0">
-                <i data-lucide="clock-3" class="w-4 h-4 text-amber-600"></i>
+              <div class="w-9 h-9 rounded bg-blue-100 flex items-center justify-center shrink-0">
+                <i data-lucide="clock-3" class="w-4 h-4 text-blue-600"></i>
               </div>
 
               <div>
-                <p class="text-xs md:text-sm font-bold text-amber-800">
+                <p class="text-xs md:text-sm font-bold text-slate-800">
                   Last Modified
                 </p>
 
-                <p class="text-xs md:text-sm text-amber-700 mt-1">
+                <p class="text-xs md:text-sm text-slate-500 mt-1">
                   ${new Date(data.last_modified).toLocaleString("en-IN")}
                 </p>
               </div>
