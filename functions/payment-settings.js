@@ -300,7 +300,7 @@ export const onRequest = async ({ request, env }) => {
         ${
           data?.last_modified
             ? `
-            <div class="rounded border border-amber-200 bg-slate-50 p-4 flex items-start gap-3">
+            <div class="rounded border border-slate-200 bg-slate-50 p-4 flex items-start gap-3">
 
               <div class="w-9 h-9 rounded bg-blue-100 flex items-center justify-center shrink-0">
                 <i data-lucide="clock-3" class="w-4 h-4 text-blue-600"></i>
