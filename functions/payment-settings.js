@@ -110,7 +110,7 @@ export const onRequest = async ({ request, env }) => {
       <!-- Left -->
       <div class="flex items-center gap-3 min-w-0">
 
-        <div class="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
+        <div class="w-11 h-11 md:w-12 md:h-12 rounded bg-blue-100 flex items-center justify-center shrink-0">
           <i data-lucide="wallet" class="w-5 h-5 text-blue-600"></i>
         </div>
 
@@ -130,7 +130,7 @@ export const onRequest = async ({ request, env }) => {
 
       <!-- Right Side Back Button -->
       <a href="/dashboard"
-        class="h-10 md:h-11 px-3 md:px-4 rounded-xl bg-slate-100 hover:bg-slate-200 transition flex items-center justify-center gap-2 text-xs md:text-sm font-medium text-slate-700 shrink-0">
+        class="h-10 md:h-11 px-3 md:px-4 rounded bg-slate-100 hover:bg-slate-200 transition flex items-center justify-center gap-2 text-xs md:text-sm font-medium text-slate-700 shrink-0">
         <i data-lucide="arrow-left" class="w-4 h-4"></i>
 
         <span class="hidden sm:block">
@@ -147,7 +147,7 @@ export const onRequest = async ({ request, env }) => {
 
     <form
       method="POST"
-      class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden"
+      class="bg-white rounded border border-slate-200 shadow-sm overflow-hidden"
     >
 
       <!-- Banner -->
@@ -155,7 +155,7 @@ export const onRequest = async ({ request, env }) => {
 
         <div class="flex items-start sm:items-center gap-4">
 
-          <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+          <div class="w-12 h-12 md:w-14 md:h-14 rounded bg-white/20 flex items-center justify-center shrink-0">
             <i data-lucide="credit-card" class="w-6 h-6 md:w-7 md:h-7"></i>
           </div>
 
@@ -189,7 +189,7 @@ export const onRequest = async ({ request, env }) => {
               Full Name
             </label>
 
-            <input type="text" name="name" value="${data?.name || ""}" required placeholder="Enter your full name" class="w-full h-11 md:h-14 rounded-xl border border-slate-300 bg-slate-50 px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition" />
+            <input type="text" name="name" value="${data?.name || ""}" required placeholder="Enter your full name" class="w-full h-11 md:h-14 rounded border border-slate-300 bg-slate-50 px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition" />
 
           </div>
 
@@ -201,7 +201,7 @@ export const onRequest = async ({ request, env }) => {
               Phone Number
             </label>
 
-            <input type="tel" name="phone" value="${data?.phone || ""}" required placeholder="Enter phone number" class="w-full h-11 md:h-14 rounded-xl border border-slate-300 bg-slate-50 px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition" />
+            <input type="tel" name="phone" value="${data?.phone || ""}" required placeholder="Enter phone number" class="w-full h-11 md:h-14 rounded border border-slate-300 bg-slate-50 px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition" />
 
           </div>
 
@@ -215,7 +215,7 @@ export const onRequest = async ({ request, env }) => {
             Payment Method
           </label>
 
-          <select name="method" id="method" onchange="toggleFields()" class="w-full h-11 md:h-14 rounded-xl border border-slate-300 bg-slate-50 px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition">
+          <select name="method" id="method" onchange="toggleFields()" class="w-full h-11 md:h-14 rounded border border-slate-300 bg-slate-50 px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition">
 
             <option value="bank" ${data?.method === "bank" ? "selected" : ""}>
               Bank Transfer
@@ -230,7 +230,7 @@ export const onRequest = async ({ request, env }) => {
         </div>
 
         <!-- Bank Fields -->
-        <div id="bankFields" class="rounded-xl border border-slate-200 bg-slate-50 p-4 md:p-6 space-y-5" >
+        <div id="bankFields" class="rounded border border-slate-200 bg-slate-50 p-4 md:p-6 space-y-5" >
 
           <div class="flex items-center gap-2 text-sm md:text-lg font-bold text-slate-800">
             <i data-lucide="building-2" class="w-5 h-5"></i>
@@ -246,7 +246,7 @@ export const onRequest = async ({ request, env }) => {
                 Bank Name
               </label>
 
-              <input type="text" name="bank_name" value="${data?.bank_name || ""}" placeholder="State Bank of India" class="w-full h-11 md:h-14 rounded-xl border border-slate-300 bg-white px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition" />
+              <input type="text" name="bank_name" value="${data?.bank_name || ""}" placeholder="State Bank of India" class="w-full h-11 md:h-14 rounded border border-slate-300 bg-white px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition" />
 
             </div>
 
@@ -257,7 +257,7 @@ export const onRequest = async ({ request, env }) => {
                 IFSC Code
               </label>
 
-              <input type="text" name="ifsc_code" value="${data?.ifsc_code || ""}" placeholder="SBIN0001234" class="w-full h-11 md:h-14 rounded-xl border border-slate-300 bg-white px-4 uppercase text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition" />
+              <input type="text" name="ifsc_code" value="${data?.ifsc_code || ""}" placeholder="SBIN0001234" class="w-full h-11 md:h-14 rounded border border-slate-300 bg-white px-4 uppercase text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition" />
 
             </div>
 
@@ -268,7 +268,7 @@ export const onRequest = async ({ request, env }) => {
                 Account Number
               </label>
 
-              <input type="text" name="account_number" value="${data?.account_number || ""}" placeholder="XXXXXXXXXXXX" class="w-full h-11 md:h-14 rounded-xl border border-slate-300 bg-white px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"/>
+              <input type="text" name="account_number" value="${data?.account_number || ""}" placeholder="XXXXXXXXXXXX" class="w-full h-11 md:h-14 rounded border border-slate-300 bg-white px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition"/>
 
             </div>
 
@@ -279,7 +279,7 @@ export const onRequest = async ({ request, env }) => {
         <!-- UPI Fields -->
         <div
           id="upiFields"
-          class="rounded-xl border border-slate-200 bg-slate-50 p-4 md:p-6 space-y-5"
+          class="rounded border border-slate-200 bg-slate-50 p-4 md:p-6 space-y-5"
         >
 
           <div class="flex items-center gap-2 text-sm md:text-lg font-bold text-slate-800">
@@ -293,7 +293,7 @@ export const onRequest = async ({ request, env }) => {
               UPI ID
             </label>
 
-            <input type="text" name="upi_id" value="${data?.upi_id || ""}" placeholder="example@upi" class="w-full h-11 md:h-14 rounded-xl border border-slate-300 bg-white px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition" />
+            <input type="text" name="upi_id" value="${data?.upi_id || ""}" placeholder="example@upi" class="w-full h-11 md:h-14 rounded border border-slate-300 bg-white px-4 text-sm md:text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition" />
 
           </div>
 
@@ -303,9 +303,9 @@ export const onRequest = async ({ request, env }) => {
         ${
           data?.last_modified
             ? `
-            <div class="rounded-xl border border-amber-200 bg-amber-50 p-4 flex items-start gap-3">
+            <div class="rounded border border-amber-200 bg-amber-50 p-4 flex items-start gap-3">
 
-              <div class="w-9 h-9 rounded-xl bg-amber-100 flex items-center justify-center shrink-0">
+              <div class="w-9 h-9 rounded bg-amber-100 flex items-center justify-center shrink-0">
                 <i data-lucide="clock-3" class="w-4 h-4 text-amber-600"></i>
               </div>
 
@@ -326,7 +326,7 @@ export const onRequest = async ({ request, env }) => {
 
         <!-- Save Button -->
         <button type="submit"
-          class="w-full h-11 md:h-14 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] transition text-sm md:text-base font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-200">
+          class="w-full h-11 md:h-14 rounded bg-blue-600 hover:bg-blue-700 active:scale-[0.99] transition text-sm md:text-base font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-200">
           <i data-lucide="save" class="w-5 h-5"></i>
           Save Changes
         </button>
