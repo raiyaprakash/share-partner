@@ -202,7 +202,8 @@ function formatViews(num) {
 
 <title>${partner.name} - Dashboard</title>
 
-<script src='https://cdn.jsdelivr.net/combine//npm/@tailwindcss/browser@4.2.2/dist/index.global.min.js,npm/lucide@1.7.0/dist/umd/lucide.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
 
 <style>
